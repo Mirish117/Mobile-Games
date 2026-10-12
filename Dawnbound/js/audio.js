@@ -49,6 +49,7 @@
   function synthSfx(n, o) {
     var t = AU.ctx.currentTime;
     switch (n) {
+      case 'door_soft': blip('sine', 150, 62, .24, .16); blip('triangle', 300, 220, .14, .04); break;
       case 'swing': noiseHit(.14, .35, 2400, .8); blip('triangle', 500, 200, .1, .08); break;
       case 'hurt': blip('square', 240, 90, .18, .22); noiseHit(.1, .2, 900, 1); break;
       case 'hit': noiseHit(.09, .3, 1500, .9); blip('square', 180, 70, .09, .2); break;

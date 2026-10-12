@@ -26,7 +26,7 @@
             else { e.dir = DB.dirOf(dx, dy); var sp = e.speed * dt; var ok = W.tryMove(e, dx / d * sp, dy / d * sp); if (!ok) { e.moving = false; e.wt = 1; } W.play(e, 'walk'); }
           } else if (e.wt <= 0) {
             var a = Math.random() * 6.28, r = Math.random() * e.wander; var tx = e.hx + Math.cos(a) * r, ty = e.hy + Math.sin(a) * r;
-            if (W.canStand(tx, ty, 6)) { e.tx = tx; e.ty = ty; e.moving = true; } else e.wt = 1;
+            if (W.canStand(tx, ty, 22) && W.canStand(tx, ty - 6, 22)) { e.tx = tx; e.ty = ty; e.moving = true; } else e.wt = 1;
           } else W.play(e, 'idle');
         } else if (!e.moving) W.play(e, e.walkingAnim ? 'walk' : 'idle');
       }

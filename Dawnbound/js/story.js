@@ -261,7 +261,7 @@
       var pt = m.portals[j]; if (p.x >= pt.x && p.x <= pt.x + pt.w && p.y >= pt.y && p.y <= pt.y + pt.h) {
         if (pt.cond && !pt.cond(G)) { if (!pt._msg || performance.now() - pt._msg > 3000) { pt._msg = performance.now(); DB.toast(pt.msg || 'You cannot go that way yet.'); } p.x -= (p.x - (pt.x + pt.w / 2)) * .05; continue; }
         if (pt.scene) { ST.run(pt.scene); W.portalCool = 2; return; }
-        DB.audio.sfx(pt.sfx || 'footstep_stone'); DB.go(pt.to, pt.spawn); return;
+        DB.audio.sfx(pt.sfx || 'door_soft'); DB.go(pt.to, pt.spawn); return;
       }
     }
     G.time += dt;

@@ -37,15 +37,26 @@
   W.setRect = function (x, y, w, h, v) { for (var yy = y; yy < y + h; yy += CELL) for (var xx = x; xx < x + w; xx += CELL) W.setCell(xx, yy, v); };
   /* can an entity of radius r stand at x,y */
   W.canStand = function (x, y, r) {
-    r = r || 6;
-    return W.walkable(x, y) && W.walkable(x - r, y) && W.walkable(x + r, y) && W.walkable(x, y - r * .6) && W.walkable(x - r * .7, y + r * .5) && W.walkable(x + r * .7, y + r * .5);
+    /* forgiving "feet" probe: centre + a narrow stance. The masks are 8px cells, so a wide probe snags on corners. */
+    r = (r || 6) * .55;
+    return W.walkable(x, y) && W.walkable(x - r, y) && W.walkable(x + r, y) && W.walkable(x, y + r * .5);
   };
-  /* move with axis separation (wall sliding). returns true if moved */
+  /* move with axis separation (wall sliding) + corner gliding. returns true if moved */
   W.tryMove = function (e, dx, dy) {
     var r = e.r || 6, ok = false;
     if (e.fly) { e.x = DB.clamp(e.x + dx, 4, W.map.w - 4); e.y = DB.clamp(e.y + dy, 4, W.map.h - 4); return true; }
-    if (dx && W.canStand(e.x + dx, e.y, r) && !W.blockedByProp(e.x + dx, e.y, r, e)) { e.x += dx; ok = true; }
-    if (dy && W.canStand(e.x, e.y + dy, r) && !W.blockedByProp(e.x, e.y + dy, r, e)) { e.y += dy; ok = true; }
+    var stuck = !W.canStand(e.x, e.y, r);                       /* already inside a wall: let the entity walk out */
+    if (dx && (W.canStand(e.x + dx, e.y, r) || (stuck && W.walkable(e.x + dx, e.y))) && !W.blockedByProp(e.x + dx, e.y, r, e)) { e.x += dx; ok = true; }
+    if (dy && (W.canStand(e.x, e.y + dy, r) || (stuck && W.walkable(e.x, e.y + dy))) && !W.blockedByProp(e.x, e.y + dy, r, e)) { e.y += dy; ok = true; }
+    if (!ok && (dx || dy) && !stuck) {
+      /* glide around corners: nudge sideways up to a few px so a near-miss on a wall corner slips past */
+      var m = Math.max(Math.abs(dx), Math.abs(dy)), n = Math.min(4, m * 1.6) || 1, k, ox = dx ? 0 : 1, oy = dx ? 1 : 0;
+      if (dx && dy) { return false; }
+      for (k = 1; k <= 3 && !ok; k++) for (var sg = -1; sg <= 1 && !ok; sg += 2) {
+        var nx = e.x + dx + ox * sg * n * k, ny = e.y + dy + oy * sg * n * k;
+        if (W.canStand(nx, ny, r) && !W.blockedByProp(nx, ny, r, e)) { e.x += ox * sg * n * .6 + dx; e.y += oy * sg * n * .6 + dy; ok = true; }
+      }
+    }
     return ok;
   };
   W.blockedByProp = function (x, y, r, self) {
@@ -53,9 +64,10 @@
     return false;
   };
   /* snap an entity to the nearest walkable cell */
-  W.snapToWalkable = function (e) {
-    if (W.canStand(e.x, e.y, e.r || 6)) return;
-    for (var rad = 4; rad < 200; rad += 4) for (var a = 0; a < 6.28; a += .4) { var nx = e.x + Math.cos(a) * rad, ny = e.y + Math.sin(a) * rad; if (W.canStand(nx, ny, e.r || 6)) { e.x = nx; e.y = ny; return; } }
+  W.snapToWalkable = function (e, rr) {
+    rr = rr || e.r || 6;
+    if (W.canStand(e.x, e.y, rr)) return;
+    for (var rad = 4; rad < 200; rad += 4) for (var a = 0; a < 6.28; a += .4) { var nx = e.x + Math.cos(a) * rad, ny = e.y + Math.sin(a) * rad; if (W.canStand(nx, ny, rr)) { e.x = nx; e.y = ny; return; } }
   };
   /* ---------------- map loading ---------------- */
   W.load = function (id, spawn, opts) {
@@ -101,7 +113,34 @@
     W.party.forEach(function (h) { W.snapToWalkable(h); });
     if (DB.G.hasAsh && DB.party().indexOf('rowan') >= 0) { var a = DB.makeAsh(W.party[0]); W.ents.push(a); W.ash = a; } else W.ash = null;
   };
+  /* reachability: flood-fill the walkable mask from every spawn point so nothing (NPCs, chests, foes) ends up on an unreachable island */
+  W.computeReach = function (def) {
+    var m = W.mask; if (!m) { W.reach = null; return; }
+    var gw = m.w, gh = m.h, seen = new Uint8Array(gw * gh), st = [];
+    var ok = function (cx, cy) { return cx >= 0 && cy >= 0 && cx < gw && cy < gh && m.d[cy * gw + cx] === 1; };
+    Object.keys(def.spawns || {}).forEach(function (k) {
+      var sp = def.spawns[k], cx = Math.floor(sp[0] / CELL), cy = Math.floor(sp[1] / CELL), found = false;
+      for (var r = 0; r < 12 && !found; r++) for (var dy = -r; dy <= r && !found; dy++) for (var dx = -r; dx <= r && !found; dx++) { if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue; if (ok(cx + dx, cy + dy)) { cx += dx; cy += dy; found = true; } }
+      if (found && !seen[cy * gw + cx]) { seen[cy * gw + cx] = 1; st.push(cx, cy); }
+    });
+    while (st.length) {
+      var y = st.pop(), x = st.pop();
+      [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (d) { var nx = x + d[0], ny = y + d[1]; if (ok(nx, ny) && !seen[ny * gw + nx]) { seen[ny * gw + nx] = 1; st.push(nx, ny); } });
+    }
+    W.reach = { d: seen, w: gw, h: gh };
+  };
+  W.isReach = function (x, y, tol) {
+    var r = W.reach; if (!r) return true; tol = tol == null ? 2 : tol;
+    var cx = Math.floor(x / CELL), cy = Math.floor(y / CELL);
+    for (var dy = -tol; dy <= tol; dy++) for (var dx = -tol; dx <= tol; dx++) { var nx = cx + dx, ny = cy + dy; if (nx >= 0 && ny >= 0 && nx < r.w && ny < r.h && r.d[ny * r.w + nx]) return true; }
+    return false;
+  };
+  W.nearestReach = function (x, y, margin) {
+    for (var rad = 8; rad < 500; rad += 8) for (var a = 0; a < 6.28; a += .3) { var nx = x + Math.cos(a) * rad, ny = y + Math.sin(a) * rad; if (W.isReach(nx, ny, 0) && W.canStand(nx, ny, margin || 10)) return [nx, ny]; }
+    return null;
+  };
   W.buildEntities = function (def) {
+    W.computeReach(def);
     (def.npcs || []).forEach(function (n) {
       if (n.cond && !n.cond(DB.G)) return;
       var e = DB.makeNpc(n); W.ents.push(e);
@@ -111,7 +150,13 @@
       var e = DB.makeObj(o); if (e) W.ents.push(e);
     });
     if (DB.spawnEnemies) DB.spawnEnemies(def);
-    W.ents.forEach(function (e) { if ((e.type === 'npc' || e.type === 'enemy') && !e.fly && W.mapId && !W.canStand(e.x, e.y, 5)) { W.snapToWalkable(e); if (e.hx != null) { e.hx = e.x; e.hy = e.y; } } else if (e.type === 'prop' && (e.kind === 'chest' || e.kind === 'pickup') && !W.walkable(e.x, e.y + 12)) { var ox = e.x, oy = e.y; e.y += 12; W.snapToWalkable(e); e.y -= 12; } });
+    W.ents.forEach(function (e) { if ((e.type === 'npc' || e.type === 'enemy') && !e.fly && W.mapId && !W.canStand(e.x, e.y, 16)) { W.snapToWalkable(e, 16); if (e.hx != null) { e.hx = e.x; e.hy = e.y; } } else if (e.type === 'prop' && (e.kind === 'chest' || e.kind === 'pickup') && !W.walkable(e.x, e.y + 12)) { var ox = e.x, oy = e.y; e.y += 12; W.snapToWalkable(e); e.y -= 12; } });
+    /* anything stranded on an unreachable island is moved to the nearest reachable ground */
+    W.ents.forEach(function (e) {
+      if (e.fly || !W.mapId) return; var chk = e.type === 'npc' || e.type === 'enemy' || (e.type === 'prop' && (e.kind === 'chest' || e.kind === 'pickup'));
+      if (!chk) return; var py = e.type === 'prop' ? e.y + 12 : e.y;
+      if (!W.isReach(e.x, py, 2)) { var n = W.nearestReach(e.x, py, 8); if (n) { e.x = n[0]; e.y = n[1] - (e.type === 'prop' ? 12 : 0); if (e.hx != null) { e.hx = e.x; e.hy = e.y; } } }
+    });
   };
   W.find = function (id) { for (var i = 0; i < W.ents.length; i++) if (W.ents[i].id === id) return W.ents[i]; return null; };
   W.remove = function (e) { var i = W.ents.indexOf(e); if (i >= 0) W.ents.splice(i, 1); };

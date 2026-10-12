@@ -31,7 +31,7 @@
     npcs: [
       { id: 'toss_keeper', sprite: 'fenn', name: 'Lantern Toss', x: 880, y: 500, dir: 'down', wander: 0, talk: 'toss_stall', cond: function (G) { return G.flags.festival_on; } },
       { id: 'fiddler_n', sprite: 'scholar', name: 'Festival Fiddler', x: 560, y: 600, dir: 'right', wander: 0, talk: 'fiddler_talk', speaker: 'fiddler', cond: function (G) { return G.flags.festival_on; } },
-      { id: 'pip', sprite: 'pip', name: 'Pip', x: 1010, y: 770, dir: 'up', wander: 30, talk: 'pip_talk', q: function (G) { return (G.flags.mq === 1 && G.flags.inn && !G.flags.pip_guides) || (G.quests.sq1 === 'active' && DB.has('whiskers_net')); } },
+      { id: 'pip', sprite: 'pip', name: 'Pip', x: 880, y: 800, dir: 'up', wander: 14, talk: 'pip_talk', q: function (G) { return (G.flags.mq === 1 && G.flags.inn && !G.flags.pip_guides) || (G.quests.sq1 === 'active' && DB.has('whiskers_net')); } },
       { id: 'odell', sprite: 'odell', name: 'Mayor Odell', x: 690, y: 440, dir: 'down', wander: 40, talk: 'odell_talk', q: function (G) { return G.quests.sq6 !== 'done' && (G.flags.mq || 0) >= 5 && G.quests.sq6 !== 'active'; } },
       { id: 'marisol_hub', sprite: 'marisol', name: 'Captain Marisol', x: 1075, y: 760, dir: 'left', wander: 0, talk: 'marisol_hub', cond: function (G) { return (G.flags.mq || 0) >= 1; } },
       { id: 'merchant', sprite: 'scholar', name: 'Odo the Peddler', x: 985, y: 470, dir: 'down', wander: 0, shop: 'general', speaker: 'scholar' },
@@ -47,9 +47,9 @@
     spawns: { start: [767, 760, 'up'] },
     portals: [{ x: 690, y: 880, w: 150, h: 60, to: 'port_halcyon', spawn: 'inn', label: 'Out to the harbor' }],
     npcs: [
-      { id: 'bram', sprite: 'bram', name: 'Bram', x: 800, y: 305, dir: 'down', wander: 0, talk: 'bram_talk' },
+      { id: 'bram', sprite: 'bram', name: 'Bram', x: 800, y: 300, dir: 'down', wander: 0, talk: 'bram_talk' },
       { id: 'hettie', sprite: 'hettie', name: 'Hettie', x: 410, y: 240, dir: 'down', wander: 16, talk: 'hettie_talk', q: function (G) { return !G.flags.inn && (G.flags.mq || 0) === 1 || (G.flags.mq || 0) >= 2 && !G.quests.sq2; } },
-      { id: 'inn_guest', sprite: 'refugee', name: 'Weary Traveler', x: 1160, y: 440, dir: 'left', wander: 0, lines: ['Best bed on the whole isle. I was only meaning to stay a night. That was three weeks ago.'] },
+      { id: 'inn_guest', sprite: 'refugee', name: 'Weary Traveler', x: 1075, y: 520, dir: 'left', wander: 0, lines: ['Best bed on the whole isle. I was only meaning to stay a night. That was three weeks ago.'] },
       { id: 'inn_sailor', sprite: 'fenn', name: 'Sailor Fenn', x: 580, y: 460, dir: 'down', wander: 30, lines: ['Cap says the Gull will be fixed by the festival. Cap says a lot of things.'], cond: function (G) { return (G.flags.mq || 0) >= 1; } }
     ] });
 
@@ -105,7 +105,7 @@
       E('tidespawn', 6, [[740, 330], [790, 300]], { cond: function (G) { return G.flags.grotto_drained; } })
     ],
     objs: [
-      { t: 'door', kind: 'portcullis', id: 'tide_gate', x: 767, y: 455, block: [715, 430, 110, 36] },
+      { t: 'door', kind: 'portcullis', id: 'tide_gate', x: 767, y: 455, block: [660, 430, 220, 36] },
       { t: 'valve', id: 'valve1', x: 1330, y: 440, target: ['tide_gate'], scene: 'grotto_valve' },
       { t: 'chest', id: 'g1', x: 90, y: 530, gold: 80, items: [['mana_tonic', 1]] },
       { t: 'chest', id: 'g2', x: 1390, y: 180, gold: 40, items: [['healing_potion', 2]] },
