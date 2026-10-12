@@ -27,13 +27,17 @@
     var e = { type: 'enemy', kind: type, def: d, id: 'en' + Math.random().toString(36).slice(2, 7), sprite: d.sprite, name: d.name, x: x, y: y, hx: x, hy: y, r: d.r || 8, sr: (d.r || 8) + 3, lv: lv, hp: st.hp, maxhp: st.hp, atk: st.atk, df: st.def, xp: st.xp, gold: st.gold,
       team: 'e', dir: 'down', anim: 'idle_down', at: Math.random(), scale: (d.scale || 1), tint: d.tint, tintAmt: d.tintAmt, alpha: d.alpha, ai: { st: 'idle', t: Math.random() * 2, cd: 1 + Math.random(), target: null, wt: 0 }, fly: d.fly, vx: 0, vy: 0, stun: 0, slow: 0, burn: 0, aggroed: false };
     if (o.drop) e.drop = o.drop;
+    ensureSprite(e);
     return e;
   };
+  /* sprites for scene-spawned foes are not preloaded with the map: load on demand */
+  function ensureSprite(e) { var A = DB.assets; if (e.sprite && A && A.loadChars && !A.charSheet(e.sprite)) A.loadChars([e.sprite]); }
   C.makeBoss = function (key, lv, x, y, o) {
     o = o || {}; var d = DB.bosses[key], st = DB.enemyStats(lv, { hpMul: d.hpMul, atkMul: d.atkMul });
     var e = { type: 'enemy', boss: true, bkey: key, kind: key, def: d, id: 'boss_' + key, sprite: d.sprite, name: d.name, x: x, y: y, hx: x, hy: y, r: d.r, sr: d.r + 6, lv: lv, hp: st.hp, maxhp: st.hp, atk: st.atk, df: st.def, xp: Math.round(st.xp * (d.xpMul || 3)), gold: st.gold * 8, team: 'e', dir: 'down', anim: 'idle_down', at: 0, scale: d.scale || 1.4, tint: o.tint, tintAmt: o.tintAmt, ai: { st: 'idle', t: 1, cd: 2, target: null, pat: 0, phase: 0 }, fly: d.fly, vx: 0, vy: 0, stun: 0, slow: 0, aggroed: true, sheet4: d.sheet4 };
     if (d.sheet4) { e.anim = 'idle'; e.noShadow = false; }
     e.drop = o.drop;
+    ensureSprite(e);
     return e;
   };
   /* ================= damage ================= */

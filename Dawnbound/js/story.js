@@ -127,6 +127,7 @@
     UI.hideDialogue(); DB.input.lock(220);
     if (ST._endForCombat) { W.mode = 'field'; UI.hud(true); UI.invalidateParty(); }
     else if (W.mode === 'scene' || W.mode === 'cutscene') { W.mode = ST.prevMode && ST.prevMode !== 'title' ? ST.prevMode : 'field'; if (W.mode === 'field') UI.hud(true); }
+    if (W.mode === 'field') UI.hud(true);
     if (W.mode === 'field' || W.mode === 'scene') { if (W.cam.follow == null && W.player) W.cam.follow = W.player; }
     W.letterbox = 0;
     UI.invalidateParty();
@@ -238,6 +239,9 @@
     if (W.mode !== 'field' || !W.map || ST.running) return;
     var G = DB.G, p = W.player; if (!p) return;
     W.portalCool = Math.max(0, (W.portalCool || 0) - dt);
+    /* safety net: in free play the controls must always be visible (unless a menu/minigame/screen owns the display) */
+    var scr = document.getElementById('screen'), pad = document.getElementById('pad');
+    if (pad && pad.classList.contains('hidden') && !UI.menuOpen && !UI.dlgActive && !UI.choiceActive && !(DB.mini && DB.mini.active) && (!scr || scr.classList.contains('hidden'))) UI.hud(true);
     checkWave();
     if (ST.timer) { ST.timer.t -= dt; if (ST.timer.t <= 0) { var f = ST.timer.fail; ST.timer = null; ST.run(f); return; } }
     /* quest markers */
