@@ -78,7 +78,7 @@
       return DB.tween(ms, function (t) { c.x = sx + (x - sx) * t; c.y = sy + (y - sy) * t; c.tx = c.x; c.ty = c.y; }, DB.easeInOut);
     };
     S.camFollow = function (id) { var e = id ? S.ent(id) : W.player; W.cam.follow = e; };
-    S.partyAt = function (x, y, dir) { W.party.forEach(function (p, i) { p.x = x + (i % 3 - 1) * 20; p.y = y + Math.floor(i / 3) * 16 + (i % 2) * 6; p.dir = dir || 'up'; W.play(p, 'idle', true); }); if (W.ash) { W.ash.x = x + 34; W.ash.y = y + 10; } };
+    S.partyAt = function (x, y, dir) { W.party.forEach(function (p, i) { p.x = x + (i % 3 - 1) * 20; p.y = y + Math.floor(i / 3) * 16 + (i % 2) * 6; p.dir = dir || 'up'; W.play(p, 'idle', true); }); if (W.ash) { W.ash.x = x + 34; W.ash.y = y + 10; } if (W.snapToWalkable) { W.party.forEach(function (p) { W.snapToWalkable(p); }); if (W.party[0]) { var l = W.party[0], ox = l.x, oy = l.y; W.rescuePocket(l); if (l.x !== ox || l.y !== oy) W.party.forEach(function (p, i) { if (i) { p.x = l.x + (i % 3 - 1) * 20; p.y = l.y + 10; W.snapToWalkable(p); } }); } } };
     S.partyWalk = function (x, y, speed) { return Promise.all(W.party.map(function (p, i) { return S.walk(p, x + (i % 3 - 1) * 20, y + Math.floor(i / 3) * 16 + (i % 2) * 6, speed); })); };
     S.partyRing = function (x, y, r, face) { var n = W.party.length; W.party.forEach(function (p, i) { var a = (i / n) * Math.PI * 2 + .6; p.x = x + Math.cos(a) * r; p.y = y + Math.sin(a) * r * .6; p.dir = face || DB.dirOf(x - p.x, y - p.y); W.play(p, 'idle', true); }); if (W.ash) { W.ash.x = x + r * .5; W.ash.y = y + r * .8; } };
     S.partyFace = function (dir) { W.party.forEach(function (p) { p.dir = dir; W.play(p, 'idle', true); }); };

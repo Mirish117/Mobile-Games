@@ -235,7 +235,7 @@
     await S.fade(1, 1500, '#fff6d0');
     if (DB.cin && DB.cin.ending) await DB.cin.ending(S); else await S.card('DAWNBOUND', 'Thank you for playing', 4000);
     if (DB.cin && DB.cin.credits) await DB.cin.credits(S);
-    await S.map('port_halcyon', 'dock'); S.partyAt(1000, 790, 'up'); S.tint(null); await S.fade(0, 1200); S.camFollow();
+    await S.map('port_halcyon', 'dock'); S.partyAt(950, 815, 'up'); S.tint(null); await S.fade(0, 1200); S.camFollow();
     S.toast('The Hall of Echoes has opened in the Halcyon lighthouse. New Game+ is now available.', 'quest');
     DB.meta && DB.meta.set('cleared', G.hero); S.save();
   };

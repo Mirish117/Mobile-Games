@@ -112,7 +112,7 @@
     S.flag('halcyon_scarred', 1); S.camFollow();
   };
   SC.q17_halcyon = async function (S) {
-    S.flag('halcyon_back', 1); S.tint('#6a6a80', .18); S.music('sad', 1); S.partyAt(1000, 800, 'up'); S.cam(1000, 780, 0);
+    S.flag('halcyon_back', 1); S.tint('#6a6a80', .18); S.music('sad', 1); S.partyAt(950, 815, 'up'); S.cam(960, 790, 0);
     await S.narr("Port Halcyon is scarred — burned houses, broken docks. Townsfolk wave weakly from the ruins.");
     S.spawn('pip_s', 'pip', 960, 700, 'down', { name: 'Pip' });
     await S.walk('pip_s', 1000, 780, 100);

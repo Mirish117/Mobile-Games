@@ -19,7 +19,7 @@
     portals: [] });
 
   D('port_halcyon', { name: 'Port Halcyon', region: 'halcyon', music: 'halcyon',
-    spawns: { start: [768, 560, 'up'], dock: [1000, 800, 'up'], inn: [388, 450, 'down'], lighthouse: [1240, 225, 'down'], coast: [650, 40, 'down'] },
+    spawns: { start: [768, 560, 'up'], dock: [950, 815, 'up'], inn: [388, 450, 'down'], lighthouse: [1240, 225, 'down'], coast: [650, 40, 'down'] },
     triggers: [{ id: 'q17', x: 900, y: 740, w: 220, h: 120, cond: function (G) { return G.flags.mq === 17 && !G.flags.halcyon_back; }, scene: 'q17_halcyon' }, { id: 'note', x: 330, y: 400, w: 110, h: 70, cond: function (G) { return G.flags.q6_inn_trigger && !G.flags.q6_planned; }, scene: 'q6_inn_note' }],
     objs: [{ t: 'none', id: 'divespot', x: 1395, y: 600, scene: 'sq3_dive', cond: function (G) { return G.quests.sq3 === 'active' && !DB.has('wedding_ring'); } }, { t: 'none', id: 'fishspot', x: 1395, y: 640, scene: 'sq1_fish', cond: function (G) { return G.quests.sq1 === 'active' && !G.flags.whiskers_caught; } }],
     onEnter: function () { var G = DB.G; if (G.flags.festival_on) { var W = DB.world; } },

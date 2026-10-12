@@ -76,13 +76,24 @@
     if (W.canStand(e.x, e.y, rr)) return;
     for (var rad = 4; rad < 200; rad += 4) for (var a = 0; a < 6.28; a += .4) { var nx = e.x + Math.cos(a) * rad, ny = e.y + Math.sin(a) * rad; if (W.canStand(nx, ny, rr)) { e.x = nx; e.y = ny; return; } }
   };
+  /* if the player would start inside a tiny walkable pocket (a few cells cut off from the rest of the map), move them to the nearest big walkable area */
+  W.rescuePocket = function (e) {
+    var m = W.mask; if (!m) return; var gw = m.w, gh = m.h, CL = CELL;
+    var comp = function (sx, sy, cap) { var seen = {}, st = [sx, sy], n = 0; seen[sy * gw + sx] = 1; while (st.length && n < cap) { var y = st.pop(), x = st.pop(); n++; [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (d) { var nx = x + d[0], ny = y + d[1]; if (nx < 0 || ny < 0 || nx >= gw || ny >= gh) return; var k = ny * gw + nx; if (m.d[k] === 1 && !seen[k]) { seen[k] = 1; st.push(nx, ny); } }); } return n; };
+    var cx = Math.floor(e.x / CL), cy = Math.floor(e.y / CL); if (cx < 0 || cy < 0 || cx >= gw || cy >= gh || m.d[cy * gw + cx] !== 1) return;
+    var BIG = 500; if (comp(cx, cy, BIG) >= BIG) return;
+    for (var r = 1; r < 60; r++) for (var dy = -r; dy <= r; dy++) for (var dx = -r; dx <= r; dx++) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue; var nx = cx + dx, ny = cy + dy; if (nx < 1 || ny < 1 || nx >= gw - 1 || ny >= gh - 1 || m.d[ny * gw + nx] !== 1) continue;
+      if (comp(nx, ny, BIG) >= BIG) { var px = nx * CL + CL / 2, py = ny * CL + CL / 2; if (W.canStand(px, py, e.r || 6)) { e.x = px; e.y = py; return; } }
+    }
+  };
   /* ---------------- map loading ---------------- */
   W.load = function (id, spawn, opts) {
     opts = opts || {};
     var def = DB.maps[id]; if (!def) { console.error('no map', id); return Promise.resolve(); }
     return A.loadMap(def.img || id).then(function (img) {
       W.map = def; W.mapId = id; W.img = img; def.w = def.w || (img ? img.width : 1536); def.h = def.h || (img ? img.height : 1024);
-      var mk = DB.MASKS && DB.MASKS[id];
+      var mk = DB.MASKS && DB.MASKS[id]; if (DB.MASKS_USER && DB.MASKS_USER[id]) mk = DB.MASKS_USER[id]; try { var _ed = JSON.parse(localStorage.getItem('dawnbound.maskedits') || 'null'); if (_ed && _ed[id]) mk = _ed[id]; } catch (e) { }
       W.mask = mk ? W.decodeMask(mk, Math.floor(def.w / CELL), Math.floor(def.h / CELL)) : null;
       if (!W.mask) { var gw = Math.floor(def.w / CELL), gh = Math.floor(def.h / CELL), d = new Uint8Array(gw * gh); d.fill(1); W.mask = { w: gw, h: gh, d: d }; }
       /* manual mask patches authored in the map definition */
@@ -118,6 +129,8 @@
       W.party.push(h); W.ents.push(h);
     });
     W.party.forEach(function (h) { W.snapToWalkable(h); });
+    W.rescuePocket(W.player);
+    W.party.forEach(function (h) { if (h !== W.player) { h.x = W.player.x - (h.dir === 'left' ? -1 : 1) * 14; h.y = W.player.y + 8; W.snapToWalkable(h); } });
     if (DB.G.hasAsh && DB.party().indexOf('rowan') >= 0) { var a = DB.makeAsh(W.party[0]); W.ents.push(a); W.ash = a; } else W.ash = null;
   };
   /* reachability: flood-fill the walkable mask from every spawn point so nothing (NPCs, chests, foes) ends up on an unreachable island */

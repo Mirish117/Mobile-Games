@@ -277,7 +277,7 @@
   SC.q22_halcyon = async function (S) {
     var G = S.G; await S.fade(1, 900); S.restoreParty();
     DB.HERO_IDS.forEach(function (id) { if (G.members[id]) DB.join(id, { force: false }); });
-    await S.map('port_halcyon', 'dock'); S.tint(null); S.music('lanterns', 2); S.partyAt(1000, 790, 'up'); S.cam(1000, 780, 0);
+    await S.map('port_halcyon', 'dock'); S.tint(null); S.music('lanterns', 2); S.partyAt(950, 815, 'up'); S.cam(960, 790, 0);
     S.spawn('pip_r', 'pip', 1060, 760, 'left', { name: 'Pip' }); S.spawn('hettie_r', 'hettie', 1100, 740, 'left', { name: 'Hettie' }); S.spawn('bram_r', 'bram', 1130, 760, 'left', { name: 'Bram' }); S.spawn('marisol_r', 'marisol', 960, 740, 'right', { name: 'Captain Marisol' });
     await S.fade(0, 1000);
     await S.narr("Port Halcyon. The rain clears. The Wandering Gull sits at the dock, repaired again. On the pier waits everyone: Marisol, Hettie, Bram, and Pip.");

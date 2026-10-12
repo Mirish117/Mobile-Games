@@ -40,6 +40,11 @@
       setLoad(1, 'Ready');
       var ld = $('#loading'); ld.style.opacity = 0; setTimeout(function () { ld.style.display = 'none'; }, 700);
       DB.menus.title();
+      /* map-painter play-test link: index.html?map=<id>&spawn=<name> jumps straight into a map */
+      try {
+        var q = new URLSearchParams(location.search), tm = q.get('map');
+        if (tm && DB.maps[tm]) { UI.closeScreen(); var G0 = DB.newState('caelan', 'Tester'); G0.flags.prologue_done = 1; G0.flags.mq = parseInt(q.get('mq') || '2', 10); DB.go(tm, q.get('spawn') || 'start', { noSave: true, fade: 200 }).then(function () { W.mode = 'field'; UI.hud(true); }); }
+      } catch (e) { }
       if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) navigator.serviceWorker.register('sw.js').catch(function () { });
     });
   };

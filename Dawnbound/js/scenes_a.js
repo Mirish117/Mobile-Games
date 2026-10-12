@@ -66,8 +66,8 @@
     S.mq(1); S.flag('prologue_done', 1); S.done('mq0'); await S.map('port_halcyon', 'dock'); await SC.prologue_p3(S);
   };
   SC.prologue_p3 = async function (S) {
-    S.partyAt(1000, 790, 'up'); S.spawn('pip_tmp', 'pip', 1040, 835, 'up', { name: 'Pip' });
-    S.cam(1020, 800, 0);
+    S.partyAt(950, 815, 'up'); S.spawn('pip_tmp', 'pip', 990, 820, 'left', { name: 'Pip' });
+    S.cam(960, 800, 0);
     await S.say(null, "The ship limps into Port Halcyon. Whitewashed houses climb a hill; blue roofs, lanterns strung across the streets for the coming Festival of First Light. Bells ring. Children run along the docks.");
     await S.say('pip', "Whoa — your ship's all broke! Were you attacked by a sea monster?! Was it huge? Did you kill it? Did it have teeth? — I'm Pip! I work the docks! Unofficially!");
     await S.say('marisol', "Pip, breathe.");
