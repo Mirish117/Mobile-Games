@@ -37,28 +37,35 @@
   W.setRect = function (x, y, w, h, v) { for (var yy = y; yy < y + h; yy += CELL) for (var xx = x; xx < x + w; xx += CELL) W.setCell(xx, yy, v); };
   /* can an entity of radius r stand at x,y */
   W.canStand = function (x, y, r) {
-    /* forgiving "feet" probe: centre + a narrow stance. The masks are 8px cells, so a wide probe snags on corners. */
-    r = (r || 6) * .55;
+    /* forgiving "feet" probe: the mask is built from the art in 8px cells, so a wide body probe snags on lamps, arches and shrubs.
+       Characters are drawn in front of / behind scenery, so only the feet point matters. */
+    r = (r || 6) * .34;
     return W.walkable(x, y) && W.walkable(x - r, y) && W.walkable(x + r, y) && W.walkable(x, y + r * .5);
   };
-  /* move with axis separation (wall sliding) + corner gliding. returns true if moved */
+  /* move with sub-steps, wall sliding and corner gliding. returns true if moved */
   W.tryMove = function (e, dx, dy) {
-    var r = e.r || 6, ok = false;
+    var r = e.r || 6;
     if (e.fly) { e.x = DB.clamp(e.x + dx, 4, W.map.w - 4); e.y = DB.clamp(e.y + dy, 4, W.map.h - 4); return true; }
-    var stuck = !W.canStand(e.x, e.y, r);                       /* already inside a wall: let the entity walk out */
-    if (dx && (W.canStand(e.x + dx, e.y, r) || (stuck && W.walkable(e.x + dx, e.y))) && !W.blockedByProp(e.x + dx, e.y, r, e)) { e.x += dx; ok = true; }
-    if (dy && (W.canStand(e.x, e.y + dy, r) || (stuck && W.walkable(e.x, e.y + dy))) && !W.blockedByProp(e.x, e.y + dy, r, e)) { e.y += dy; ok = true; }
-    if (!ok && (dx || dy) && !stuck) {
-      /* glide around corners: nudge sideways up to a few px so a near-miss on a wall corner slips past */
-      var m = Math.max(Math.abs(dx), Math.abs(dy)), n = Math.min(4, m * 1.6) || 1, k, ox = dx ? 0 : 1, oy = dx ? 1 : 0;
-      if (dx && dy) { return false; }
-      for (k = 1; k <= 3 && !ok; k++) for (var sg = -1; sg <= 1 && !ok; sg += 2) {
-        var nx = e.x + dx + ox * sg * n * k, ny = e.y + dy + oy * sg * n * k;
-        if (W.canStand(nx, ny, r) && !W.blockedByProp(nx, ny, r, e)) { e.x += ox * sg * n * .6 + dx; e.y += oy * sg * n * .6 + dy; ok = true; }
-      }
-    }
-    return ok;
+    var n = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy)) / 2)), sx = dx / n, sy = dy / n, moved = false;
+    for (var i = 0; i < n; i++) { if (step(e, sx, sy, r)) moved = true; else break; }
+    return moved;
   };
+  function free(e, x, y, r, stuck) { return (W.canStand(x, y, r) || (stuck && W.walkable(x, y))) && !W.blockedByProp(x, y, r, e); }
+  function step(e, sx, sy, r) {
+    var x = e.x, y = e.y, stuck = !W.canStand(x, y, r);               /* already inside a wall: let the entity walk out */
+    if (sx && sy && free(e, x + sx, y + sy, r, stuck)) { e.x = x + sx; e.y = y + sy; return true; }
+    var ax = Math.abs(sx) >= Math.abs(sy);
+    for (var t = 0; t < 2; t++) {
+      var horiz = (t === 0) === ax;
+      if (horiz && sx && free(e, x + sx, y, r, stuck)) { e.x = x + sx; return true; }
+      if (!horiz && sy && free(e, x, y + sy, r, stuck)) { e.y = y + sy; return true; }
+    }
+    /* glide: slip around corners / past lamp posts by nudging sideways toward the nearest gap (up to 10px) */
+    var g = Math.min(1.4, Math.max(Math.abs(sx), Math.abs(sy)) || 1.4);
+    if (sx) for (var k = 1; k <= 10; k++) for (var sg = -1; sg <= 1; sg += 2) { if (free(e, x + sx, y + sg * k, r, false) && free(e, x, y + sg * g, r, false)) { e.y = y + sg * g; return true; } }
+    if (sy) for (var k2 = 1; k2 <= 10; k2++) for (var s2 = -1; s2 <= 1; s2 += 2) { if (free(e, x + s2 * k2, y + sy, r, false) && free(e, x + s2 * g, y, r, false)) { e.x = x + s2 * g; return true; } }
+    return false;
+  }
   W.blockedByProp = function (x, y, r, self) {
     for (var i = 0; i < W.ents.length; i++) { var p = W.ents[i]; if (p.type === 'prop' && p.solid && p !== self && p.block) { var b = p.block; if (x + r > b[0] && x - r < b[0] + b[2] && y + 2 > b[1] && y - 2 < b[1] + b[3]) return true; } }
     return false;
