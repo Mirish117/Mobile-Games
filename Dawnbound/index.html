@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dawnbound: The Six Embers</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dawnbound">
+<meta name="theme-color" content="#0a1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+  <div id="hud" class="hidden">
+    <div id="party"></div>
+    <div id="meter"><div id="meterfill"></div><span>BURST</span></div>
+    <div id="bossbar" class="hidden"><div class="bn"></div><div class="bb"><i></i></div></div>
+    <div id="tracker"></div>
+    <div id="gold"></div>
+    <div id="hintline" class="hidden"></div>
+  </div>
+  <div id="toasts"></div>
+  <div id="pad" class="hidden">
+    <div id="stickbase"><div id="knob"></div></div>
+    <button id="btn-menu" data-btn="menu" aria-label="Menu">☰</button>
+    <div id="acts">
+      <button class="ab a" data-btn="a"><b>A</b><small>Act</small></button>
+      <button class="ab b" data-btn="b"><b>B</b><small>Dash</small></button>
+      <button class="ab s1" data-btn="s1"><b></b><small></small><i class="cd"></i></button>
+      <button class="ab s2" data-btn="s2"><b></b><small></small><i class="cd"></i></button>
+      <button class="ab burst" data-btn="burst"><b>✦</b><small>Burst</small></button>
+      <button class="ab swap" data-btn="swap"><b>⇄</b><small>Swap</small></button>
+    </div>
+  </div>
+  <div id="dlg" class="hidden"><div class="dportrait"></div><div class="dbox"><div class="dname"></div><div class="dtext"></div><div class="dnext">▼</div></div></div>
+  <div id="choices" class="hidden"></div>
+  <div id="banner" class="hidden"></div>
+  <div id="ultbanner" class="hidden"></div>
+  <div id="card" class="hidden"></div>
+  <div id="screen" class="hidden"></div>
+  <div id="loading"><div class="lt">DAWNBOUND</div><div class="ls">THE SIX EMBERS</div><div class="lb"><i id="lfill"></i></div><div id="lmsg">Loading…</div></div>
+  <div id="rotate" class="hidden">Rotate your device to landscape for the best view</div>
+</div>
+<script src="js/util.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/songs.js"></script>
+<script src="js/input.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/items.js"></script>
+<script src="js/heroes.js"></script>
+<script src="js/skills.js"></script>
+<script src="js/enemies.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/combat.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/story.js"></script>
+<script src="js/menus.js"></script>
+<script src="js/minigames.js"></script>
+<script src="js/cinematics.js"></script>
+<script src="js/main.js"></script>
+<script src="data/masks.js"></script>
+<script src="js/maps_a.js"></script>
+<script src="js/scenes_a.js"></script>
+<script src="js/scenes_a2.js"></script>
+<script src="js/maps_b.js"></script>
+<script src="js/maps_b2.js"></script>
+<script src="js/scenes_b1.js"></script>
+<script src="js/scenes_b2.js"></script>
+<script src="js/maps_c.js"></script>
+<script src="js/scenes_c1.js"></script>
+<script src="js/scenes_c2.js"></script>
+<script src="js/maps_d.js"></script>
+<script src="js/maps_e.js"></script>
+<script src="js/scenes_d1.js"></script>
+<script src="js/scenes_d2.js"></script>
+<script src="js/scenes_d3.js"></script>
+
+</body>
+</html>
