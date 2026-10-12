@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Dawnbound Map Painter</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+html,body{margin:0;height:100%;background:#14110f;color:#f1e6cf;font:13px/1.2 system-ui,sans-serif;overflow:hidden;touch-action:none}
+#bar{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:4px;padding:5px;background:#241d17ee;border-bottom:1px solid #5a4630}
+#bar2{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;flex-wrap:wrap;gap:4px;padding:5px;background:#241d17ee;border-top:1px solid #5a4630;align-items:center}
+button,select{font:inherit;color:#f1e6cf;background:#3a2d22;border:1px solid #7a5d3c;border-radius:6px;padding:7px 9px;min-height:34px}
+button.on{background:#b8782a;border-color:#ffd48a;color:#fff}
+button.walk.on{background:#2f8f46;border-color:#9cffb0}button.block.on{background:#b53030;border-color:#ffa0a0}
+button.danger{border-color:#c55}
+input[type=range]{width:110px}
+#c{position:fixed;left:0;top:0;width:100%;height:100%;display:block}
+#msg{position:fixed;left:50%;transform:translateX(-50%);bottom:70px;background:#000c;padding:6px 12px;border-radius:8px;z-index:6;display:none}
+#help{position:fixed;inset:0;background:#000d;z-index:9;display:none;padding:18px;overflow:auto}
+#help div{max-width:560px;margin:0 auto;background:#241d17;border:1px solid #7a5d3c;border-radius:10px;padding:16px;line-height:1.45}
+#help b{color:#ffd48a}
+#coords{position:fixed;right:6px;top:84px;z-index:4;background:#000a;padding:3px 7px;border-radius:6px;font-size:12px}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="bar">
+  <select id="map"></select>
+  <button id="tWalk" class="walk on">Paint WALK</button>
+  <button id="tBlock" class="block">Paint BLOCK</button>
+  <button id="tPoly">Polygon</button>
+  <button id="tPan">Pan/Zoom</button>
+  <button id="undo">Undo</button>
+  <button id="help_b">Help</button>
+</div>
+<div id="coords"></div>
+<div id="bar2">
+  <span>Brush</span><input id="bsize" type="range" min="1" max="14" value="3">
+  <span>Overlay</span><input id="alpha" type="range" min="0" max="90" value="45">
+  <button id="grid">Grid</button>
+  <button id="polyW" class="walk" style="display:none">Fill WALK</button>
+  <button id="polyB" class="block" style="display:none">Fill BLOCK</button>
+  <button id="polyX" style="display:none">Cancel</button>
+  <button id="play">▶ Play-test</button>
+  <button id="reset" class="danger">Reset map</button>
+  <button id="dl">⬇ Download</button>
+  <button id="cp">Copy</button>
+</div>
+<div id="msg"></div>
+<div id="help"><div>
+<b>Dawnbound Map Painter</b><br><br>
+Red = blocked (can't walk). Clear = walkable. Paint with your finger. Everything saves automatically in this browser.<br><br>
+<b>Paint WALK / Paint BLOCK</b>: one finger paints. Use the Brush slider for size. Paint walkable over paths, under arches, behind lamps; paint blocked over walls, water, roofs, cliffs.<br>
+<b>Polygon</b>: tap points around an area, then Fill WALK or Fill BLOCK. Good for straight edges like docks and walls.<br>
+<b>Pan/Zoom</b>: one finger drags the map. In any mode, two fingers pinch to zoom and drag. (Mouse: wheel zooms, right-drag pans.)<br>
+<b>Play-test</b>: opens the game on this map with your edits, so you can walk it straight away. Come back with the browser back button.<br>
+<b>Download</b>: saves <b>masks_user.js</b>. To make your edits permanent for everyone: put that file in the game's <b>data</b> folder on GitHub (replace the existing one). Or send it to me and I'll merge it in.<br><br>
+Tip: the thin green line is the edge of what's currently walkable. Keep paths at least a thumb-width (about 4 brush) wide.
+<br><br><button id="hc">Close</button>
+</div></div>
+<script src="data/masks.js"></script>
+<script src="data/masks_user.js"></script>
+<script>
+(function(){
+var CELL=8,GW=192,GH=128,MW=1536,MH=1024;
+var cv=document.getElementById('c'),ctx=cv.getContext('2d');
+var ids=Object.keys(DB.MASKS).sort(), cur=null, img=new Image(), mask=new Uint8Array(GW*GH), undo=[], edits={};
+try{edits=JSON.parse(localStorage.getItem('dawnbound.maskedits')||'{}')||{};}catch(e){edits={};}
+var tool='walk', view={s:1,x:0,y:0}, showGrid=false, poly=[];
+var ov=document.createElement('canvas');ov.width=GW;ov.height=GH;var octx=ov.getContext('2d');
+var sel=document.getElementById('map');
+ids.forEach(function(i){var o=document.createElement('option');o.value=i;o.textContent=i.replace(/_/g,' ')+(edits[i]||(DB.MASKS_USER&&DB.MASKS_USER[i])?' ✎':'');sel.appendChild(o);});
+function $(i){return document.getElementById(i);}
+function toast(t){var m=$('msg');m.textContent=t;m.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(function(){m.style.display='none';},1800);}
+function dec(b64){var bin=atob(b64),m=new Uint8Array(GW*GH);for(var i=0;i<GW*GH;i++)m[i]=(bin.charCodeAt(i>>3)>>(i&7))&1;return m;}
+function enc(m){var out=new Uint8Array(GW*GH/8);for(var i=0;i<GW*GH;i++)if(m[i])out[i>>3]|=1<<(i&7);var s='';for(var j=0;j<out.length;j++)s+=String.fromCharCode(out[j]);return btoa(s);}
+function baseMask(id){return (DB.MASKS_USER&&DB.MASKS_USER[id])||DB.MASKS[id];}
+function load(id){
+  cur=id;undo=[];poly=[];
+  mask=dec(edits[id]||baseMask(id));
+  img=new Image();img.onload=function(){fit();draw();};img.src='assets/maps/'+id+'.webp';
+  try{localStorage.setItem('dawnbound.editor.map',id);}catch(e){}
+  sel.value=id;
+}
+function fit(){var W=cv.width,H=cv.height,top=44,bot=48;var s=Math.min(W/MW,(H-top-bot)/MH);view.s=s;view.x=(W-MW*s)/2;view.y=top+((H-top-bot)-MH*s)/2;}
+function resize(){var d=window.devicePixelRatio||1;cv.width=innerWidth*d;cv.height=innerHeight*d;cv.dpr=d;fit();draw();}
+function refreshOv(){
+  var id=octx.createImageData(GW,GH),a=parseInt($('alpha').value,10)/100*255;
+  for(var i=0;i<GW*GH;i++){var o=i*4;if(!mask[i]){id.data[o]=230;id.data[o+1]=30;id.data[o+2]=30;id.data[o+3]=a;}else{id.data[o+3]=0;}}
+  octx.putImageData(id,0,0);
+}
+function draw(){
+  var W=cv.width,H=cv.height;ctx.fillStyle='#14110f';ctx.fillRect(0,0,W,H);
+  ctx.save();ctx.translate(view.x,view.y);ctx.scale(view.s,view.s);
+  if(img.complete&&img.naturalWidth)ctx.drawImage(img,0,0,MW,MH);
+  refreshOv();ctx.imageSmoothingEnabled=false;ctx.drawImage(ov,0,0,MW,MH);
+  // edge outline
+  ctx.strokeStyle='rgba(90,255,110,.9)';ctx.lineWidth=1.5/view.s;ctx.beginPath();
+  for(var y=0;y<GH;y++)for(var x=0;x<GW;x++){var w=mask[y*GW+x];if(!w)continue;
+    if(x==0||!mask[y*GW+x-1]){ctx.moveTo(x*CELL,y*CELL);ctx.lineTo(x*CELL,y*CELL+CELL);}
+    if(x==GW-1||!mask[y*GW+x+1]){ctx.moveTo(x*CELL+CELL,y*CELL);ctx.lineTo(x*CELL+CELL,y*CELL+CELL);}
+    if(y==0||!mask[(y-1)*GW+x]){ctx.moveTo(x*CELL,y*CELL);ctx.lineTo(x*CELL+CELL,y*CELL);}
+    if(y==GH-1||!mask[(y+1)*GW+x]){ctx.moveTo(x*CELL,y*CELL+CELL);ctx.lineTo(x*CELL+CELL,y*CELL+CELL);}}
+  ctx.stroke();
+  if(showGrid){ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=1/view.s;ctx.font=(11/view.s)+'px sans-serif';ctx.fillStyle='#ff0';ctx.beginPath();
+    for(var gx=0;gx<=MW;gx+=128){ctx.moveTo(gx,0);ctx.lineTo(gx,MH);ctx.fillText(gx,gx+2,12/view.s);}
+    for(var gy=0;gy<=MH;gy+=128){ctx.moveTo(0,gy);ctx.lineTo(MW,gy);ctx.fillText(gy,2,gy+12/view.s);}ctx.stroke();}
+  if(poly.length){ctx.strokeStyle='#4df';ctx.fillStyle='rgba(60,200,255,.25)';ctx.lineWidth=2/view.s;ctx.beginPath();poly.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.fillStyle='#fff';poly.forEach(function(p){ctx.beginPath();ctx.arc(p[0],p[1],5/view.s,0,7);ctx.fill();});}
+  // brush cursor
+  if(cursor&&(tool==='walk'||tool==='block')){ctx.strokeStyle=tool==='walk'?'#9cffb0':'#ffa0a0';ctx.lineWidth=2/view.s;ctx.beginPath();ctx.arc(cursor[0],cursor[1],brushR()*CELL,0,7);ctx.stroke();}
+  ctx.restore();
+}
+var cursor=null;
+function brushR(){return parseInt($('bsize').value,10)-0.5;}
+function w2m(px,py){var d=cv.dpr||1;return [(px*d-view.x)/view.s,(py*d-view.y)/view.s];}
+function snap(){if(undo.length>40)undo.shift();undo.push(mask.slice());}
+function paintAt(mx,my,v){var r=brushR(),cx=mx/CELL,cy=my/CELL;
+  for(var y=Math.max(0,Math.floor(cy-r-1));y<=Math.min(GH-1,Math.ceil(cy+r+1));y++)for(var x=Math.max(0,Math.floor(cx-r-1));x<=Math.min(GW-1,Math.ceil(cx+r+1));x++){
+    var dx=x+.5-cx,dy=y+.5-cy;if(dx*dx+dy*dy<=r*r)mask[y*GW+x]=v;}}
+function line(a,b,v){var d=Math.hypot(b[0]-a[0],b[1]-a[1]),n=Math.max(1,Math.ceil(d/(CELL*.6)));for(var i=0;i<=n;i++)paintAt(a[0]+(b[0]-a[0])*i/n,a[1]+(b[1]-a[1])*i/n,v);}
+function fillPoly(v){if(poly.length<3){toast('Tap at least 3 points');return;}snap();
+  for(var y=0;y<GH;y++)for(var x=0;x<GW;x++){var px=x*CELL+CELL/2,py=y*CELL+CELL/2,inside=false;
+    for(var i=0,j=poly.length-1;i<poly.length;j=i++){var xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];if(((yi>py)!==(yj>py))&&(px<(xj-xi)*(py-yi)/(yj-yi)+xi))inside=!inside;}
+    if(inside)mask[y*GW+x]=v;}
+  poly=[];polyUI();save();draw();}
+function polyUI(){var on=tool==='poly';['polyW','polyB','polyX'].forEach(function(i){$(i).style.display=on?'':'none';});}
+function save(){edits[cur]=enc(mask);try{localStorage.setItem('dawnbound.maskedits',JSON.stringify(edits));}catch(e){toast('Could not save (storage full?)');}
+  for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===cur&&sel.options[i].textContent.indexOf('✎')<0)sel.options[i].textContent+=' ✎';}}
+function setTool(t){tool=t;['tWalk','tBlock','tPoly','tPan'].forEach(function(i){$(i).classList.remove('on');});
+  $({walk:'tWalk',block:'tBlock',poly:'tPoly',pan:'tPan'}[t]).classList.add('on');polyUI();draw();}
+$('tWalk').onclick=function(){setTool('walk');};$('tBlock').onclick=function(){setTool('block');};$('tPoly').onclick=function(){setTool('poly');};$('tPan').onclick=function(){setTool('pan');};
+$('undo').onclick=function(){if(poly.length){poly.pop();draw();return;}if(undo.length){mask=undo.pop();save();draw();}else toast('Nothing to undo');};
+$('polyW').onclick=function(){fillPoly(1);};$('polyB').onclick=function(){fillPoly(0);};$('polyX').onclick=function(){poly=[];draw();};
+$('grid').onclick=function(){showGrid=!showGrid;this.classList.toggle('on',showGrid);draw();};
+$('alpha').oninput=draw;$('bsize').oninput=draw;
+$('reset').onclick=function(){if(!confirm('Throw away your edits to this map?'))return;delete edits[cur];try{localStorage.setItem('dawnbound.maskedits',JSON.stringify(edits));}catch(e){}load(cur);toast('Reset');};
+$('play').onclick=function(){save();var sp='start';location.href='index.html?map='+cur+'&spawn='+sp;};
+function exportText(){var o={};Object.keys(edits).forEach(function(k){o[k]=edits[k];});var s='/* Dawnbound map-painter overrides (exported '+new Date().toISOString().slice(0,10)+') */\nwindow.DB=window.DB||{};DB.MASKS_USER=';
+  s+='{\n';var ks=Object.keys(o);ks.forEach(function(k,i){s+='"'+k+'":"'+o[k]+'"'+(i<ks.length-1?',':'')+'\n';});s+='};\n';return s;}
+$('dl').onclick=function(){save();var t=exportText(),b=new Blob([t],{type:'text/javascript'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='masks_user.js';document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},500);toast('Saved masks_user.js ('+Object.keys(edits).length+' maps)');};
+$('cp').onclick=function(){save();var t=exportText();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Copied');},function(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Copied');}catch(e){toast('Copy failed, use Download');}ta.remove();});};
+$('help_b').onclick=function(){$('help').style.display='block';};$('hc').onclick=function(){$('help').style.display='none';};
+sel.onchange=function(){load(sel.value);};
+
+/* ---- pointer handling: 1 pointer = tool, 2 pointers = pinch/pan ---- */
+var ptrs={},pinch=null,stroke=null,lastP=null,moved=false,downAt=null;
+cv.addEventListener('pointerdown',function(e){cv.setPointerCapture(e.pointerId);ptrs[e.pointerId]=[e.clientX,e.clientY];
+  var n=Object.keys(ptrs).length;
+  if(n===2){stroke=null;var k=Object.keys(ptrs),a=ptrs[k[0]],b=ptrs[k[1]];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),cx:(a[0]+b[0])/2,cy:(a[1]+b[1])/2};return;}
+  if(e.button===2||e.button===1){stroke={pan:true};lastP=[e.clientX,e.clientY];return;}
+  var m=w2m(e.clientX,e.clientY);moved=false;downAt=[e.clientX,e.clientY];
+  if(tool==='walk'||tool==='block'){snap();stroke={v:tool==='walk'?1:0};paintAt(m[0],m[1],stroke.v);lastP=m;cursor=m;draw();}
+  else if(tool==='pan'){stroke={pan:true};lastP=[e.clientX,e.clientY];}
+  else if(tool==='poly'){stroke={poly:true};}
+});
+cv.addEventListener('pointermove',function(e){if(!ptrs[e.pointerId]){var m0=w2m(e.clientX,e.clientY);cursor=m0;if(tool==='walk'||tool==='block')draw();return;}
+  ptrs[e.pointerId]=[e.clientX,e.clientY];var d=cv.dpr||1;
+  if(pinch&&Object.keys(ptrs).length>=2){var k=Object.keys(ptrs),a=ptrs[k[0]],b=ptrs[k[1]],nd=Math.hypot(a[0]-b[0],a[1]-b[1]),cx=(a[0]+b[0])/2,cy=(a[1]+b[1])/2;
+    var ns=Math.max(.3,Math.min(8,view.s*nd/pinch.d)),wx=(pinch.cx*d-view.x)/view.s,wy=(pinch.cy*d-view.y)/view.s;
+    view.x=cx*d-wx*ns;view.y=cy*d-wy*ns;
+    view.s=ns;pinch.d=nd;pinch.cx=cx;pinch.cy=cy;draw();return;}
+  if(!stroke)return;
+  if(Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1])>6)moved=true;
+  if(stroke.pan){view.x+=(e.clientX-lastP[0])*d;view.y+=(e.clientY-lastP[1])*d;lastP=[e.clientX,e.clientY];draw();}
+  else if(stroke.v!==undefined){var m=w2m(e.clientX,e.clientY);line(lastP,m,stroke.v);lastP=m;cursor=m;draw();}
+});
+function up(e){var had=ptrs[e.pointerId];delete ptrs[e.pointerId];if(Object.keys(ptrs).length<2)pinch=null;
+  if(!had)return;
+  if(stroke&&stroke.poly&&!moved&&Object.keys(ptrs).length===0){var m=w2m(e.clientX,e.clientY);poly.push([Math.round(m[0]),Math.round(m[1])]);draw();}
+  if(stroke&&stroke.v!==undefined){save();}
+  if(Object.keys(ptrs).length===0)stroke=null;}
+cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+cv.addEventListener('contextmenu',function(e){e.preventDefault();});
+cv.addEventListener('wheel',function(e){e.preventDefault();var d=cv.dpr||1,f=e.deltaY<0?1.15:1/1.15,ns=Math.max(.3,Math.min(8,view.s*f));f=ns/view.s;view.x=e.clientX*d-(e.clientX*d-view.x)*f;view.y=e.clientY*d-(e.clientY*d-view.y)*f;view.s=ns;draw();},{passive:false});
+addEventListener('resize',resize);
+var last=null;try{last=localStorage.getItem('dawnbound.editor.map');}catch(e){}
+var q=new URLSearchParams(location.search).get('map');
+resize();load(q&&DB.MASKS[q]?q:(last&&DB.MASKS[last]?last:'port_halcyon'));
+if(!localStorage.getItem('dawnbound.editor.seen')){$('help').style.display='block';try{localStorage.setItem('dawnbound.editor.seen','1');}catch(e){}}
+})();
+</script></body></html>
