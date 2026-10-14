@@ -56,7 +56,7 @@
         case 'goto': return c.label;
         case 'if': return G.flags[c.flag] ? c.label : null;
         case 'ifnot': return !G.flags[c.flag] ? c.label : null;
-        case 'set': G.flags[a[0]] = 1; if (/^party_/.test(a[0])) { SB.Party.sync(); SB.UI.refreshHud(true); } return;
+        case 'set': G.flags[a[0]] = 1; if (/^party_|^split$|^unsplit$/.test(a[0])) { SB.Party.sync(); SB.UI.refreshHud(true); } return;
         case 'unset': delete G.flags[a[0]]; return;
         case 'give': ST.give(a[0], a[1] ? +a[1] : 1); return SB.sleep(250);
         case 'take': if (a[0] === 'key') G.keys = Math.max(0, G.keys - (+a[1] || 1)); else if (a[0] === 'chimes') G.chimes = Math.max(0, G.chimes - (+a[1] || 1)); else G.items[a[0]] = Math.max(0, (G.items[a[0]] || 0) - (+a[1] || 1)); SB.UI.refreshHud(true); return;

@@ -33,7 +33,9 @@ h3{font:600 15px var(--px);color:var(--gold);margin:12px 0 6px}
 #status{position:fixed;left:8px;bottom:calc(6px + var(--sa-b));font-size:11px;color:var(--dim);z-index:12;pointer-events:none;background:#120f1ecc;padding:2px 6px;border-radius:6px}
 .split{display:flex;height:100%}
 .list{width:250px;flex:none;border-right:1px solid var(--line);display:flex;flex-direction:column;background:#160f26}
-.list .lhead{padding:6px;display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.list .lhead{padding:6px;display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line)}
+.list .lhead input{flex:1 1 100%;min-width:0}
+.list .lhead button{flex:0 1 auto}
 .list .items{flex:1;overflow:auto;padding:4px}
 .list .grp{font:600 11px var(--px);color:var(--gold);padding:8px 6px 2px;text-transform:uppercase;letter-spacing:.08em}
 .list .it{display:flex;align-items:center;gap:6px;padding:6px;border-radius:7px;cursor:pointer;min-height:34px}

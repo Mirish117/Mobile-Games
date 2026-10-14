@@ -80,8 +80,12 @@
 
   /* ======================================================================= PARTY */
   var P = SB.Party = { members: [], idx: 0, hold: false, trail: [], invuln: 0, pushT: 0, pushEnt: null };
+  /* before the bell splits him (and after he is whole again) the lone hero is drawn and named as plain Rook */
+  P.whole = function () { var f = (SB.G && SB.G.flags) || {}; return !f.split || !!f.unsplit; };
+  P.look = function (h) { var d = h.def || {}; return (d.wholeSprite && P.whole() && SB.gfx.has(d.wholeSprite + '_down')) ? d.wholeSprite : h.id; };
+  P.heroName = function (h) { var d = h.def || {}; return d.wholeName && P.whole() ? d.wholeName : (d.name || h.id); };
   P.heroDef = function (id) { return SB.D.heroes.filter(function (h) { return h.id === id; })[0]; };
-  P.joined = function () { return SB.D.heroes.filter(function (h, i) { return i === 0 || !h.joinFlag || SB.G.flags[h.joinFlag]; }); };
+  P.joined = function () { return SB.D.heroes.filter(function (h, i) { return i === 0 || (!SB.G.flags.unsplit && (!h.joinFlag || SB.G.flags[h.joinFlag])); }); };
   P.sync = function () {
     var ids = P.joined().map(function (h) { return h.id; }), L = P.leader();
     var old = {}; P.members.forEach(function (m) { old[m.id] = m; });
@@ -126,17 +130,17 @@
 
   function makeHero(id, x, y) {
     var def = P.heroDef(id);
-    var h = { kind: 'hero', id: id, def: def, x: x, y: y, dir: 'down', anim: 'idle', t: 0, atk: 0, cd: 0, kx: 0, ky: 0, kt: 0, stuck: 0, visible: true, drawH: 26 };
+    var h = { kind: 'hero', id: id, def: def, x: x, y: y, dir: 'down', anim: 'idle', t: 0, atk: 0, cd: 0, kx: 0, ky: 0, kt: 0, stuck: 0, visible: true, drawH: 34 };
     h.draw = function (c) {
       var isL = h === P.leader(), blink = isL && P.invuln > 0 && Math.floor(P.invuln * 14) % 2;
       shadow(c, h.x, h.y, 5);
       if (blink) return;
-      var fr = SB.charFrame(SB.gfx, h.id, h.dir, h.atk > 0 ? 'atk' : h.anim, h.t);
+      var fr = SB.charFrame(SB.gfx, P.look(h), h.dir, h.atk > 0 ? 'atk' : h.anim, h.t);
       SB.gfx.draw(c, fr.id, fr.f, h.x, h.y + 1, { flip: fr.flip });
       if (h.id === 'mira') { /* lantern glow */ var v = SB.dirVec[h.dir]; c.fillStyle = 'rgba(255,220,120,.9)'; c.fillRect(Math.round(h.x + (h.dir === 'left' ? -6 : 5)), Math.round(h.y - 6), 2, 2); }
       if (h.id === 'tobin' && h.atk > 0) { var vv = SB.dirVec[h.dir]; var im = SB.gfx.frame('icon_shield', 0); if (im) c.drawImage(im, Math.round(h.x + vv[0] * 9 - 7), Math.round(h.y - 10 + vv[1] * 7 - 7)); }
-      if (isL && P.members.length > 1) { c.fillStyle = '#fff6a0'; c.beginPath(); c.moveTo(h.x - 2, h.y - 31); c.lineTo(h.x + 2, h.y - 31); c.lineTo(h.x, h.y - 28); c.fill(); }
-      if (P.hold && !isL) { c.fillStyle = 'rgba(255,255,255,.7)'; c.font = '7px monospace'; c.textAlign = 'center'; c.fillText('wait', h.x, h.y - 28); }
+      if (isL && P.members.length > 1) { c.fillStyle = '#fff6a0'; c.beginPath(); c.moveTo(h.x - 2, h.y - 38); c.lineTo(h.x + 2, h.y - 38); c.lineTo(h.x, h.y - 35); c.fill(); }
+      if (P.hold && !isL) { c.fillStyle = 'rgba(255,255,255,.7)'; c.font = '7px monospace'; c.textAlign = 'center'; c.fillText('wait', h.x, h.y - 36); }
     };
     return h;
   }
@@ -263,7 +267,7 @@
     var strength = (L.id === 'tobin' ? 2 : 1);
     P.near(48).forEach(function (h) { strength += h.id === 'tobin' ? 2 : 1; });
     var need = blk.def.weight || 1;
-    if (strength < need) { if (!P.pushMsgT || W.time - P.pushMsgT > 2.5) { P.pushMsgT = W.time; SB.UI.toast('Too heavy! Needs ' + need + ' pushing (you have ' + strength + '). Gather everyone close behind you. Tobin counts as 2.'); FX.emote(L, '!'); } return; }
+    if (strength < need) { if (!P.pushMsgT || W.time - P.pushMsgT > 2.5) { P.pushMsgT = W.time; SB.UI.toast('Too heavy! Needs ' + need + ' pushing (you have ' + strength + '). Gather everyone close behind you. Red counts as 2.'); FX.emote(L, '!'); } return; }
     blk.push(v);
   };
 
@@ -293,7 +297,7 @@
       if (W.tileSolid(Math.floor(this.x / T), Math.floor(this.y / T), true)) { this.t = 99; FX.puff(this.x, this.y); return; }
       var L = P.leader(); if (!L || W.cutscene) return;
       if (Math.abs(this.x - L.x) < 6 && Math.abs(this.y - (L.y - 6)) < 8) {
-        /* Tobin's shield blocks shots from the front */
+        /* Red's shield blocks shots from the front */
         var v = SB.dirVec[L.dir];
         if (L.id === 'tobin' && (v[0] * -this.vx + v[1] * -this.vy) > 0) { A().sfx('hit'); FX.ring(this.x, this.y, 8, '#ffd8a0', .2); this.t = 99; FX.text(L.x, L.y - 20, 'block!', '#ffe9a0'); return; }
         P.hurt(dmg || 1, this.x - this.vx, this.y - this.vy); this.t = 99;
@@ -323,7 +327,7 @@
   var KINDS = {};
   /* ---------------- NPC ---------------- */
   KINDS.npc = function (e, d) {
-    var ch = SB.D.characters[d.who] || {}; e.base = ch.sprite || d.who; e.dir = d.dir || 'down'; e.anim = 'idle'; e.solid = true; e.homeX = e.x; e.homeY = e.y - 2; e.y -= 2; e.drawH = 26;
+    var ch = SB.D.characters[d.who] || {}; e.base = ch.sprite || d.who; e.dir = d.dir || 'down'; e.anim = 'idle'; e.solid = true; e.homeX = e.x; e.homeY = e.y - 2; e.y -= 2; e.drawH = 34;
     e.solidBox = function () { return { x: e.x - 6, y: e.y - 8, w: 12, h: 8 }; };
     e.interBox = function () { return { x: e.x - 7, y: e.y - 16, w: 14, h: 16 }; };
     e.silent = !d.scene;
@@ -352,9 +356,14 @@
   KINDS.sign = function (e, d) { e.solid = !d.sprite || d.sprite !== 'carving'; e.flat = d.sprite === 'carving'; e.interact = function () { SB.Story.run(d.scene); }; e.draw = function (c) { var im = SB.gfx.frame(d.sprite || 'sign', 0); if (im) c.drawImage(im, e.x - 8, e.y - 16); }; };
   KINDS.carving = function (e, d) { e.flat = true; e.light = 10; e.interact = function () { SB.Story.run(d.scene); }; e.draw = function (c) { var im = SB.gfx.frame('carving', 0); if (im) { c.globalAlpha = .7 + Math.sin(e.t * 2) * .3; c.drawImage(im, e.x - 8, e.y - 16); c.globalAlpha = 1; } }; };
   KINDS.deco = function (e, d) {
-    e.solid = !!d.solid; e.light = d.light || 0; var sz = SB.gfx.size(d.sprite);
+    e.solid = !!d.solid; e.light = d.light || 0; e.flat = !!d.flat; var sz = SB.gfx.size(d.sprite);
+    e.x += d.ox || 0; e.y += (d.oy || 0) - (d.flat ? 2 : 1);
     e.solidBox = function () { return { x: e.x - sz[0] / 2, y: e.y - Math.min(12, sz[1]), w: sz[0], h: Math.min(12, sz[1]) }; };
     e.draw = function (c) { SB.gfx.draw(c, d.sprite, Math.floor(e.t * 6), e.x, e.y); };
+  };
+  KINDS.building = function (e, d) {
+    e.x = d.x * T + (d.w || 1) * 8; e.y = (d.y + (d.h || 1)) * T - 1;
+    e.draw = function (c) { var im = SB.gfx.frame(d.sprite, 0); if (!im) return; c.drawImage(im, d.x * T - 4, (d.y + (d.h || 1)) * T - im.height); };
   };
   KINDS.heal = function (e, d) {
     e.solid = true; e.interact = function () { SB.G.hp = SB.G.maxHp; A().sfx('heart'); SB.Main.save(); SB.UI.toast('You rest for a while. Hearts restored, progress saved.'); SB.UI.refreshHud(true); };
@@ -431,14 +440,14 @@
     e.onShow = function () { };
     e.update = function () { e.light = e.lit() ? 60 : 0; };
     e.onHit = function (o) { if (o.tool !== 'lantern' || e.lit()) return false; SB.G.flags[key] = 1; A().sfx('torch'); FX.sparkle(e.x, e.y - 12, '#ffb040'); return true; };
-    e.interact = function () { var L = P.leader(); if (!e.lit() && L.def.tool === 'lantern') { P.useTool(L, L.dir); return; } SB.UI.toast(e.lit() ? 'The torch burns warmly.' : 'An unlit torch. Mira\'s lantern could light it.'); };
+    e.interact = function () { var L = P.leader(); if (!e.lit() && L.def.tool === 'lantern') { P.useTool(L, L.dir); return; } SB.UI.toast(e.lit() ? 'The torch burns warmly.' : 'An unlit torch. Violet\'s lantern could light it.'); };
     e.draw = function (c) { var im = SB.gfx.frame('torch', e.lit() ? 1 + Math.floor(e.t * 6) % 2 : 0); if (im) c.drawImage(im, e.x - 8, e.y - 16); };
   };
   KINDS.lamp = function (e, d) {
     e.solid = true; e.lit = function () { return !!SB.G.flags[d.flag]; };
     e.update = function () { e.light = e.lit() ? 50 : 0; };
     e.onHit = function (o) { if (o.tool !== 'lantern' || e.lit()) return false; if (d.require && !SB.cond(d.require, SB.ctx)) return false; SB.G.flags[d.flag] = 1; A().sfx('torch'); FX.sparkle(e.x, e.y - 12, '#ffe060'); if (d.scene) SB.Story.run(d.scene); return true; };
-    e.interact = function () { var L = P.leader(); if (!e.lit() && L.def.tool === 'lantern') { P.useTool(L, L.dir); return; } SB.UI.toast(e.lit() ? 'The well lamp glows.' : 'The well lamp has gone out. Mira\'s lantern could light it.'); };
+    e.interact = function () { var L = P.leader(); if (!e.lit() && d.talk) { if (d.scene) SB.Story.run(d.scene); return; } if (!e.lit() && L.def.tool === 'lantern') { P.useTool(L, L.dir); return; } SB.UI.toast(e.lit() ? 'The well lamp glows.' : 'The well lamp has gone out.'); };
     e.draw = function (c) { var im = SB.gfx.frame('lamp', e.lit() ? 1 : 0); if (im) c.drawImage(im, e.x - 8, e.y - 16); };
   };
   KINDS.lockdoor = function (e, d) {
@@ -533,14 +542,14 @@
     var ed = SB.D.enemies[d.kind] || { sprite: 'fogling', hp: 1, speed: 20, damage: 1, ai: 'wander' };
     e.edef = ed; e.hp = ed.hp; e.dir = 'down'; e.vx = 0; e.vy = 0; e.wt = Math.random(); e.state = 'idle'; e.flipT = 0; e.hurtT = 0; e.kx = 0; e.ky = 0; e.freezeInScene = true; e.drawH = 16;
     e.homeX = e.x; e.homeY = e.y; e.y -= 2;
-    e.hitBox = function () { return { x: e.x - 7, y: e.y - 13, w: 14, h: 13 }; };
+    e.hitBox = function () { return { x: e.x - 9, y: e.y - 18, w: 18, h: 18 }; };
     e.onHit = function (o) {
       if (e.dead || e.hurtT > 0) return false;
       if (ed.ai === 'shell' && e.flipT <= 0) {
         if (o.tool === 'shield' || o.tool === 'team') { e.flipT = 3.5; A().sfx('stun'); FX.text(e.x, e.y - 18, 'flipped!', '#ffe9a0'); C.meter(6); if (o.tool !== 'team') return true; }
-        else { A().sfx('hit'); FX.text(e.x, e.y - 18, o.auto ? '' : 'clank', '#ccd'); if (!o.auto && !e.hintT) { e.hintT = 1; SB.UI.toast('Its shell is too hard. Tobin\'s shield can knock it over!'); } return true; }
+        else { A().sfx('hit'); FX.text(e.x, e.y - 18, o.auto ? '' : 'clank', '#ccd'); if (!o.auto && !e.hintT) { e.hintT = 1; SB.UI.toast('Its shell is too hard. Red\'s shield can knock it over!'); } return true; }
       }
-      if (ed.immune && ed.immune.indexOf(o.tool) >= 0) { if (!o.auto) { FX.text(e.x, e.y - 18, 'no effect', '#ccd'); if (!e.hintT) { e.hintT = 1; SB.UI.toast(ed.ai === 'wisp' ? 'Weapons pass straight through. Try Mira\'s lantern!' : 'That has no effect on it.'); } } return true; }
+      if (ed.immune && ed.immune.indexOf(o.tool) >= 0) { if (!o.auto) { FX.text(e.x, e.y - 18, 'no effect', '#ccd'); if (!e.hintT) { e.hintT = 1; SB.UI.toast(ed.ai === 'wisp' ? 'Weapons pass straight through. Try Violet\'s lantern!' : 'That has no effect on it.'); } } return true; }
       if (o.once) { if (o.once[d.id]) return false; o.once[d.id] = 1; }
       var dmg = o.dmg * (ed.weak && ed.weak.indexOf(o.tool) >= 0 ? 2 : 1);
       e.hp -= dmg; e.hurtT = .3; A().sfx('ehit'); C.meter(o.auto ? 3 : 8);
@@ -652,7 +661,7 @@
       hit: function (e, o) {
         if (e.vuln <= 0) {
           if (o.tool === 'shield' || o.tool === 'team') { e.vuln = 4; A().sfx('stun'); W.shake = .3; FX.text(e.x, e.y - 44, 'FLIPPED!', '#ffe9a0'); A().voice('brinejaw', 'hurt'); if (o.tool === 'team') e.damage(4); return true; }
-          A().sfx('hit'); if (!o.auto) FX.text(e.x, e.y - 40, 'clank', '#ccd'); if (!e.hinted) { e.hinted = 1; SB.UI.toast('Too armoured! Shield-bash him over with Tobin.'); } return true;
+          A().sfx('hit'); if (!o.auto) FX.text(e.x, e.y - 40, 'clank', '#ccd'); if (!e.hinted) { e.hinted = 1; SB.UI.toast('Too armoured! Shield-bash him over with Red.'); } return true;
         }
         e.damage(o.tool === 'team' ? 4 : o.tool === 'sword' ? 2 : 1, o); return true;
       },
@@ -680,7 +689,7 @@
           if (e.hitEyes.l && e.hitEyes.r) { e.vuln = 5; e.eyes = 0; e.hitEyes = { l: 0, r: 0 }; A().sfx('stun'); W.shake = .3; SB.UI.toast('The furnace door swings open! Strike its chest!'); A().voice('cindral', 'hurt'); }
           return true;
         }
-        A().sfx('hit'); if (!o.auto) FX.text(e.x, e.y - 30, 'clank', '#ccd'); if (!e.hinted) { e.hinted = 1; SB.UI.toast('When its eyes glow, shoot them with Isla\'s arrows!'); } return true;
+        A().sfx('hit'); if (!o.auto) FX.text(e.x, e.y - 30, 'clank', '#ccd'); if (!e.hinted) { e.hinted = 1; SB.UI.toast('When its eyes glow, shoot them with Blue\'s arrows!'); } return true;
       },
       update: function (e, dt, L) {
         var rage = e.hp < e.maxHp / 2 ? 1.35 : 1;
@@ -717,9 +726,9 @@
     boss.spawned = true;
     P.members.forEach(function (h, i) {
       var a = i / P.members.length * 6.28;
-      var s = { def: { id: '_shade' + h.id }, type: 'enemy', shade: true, heroId: h.id, tool: h.def.tool, x: boss.x + Math.cos(a) * 60, y: boss.y + 30 + Math.sin(a) * 26, t: 0, visible: true, hp: 3, hurtT: 0, dir: 'down', anim: 'walk', freezeInScene: true, drawH: 18, kx: 0, ky: 0 };
+      var s = { def: { id: '_shade' + h.id }, type: 'enemy', shade: true, heroId: h.id, tool: h.def.tool, x: boss.x + Math.cos(a) * 60, y: boss.y + 30 + Math.sin(a) * 26, t: 0, visible: true, hp: 3, hurtT: 0, dir: 'down', anim: 'walk', freezeInScene: true, drawH: 34, kx: 0, ky: 0 };
       s.edef = { name: 'Shadow of ' + h.def.name, immune: ['sword', 'bow', 'shield', 'lantern', 'team'].filter(function (t) { return t !== h.def.tool && t !== 'team'; }) };
-      s.hitBox = function () { return { x: s.x - 6, y: s.y - 14, w: 12, h: 14 }; };
+      s.hitBox = function () { return { x: s.x - 7, y: s.y - 20, w: 14, h: 20 }; };
       s.onHit = function (o) {
         if (s.dead || s.hurtT > 0) return false;
         if (o.tool !== s.tool && o.tool !== 'team') { if (!o.auto) { FX.text(s.x, s.y - 20, 'only ' + h.def.name + '!', '#d4a4ff'); A().sfx('hit'); } return true; }
@@ -737,8 +746,8 @@
       s.draw = function (c) {
         shadow(c, s.x, s.y, 5); var fr = SB.charFrame(SB.gfx, s.heroId, s.dir, 'walk', s.t);
         SB.gfx.draw(c, fr.id, fr.f, s.x, s.y + 1, { flip: fr.flip, variant: s.hurtT > 0 ? 'white' : 'dark' });
-        c.fillStyle = '#ff4060'; c.fillRect(Math.round(s.x - 3), Math.round(s.y - 15), 1, 1); c.fillRect(Math.round(s.x + 2), Math.round(s.y - 15), 1, 1);
-        var ic = SB.gfx.frame(h.def.icon, 0); if (ic) { c.globalAlpha = .8; c.drawImage(ic, Math.round(s.x - 7), Math.round(s.y - 40)); c.globalAlpha = 1; }
+        c.fillStyle = '#ff4060'; c.fillRect(Math.round(s.x - 3), Math.round(s.y - 20), 1, 1); c.fillRect(Math.round(s.x + 2), Math.round(s.y - 20), 1, 1);
+        var ic = SB.gfx.frame(h.def.icon, 0); if (ic) { c.globalAlpha = .8; c.drawImage(ic, Math.round(s.x - 7), Math.round(s.y - 48)); c.globalAlpha = 1; }
       };
       W.ents.push(s); FX.puff(s.x, s.y - 8, true);
     });

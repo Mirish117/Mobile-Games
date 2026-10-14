@@ -117,7 +117,7 @@
     W.animTiles.forEach(function (a) { if (a[0] < tx0 || a[0] > tx1 || a[1] < ty0 || a[1] > ty1) return; W.drawTile(c, a[0], a[1], af, true); });
     /* tall scenery joins the y-sorted list */
     var talls = [];
-    for (var ty = ty0; ty <= Math.min(m.h - 1, ty1 + 2); ty++) for (var tx = tx0; tx <= tx1; tx++) { var dt = W.tileDef(W.effTile(tx, ty)); if (dt.tall) talls.push(tallDrawable(tx, ty, dt.tall)); }
+    for (var ty = ty0; ty <= Math.min(m.h - 1, ty1 + 2); ty++) for (var tx = tx0; tx <= tx1; tx++) { var dt = W.tileDef(W.effTile(tx, ty)); if (dt.tall) { var tl = dt.tall.split(','); talls.push(tallDrawable(tx, ty, tl[(tx * 7 + ty * 13) % tl.length].trim())); } }
     /* entities sorted by y */
     var list = W.ents.filter(function (e) { return e.visible && e.draw; }).concat(SB.Party.members.filter(function (h) { return h.visible !== false; })).concat(talls);
     list.sort(function (a, b) { return (a.flat ? -1e6 : 0) + a.y - ((b.flat ? -1e6 : 0) + b.y); });

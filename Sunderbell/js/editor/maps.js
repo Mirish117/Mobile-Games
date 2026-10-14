@@ -19,14 +19,15 @@
     plate: { label: 'Pressure plate', f: [['group', C]] },
     gate: { label: 'Gate (opens on a condition)', f: [['when', C], ['latch', C], ['scene', 'scene']] },
     crystal: { label: 'Crystal switch', f: [['flag', C], ['scene', 'scene']] },
-    torch: { label: 'Torch (Mira lights it)', f: [['group', C], ['lit', 'check']] },
+    torch: { label: 'Torch (Violet lights it)', f: [['group', C], ['lit', 'check']] },
     lamp: { label: 'Lamp (lit once, sets a flag)', f: [['flag', C], ['scene', 'scene'], ['require', C]] },
     lockdoor: { label: 'Locked door (needs a key)', f: [['flag', C]] },
     fogwall: { label: 'Fog wall (blocks until hidden)', zone: true, f: [['w', 'number'], ['h', 'number'], ['scene', 'scene']] },
     tileswap: { label: 'Tile swap (changes tiles on a condition)', zone: true, f: [['w', 'number'], ['h', 'number'], ['tile', 'tile'], ['when', C]] },
     carving: { label: 'Wall carving (readable)', f: [['scene', 'scene']] },
     tone: { label: 'Tone pickup', f: [['sprite', 'sprite'], ['scene', 'scene']] },
-    deco: { label: 'Decoration sprite', f: [['sprite', 'sprite'], ['solid', 'check'], ['light', 'number']] },
+    deco: { label: 'Decoration sprite', f: [['sprite', 'sprite'], ['solid', 'check'], ['flat', 'check'], ['light', 'number'], ['ox', 'number'], ['oy', 'number']] },
+    building: { label: 'Building picture (over roof/wall tiles)', zone: true, f: [['sprite', 'sprite'], ['w', 'number'], ['h', 'number']] },
     heal: { label: 'Bed (heal + save)', f: [['sprite', 'sprite']] },
     bell: { label: 'The Sunderbell', f: [['scene', 'scene']] }
   };
@@ -121,7 +122,7 @@
       var s = T * V.z, tr = rows();
       var x0 = Math.max(0, Math.floor(-V.ox / s)), y0 = Math.max(0, Math.floor(-V.oy / s)), x1 = Math.min(W() - 1, Math.ceil((r.width - V.ox) / s)), y1 = Math.min(H() - 1, Math.ceil((r.height - V.oy) / s));
       for (var y = y0; y <= y1; y++) for (var x = x0; x <= x1; x++) { var td = D.tiles[tr[y][x]]; var im = td && ED.gfx.frame(td.sprite, 0); if (im) ctx.drawImage(im, V.ox + x * s, V.oy + y * s, s + .5, s + .5); else { ctx.fillStyle = '#f0f'; ctx.fillRect(V.ox + x * s, V.oy + y * s, s, s); } }
-      for (var ty2 = y0; ty2 <= Math.min(H() - 1, y1 + 2); ty2++) for (var tx2 = x0; tx2 <= x1; tx2++) { var tdd = D.tiles[tr[ty2][tx2]]; if (tdd && tdd.tall) { var ti2 = ED.gfx.frame(tdd.tall, 0); if (ti2) ctx.drawImage(ti2, V.ox + (tx2 * T + 8 - ti2.width / 2) * V.z, V.oy + (ty2 * T + 16 - ti2.height) * V.z, ti2.width * V.z, ti2.height * V.z); } }
+      for (var ty2 = y0; ty2 <= Math.min(H() - 1, y1 + 2); ty2++) for (var tx2 = x0; tx2 <= x1; tx2++) { var tdd = D.tiles[tr[ty2][tx2]]; if (tdd && tdd.tall) { var tl2 = tdd.tall.split(','), ti2 = ED.gfx.frame(tl2[(tx2 * 7 + ty2 * 13) % tl2.length].trim(), 0); if (ti2) ctx.drawImage(ti2, V.ox + (tx2 * T + 8 - ti2.width / 2) * V.z, V.oy + (ty2 * T + 16 - ti2.height) * V.z, ti2.width * V.z, ti2.height * V.z); } }
       if (V.z >= 1.5) { ctx.strokeStyle = 'rgba(255,255,255,.07)'; ctx.lineWidth = 1; ctx.beginPath(); for (var gx = x0; gx <= x1 + 1; gx++) { ctx.moveTo(V.ox + gx * s, V.oy + y0 * s); ctx.lineTo(V.ox + gx * s, V.oy + (y1 + 1) * s); } for (var gy = y0; gy <= y1 + 1; gy++) { ctx.moveTo(V.ox + x0 * s, V.oy + gy * s); ctx.lineTo(V.ox + (x1 + 1) * s, V.oy + gy * s); } ctx.stroke(); }
       if (m.dark) { ctx.fillStyle = 'rgba(0,0,30,.25)'; ctx.fillRect(V.ox, V.oy, W() * s, H() * s); }
       /* objects */
@@ -133,6 +134,7 @@
           var col = { warp: '0,200,255', trigger: '255,80,255', tileswap: '80,255,120', fogwall: '200,200,220' }[e.type] || '255,255,255';
           ctx.fillStyle = 'rgba(' + col + ',' + (sel ? .35 : .18) + ')'; ctx.fillRect(ex, ey, (e.w || 1) * s, (e.h || 1) * s);
           ctx.strokeStyle = 'rgba(' + col + ',.9)'; ctx.lineWidth = sel ? 2 : 1; ctx.strokeRect(ex + .5, ey + .5, (e.w || 1) * s - 1, (e.h || 1) * s - 1);
+          if (e.type === 'building') { var bi = ED.gfx.frame(e.sprite, 0); if (bi) { ctx.globalAlpha = sel ? .75 : 1; ctx.drawImage(bi, ex - 4 * V.z, ey + (e.h || 1) * s - bi.height * V.z, bi.width * V.z, bi.height * V.z); ctx.globalAlpha = 1; } }
           if (e.type === 'tileswap') { var ti = D.tiles[e.tile]; var timg = ti && ED.gfx.frame(ti.sprite, 0); if (timg) { ctx.globalAlpha = .55; for (var yy = 0; yy < (e.h || 1); yy++) for (var xx = 0; xx < (e.w || 1); xx++) ctx.drawImage(timg, ex + xx * s, ey + yy * s, s, s); ctx.globalAlpha = 1; } }
           if (V.z > .7) { ctx.fillStyle = '#fff'; ctx.font = '10px system-ui'; ctx.fillText(e.type === 'warp' ? '→ ' + e.to : e.type === 'trigger' ? '⚡ ' + (e.scene || '') : e.type, ex + 2, ey + 11); }
         } else {
@@ -300,7 +302,7 @@
         ED.field(m, 'name', { label: 'Name (shown in the journal)' }),
         ED.field(m, 'music', { type: 'select', options: ED.opts.songs, label: 'Music' }),
         ED.field(mi, 'musicIf', { type: 'textarea', label: 'Music changes (one per line: condition => song)', rows: 2, onChange: function (v) { m.musicIf = String(v || '').split('\n').map(function (l) { var p = l.split('=>'); return p.length === 2 ? [p[0].trim(), p[1].trim()] : null; }).filter(Boolean); if (!m.musicIf.length) delete m.musicIf; ED.commit(); } }),
-        ED.field(m, 'dark', { type: 'check', label: 'Dark (needs light; Mira\'s lantern helps)', optional: true }),
+        ED.field(m, 'dark', { type: 'check', label: 'Dark (needs light; Violet\'s lantern helps)', optional: true }),
         ED.field(m, 'fog', { type: 'check', label: 'Always foggy', optional: true }),
         ED.field(m, 'fogIf', { label: 'Foggy when (condition)', optional: true, hint: 'Fog also turns villagers grey.' }),
         ED.field(m, 'interior', { type: 'check', label: 'Interior (black outside)', optional: true }),
@@ -337,5 +339,5 @@
     setTimeout(resize, 0);
   }
   var LABELS = { who: 'Character', scene: 'Scene to run', dir: 'Facing', wander: 'Wanders around', ghost: 'Ghostly echo', greyIf: 'Grey (fogged) when', item: 'Item', n: 'Amount', flag: 'Remember with flag', kind: 'Kind', outro: 'Scene after defeat', w: 'Width (tiles)', h: 'Height (tiles)', to: 'Leads to map', tx: 'Arrive at X', ty: 'Arrive at Y', require: 'Only works when', deny: 'Scene if not allowed', once: 'Only once (flag)', when: 'Condition', weight: 'Heroes needed to push', skin: 'Look', lockWhen: 'Stop moving when', group: 'Group name', latch: 'Stay open (flag)', lit: 'Starts lit', tile: 'Change to tile', sprite: 'Sprite', solid: 'Solid', light: 'Light radius', showIf: 'Show only if', hideIf: 'Hide if', id: 'Id', x: 'Tile X', y: 'Tile Y' };
-  var HINTS = { weight: 'Tobin counts as 2. Friends close behind the leader help push.', group: 'Plates/torches with the same group work together (use plates:GROUP or torches:GROUP in a gate condition).', when: 'e.g. plates:A  or  torches:A,plates:B  or  my_flag  or  clear', once: 'A flag that is set the first time, so it never runs again.' };
+  var HINTS = { weight: 'Red counts as 2. Friends close behind the leader help push.', group: 'Plates/torches with the same group work together (use plates:GROUP or torches:GROUP in a gate condition).', when: 'e.g. plates:A  or  torches:A,plates:B  or  my_flag  or  clear', once: 'A flag that is set the first time, so it never runs again.' };
 })();

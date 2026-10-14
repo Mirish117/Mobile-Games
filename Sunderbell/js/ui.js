@@ -33,12 +33,12 @@
     $('#hearts').innerHTML = h;
     $('#wallet').innerHTML = '<span class="chime"></span>' + G.chimes + (G.keys ? ' &nbsp;<span class="key"></span>' + G.keys : '');
     var pt = $('#party');
-    if (force || last.party !== SB.Party.members.map(function (m) { return m.id; }).join() + G.leader + SB.Party.hold) {
-      last.party = SB.Party.members.map(function (m) { return m.id; }).join() + G.leader + SB.Party.hold;
+    if (force || last.party !== SB.Party.members.map(function (m) { return m.id; }).join() + G.leader + SB.Party.hold + SB.Party.whole()) {
+      last.party = SB.Party.members.map(function (m) { return m.id; }).join() + G.leader + SB.Party.hold + SB.Party.whole();
       pt.innerHTML = '';
       SB.Party.members.forEach(function (m, i) {
-        var b = document.createElement('button'); b.className = 'pp' + (m.id === G.leader ? ' on' : ''); b.title = m.def.name;
-        b.appendChild(charPortrait(m.id, 28)); var n = document.createElement('small'); n.textContent = m.def.name; b.appendChild(n);
+        var b = document.createElement('button'); b.className = 'pp' + (m.id === G.leader ? ' on' : ''); b.title = SB.Party.heroName(m);
+        b.appendChild(charPortrait(SB.Party.look(m), 28)); var n = document.createElement('small'); n.textContent = SB.Party.heroName(m); b.appendChild(n);
         var go = function (e) { e.preventDefault(); e.stopPropagation(); SB.input.pressed['hero' + (i + 1)] = true; };
         b.addEventListener('touchstart', go, { passive: false }); b.addEventListener('mousedown', go);
         pt.appendChild(b);
@@ -149,7 +149,7 @@
   UI.menu = function () {
     if (W.cutscene) return; SB.audio.sfx('menu');
     var G = SB.G;
-    var party = SB.Party.members.map(function (m) { return '<div class="hero"><div class="hp" data-p="' + m.id + '"></div><div><b>' + SB.esc(m.def.name) + '</b> <small>' + SB.esc(m.def.toolName) + '</small><p>' + SB.esc(m.def.desc) + '</p></div></div>'; }).join('');
+    var party = SB.Party.members.map(function (m) { return '<div class="hero"><div class="hp" data-p="' + SB.Party.look(m) + '"></div><div><b>' + SB.esc(SB.Party.heroName(m)) + '</b> <small>' + SB.esc(m.def.toolName) + '</small><p>' + SB.esc(m.def.desc) + '</p></div></div>'; }).join('');
     var tones = ['wood', 'deep', 'stone', 'silence'].map(function (t) { return '<span class="tone ' + (G.flags['tone_' + t] ? 'got' : '') + '" data-t="tone_' + t + '"></span>'; }).join('');
     var journal = G.journal.slice().reverse().map(function (j) { return '<li><small>' + SB.esc(j.map) + '</small>' + SB.esc(j.text) + '</li>'; }).join('') || '<li>Nothing yet.</li>';
     var s = screen('<div class="panel wide"><div class="tabs"><button data-tab="p" class="on">Party</button><button data-tab="j">Journal</button><button data-tab="o">Options</button></div>' +

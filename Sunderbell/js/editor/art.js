@@ -22,7 +22,7 @@
     items.sort(function (a, b) { return a.group.localeCompare(b.group) || a.id.localeCompare(b.id); });
     var detail = ED.listDetail(main, {
       items: items, selected: sel, onSelect: function (id) { ED.sel.sprites = id; ED.sel.frame = 0; ED.rerender(); },
-      add: newSprite, extra: [ED.btn('+ Character set', newCharSet, 'sm', 'Copy a whole character (all directions) to a new id')]
+      add: newSprite, extra: [ED.btn('+ Character set', newCharSet, 'sm', 'Copy a whole character (all directions) to a new id'), ED.btn('⇪ Import PNG', function () { importPng(null); }, 'sm', 'Turn a PNG (or a strip of frames) into a new sprite')]
     });
     if (!sel) { detail.appendChild(h('div.big-empty', null, ['Pick a sprite to draw on.', h('p.hint', null, ['Characters use a set of sprites: NAME_down, NAME_up, NAME_side (3 frames each: standing, step, step) and NAME_atk_down/up/side. Use "+ Character set" to start a new character from an existing one.'])])); return; }
     pixelEditor(detail, sel);
@@ -104,6 +104,7 @@
       ED.btn('Clear', function () { transform(function (r) { return r.map(function (x) { return x.replace(/./g, '.'); }); }); }, 'sm danger')
     ]);
     var meta = h('div.row', { style: { marginTop: '10px' } }, [
+      ED.btn('⇪ Import PNG', function () { importPng(id, f); }, 'sm'),
       ED.btn('Resize', function () { resize(s, id); }, 'sm'),
       ED.btn('Duplicate', function () { var n = id + '_copy', i = 2; while (D.sprites[n]) n = id + '_copy' + (i++); D.sprites[n] = SB.clone(s); ED.commit(); ED.sel.sprites = n; ED.rerender(); }, 'sm'),
       ED.btn('Rename', function () { ED.prompt('Rename sprite', 'New id', id, function (nid) { if (!/^[a-z0-9_]+$/.test(nid) || D.sprites[nid]) { alert('Invalid or taken'); return false; } renameSprite(id, nid); ED.sel.sprites = nid; ED.rerender(); }); }, 'sm'),
@@ -114,6 +115,67 @@
     root.appendChild(ops); root.appendChild(meta);
     root.appendChild(h('p.hint', null, ['Tip: everything that uses this sprite in the game updates when you draw. Colours come from the shared palette.']));
     drawTools(); drawPal(); render();
+  }
+  /* ---- PNG import: any picture becomes palette pixels. Strips are cut into frames. ---- */
+  function importPng(target, frameIdx) {
+    var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/png,image/gif,image/webp,image/jpeg';
+    inp.onchange = function () {
+      var file = inp.files && inp.files[0]; if (!file) return;
+      var rd = new FileReader();
+      rd.onload = function () { var img = new Image(); img.onload = function () { importOptions(img, file.name, target, frameIdx); }; img.onerror = function () { alert('That file could not be read as an image.'); }; img.src = rd.result; };
+      rd.readAsDataURL(file);
+    };
+    inp.click();
+  }
+  function importOptions(img, name, target, frameIdx) {
+    var D = ED.D, base = (name || 'imported').replace(/\.[a-z0-9]+$/i, '').toLowerCase().replace(/[^a-z0-9_]+/g, '_').replace(/^_+|_+$/g, '') || 'imported';
+    var tgt = target && D.sprites[target];
+    var o = { id: base, mode: tgt ? 'replace' : 'new', scale: 1, fw: tgt ? tgt.w : img.width, colours: 'add' };
+    /* guess an upscale factor for pixel art that was saved bigger (2x, 3x, 4x...) */
+    if (tgt) { var g = Math.round(img.height / tgt.h); if (g > 1 && img.height % tgt.h === 0) o.scale = g; o.fw = tgt.w * o.scale; }
+    while (D.sprites[o.id] && o.mode === 'new') o.id += '_2';
+    var body = h('div', null, [
+      h('p.hint', null, ['Picture: ' + img.width + '×' + img.height + ' px. Transparent pixels stay transparent.']),
+      ED.field(o, 'mode', { type: 'select', blank: false, label: 'Put it into', options: [['new', 'A new sprite']].concat(tgt ? [['replace', 'This frame of "' + target + '" (replace)'], ['append', 'New frames on "' + target + '"']] : []) }),
+      ED.field(o, 'id', { label: 'New sprite id (for "a new sprite")' }),
+      h('div.grid2', null, [ED.field(o, 'scale', { type: 'number', label: 'Shrink by (1 = as is, 2 = picture is 2× pixel art...)' }), ED.field(o, 'fw', { type: 'number', label: 'Frame width in the picture (strips split into frames)' })]),
+      ED.field(o, 'colours', { type: 'select', blank: false, label: 'Colours', options: [['add', 'Add any new colours to the palette'], ['nearest', 'Snap to the nearest existing colours']] })
+    ]);
+    ED.modal('Import PNG', body, [['Cancel', null], ['Import', function () {
+      var sc = Math.max(1, o.scale | 0), fw = Math.max(1, (o.fw | 0) || img.width);
+      var W = Math.floor(img.width / sc), H = Math.floor(img.height / sc), FW = Math.max(1, Math.min(W, Math.floor(fw / sc)));
+      if (W > 256 || H > 256) { alert('That picture is ' + W + '×' + H + ' after shrinking. Keep sprites at 256×256 or smaller (try a bigger "Shrink by").'); return false; }
+      if (o.mode === 'new' && (!/^[a-z0-9_]+$/.test(o.id) || D.sprites[o.id])) { alert('Pick a new id: lowercase letters, numbers and _ only, not already used.'); return false; }
+      var cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height; var cx = cv.getContext('2d'); cx.drawImage(img, 0, 0);
+      var px = cx.getImageData(0, 0, img.width, img.height).data;
+      var keyOf = {}, rgb = {}; Object.keys(D.palette).forEach(function (k) { var hx = D.palette[k].toLowerCase(); if (!keyOf[hx]) keyOf[hx] = k; rgb[k] = [parseInt(hx.substr(1, 2), 16), parseInt(hx.substr(3, 2), 16), parseInt(hx.substr(5, 2), 16)]; });
+      var free = FREE_CHARS.split('').filter(function (c) { return !D.palette[c] && c !== '.'; }), added = 0, snapped = 0;
+      function nearest(r, g, b) { var best = null, bd = 1e9; Object.keys(rgb).forEach(function (k) { var c = rgb[k], d = (c[0] - r) * (c[0] - r) * 2 + (c[1] - g) * (c[1] - g) * 4 + (c[2] - b) * (c[2] - b) * 3; if (d < bd) { bd = d; best = k; } }); return best; }
+      function charFor(r, g, b) {
+        var hx = '#' + [r, g, b].map(function (v) { return ('0' + v.toString(16)).slice(-2); }).join('');
+        if (keyOf[hx]) return keyOf[hx];
+        if (o.colours === 'add' && free.length && added < 64) { var k = free.shift(); D.palette[k] = hx; keyOf[hx] = k; rgb[k] = [r, g, b]; added++; return k; }
+        snapped++; var n = nearest(r, g, b); keyOf[hx] = n; return n;
+      }
+      var frames = [];
+      for (var fx = 0; fx + FW <= W; fx += FW) {
+        var rows = [];
+        for (var y = 0; y < H; y++) { var row = ''; for (var x = fx; x < fx + FW; x++) { var sx = x * sc + (sc >> 1), sy = y * sc + (sc >> 1), i = (sy * img.width + sx) * 4; row += px[i + 3] < 128 ? '.' : charFor(px[i], px[i + 1], px[i + 2]); } rows.push(row); }
+        frames.push(rows);
+      }
+      if (!frames.length) { alert('Frame width is wider than the picture.'); return false; }
+      var id;
+      if (o.mode === 'new') { id = o.id; D.sprites[id] = { w: FW, h: H, frames: frames }; ED.sel.frame = 0; }
+      else {
+        id = target; var s = D.sprites[id];
+        if (FW !== s.w || H !== s.h) frames = frames.map(function (fr) { var out = []; for (var y = 0; y < s.h; y++) { var r = '', sy = y - (s.h - H); for (var x = 0; x < s.w; x++) { var sx = x - Math.floor((s.w - FW) / 2); r += (sy >= 0 && sy < H && sx >= 0 && sx < FW) ? fr[sy][sx] : '.'; } out.push(r); } return out; });
+        if (o.mode === 'replace') { var at = frameIdx || 0; Array.prototype.splice.apply(s.frames, [at, 1].concat(frames)); ED.sel.frame = at; }
+        else { ED.sel.frame = s.frames.length; s.frames = s.frames.concat(frames); }
+        if (FW !== s.w || H !== s.h) setTimeout(function () { alert('The picture (' + FW + '×' + H + ') did not match the sprite size (' + s.w + '×' + s.h + '), so it was placed bottom-centre. Use Resize to change the sprite size.'); }, 50);
+      }
+      ED.gfx.invalidate(); ED.commit(); ED.sel.sprites = id; ED.rerender();
+      if (added || snapped) setTimeout(function () { ED.modal('Imported', h('p', null, [(added ? added + ' new colours were added to the palette. ' : '') + (snapped ? snapped + ' colours were snapped to the nearest palette colour.' : '')])); }, 60);
+    }, 'hot']]);
   }
   function resize(s, id) {
     var o = { w: s.w, h: s.h, anchor: 'bottom' };
@@ -154,7 +216,7 @@
     detail.appendChild(ED.field(t, 'name', { label: 'Name', onChange: function () { ED.rerender(); } }));
     detail.appendChild(h('div.row', null, [h('div.grow', null, [ED.field(t, 'sprite', { type: 'select', blank: false, options: ED.opts.sprites, label: 'Sprite', onChange: function () { ED.rerender(); } })]), ED.btn('Draw it →', function () { ED.sel.sprites = t.sprite; ED.go('sprites'); }, 'sm')]));
     detail.appendChild(ED.field(t, 'solid', { type: 'check', label: 'Solid (can\'t walk through)', optional: true }));
-    detail.appendChild(ED.field(t, 'kind', { type: 'select', label: 'Special', optional: true, options: [['water', 'Water (arrows and flyers cross)'], ['lava', 'Lava'], ['pit', 'Pit (fall in, lose half a heart)'], ['cut', 'Cuttable (sword, shield, lantern)'], ['smash', 'Smashable (Tobin\'s shield)'], ['burn', 'Burnable (Mira\'s lantern)'], ['veil', 'Hidden wall (revealed by the lantern)']] }));
+    detail.appendChild(ED.field(t, 'kind', { type: 'select', label: 'Special', optional: true, options: [['water', 'Water (arrows and flyers cross)'], ['lava', 'Lava'], ['pit', 'Pit (fall in, lose half a heart)'], ['cut', 'Cuttable (sword, shield, lantern)'], ['smash', 'Smashable (Red\'s shield)'], ['burn', 'Burnable (Violet\'s lantern)'], ['veil', 'Hidden wall (revealed by the lantern)']] }));
     detail.appendChild(ED.field(t, 'to', { type: 'select', label: 'Turns into (after cut / smash / burn / reveal)', optional: true, options: function () { return Object.keys(D.tiles).map(function (k) { return [k, JSON.stringify(k) + ' ' + D.tiles[k].name]; }); } }));
     detail.appendChild(h('h3', null, ['Look']));
     detail.appendChild(h('div.grid2', null, [
