@@ -1,5 +1,5 @@
 /* Sunderbell service worker: code and data network-first (so GitHub updates arrive), everything cached for offline play. */
-const V = 'sunderbell-v1';
+const V = 'sunderbell-v2';
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(V).then(c => c.addAll(['./', 'index.html', 'editor.html', 'css/game.css', 'manifest.webmanifest', 'icons/icon-192.png']).catch(() => { }))); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {

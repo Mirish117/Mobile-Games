@@ -15,7 +15,11 @@
   UI.spriteCanvas = spriteCanvas;
   function charPortrait(who, box) {
     var ch = SB.D.characters[who] || {}, base = ch.sprite || who, id = SB.gfx.has(base + '_down') ? base + '_down' : base;
-    return spriteCanvas(id, 0, 3, ch.ghost ? 'ghost' : '', box || 48);
+    var im = SB.gfx.frame(id, 0, ch.ghost ? 'ghost' : ''); if (!im || im.height <= 20) return spriteCanvas(id, 0, 3, ch.ghost ? 'ghost' : '', box || 48);
+    /* head-and-shoulders crop of the standing sprite */
+    var top = 0; var cx0 = im.getContext('2d').getImageData(0, 0, im.width, im.height).data; for (var y = 0; y < im.height && !top; y++) for (var x = 0; x < im.width; x++) if (cx0[(y * im.width + x) * 4 + 3]) { top = y; break; }
+    var hgt = Math.min(im.height - top, 17), s = Math.max(1, Math.floor((box || 48) / Math.max(im.width, hgt)));
+    var c = document.createElement('canvas'); c.width = im.width * s; c.height = hgt * s; var x2 = c.getContext('2d'); x2.imageSmoothingEnabled = false; x2.drawImage(im, 0, top, im.width, hgt, 0, 0, c.width, c.height); c.className = 'px'; return c;
   }
   UI.charPortrait = charPortrait;
 

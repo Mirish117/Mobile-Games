@@ -121,6 +121,7 @@
       var s = T * V.z, tr = rows();
       var x0 = Math.max(0, Math.floor(-V.ox / s)), y0 = Math.max(0, Math.floor(-V.oy / s)), x1 = Math.min(W() - 1, Math.ceil((r.width - V.ox) / s)), y1 = Math.min(H() - 1, Math.ceil((r.height - V.oy) / s));
       for (var y = y0; y <= y1; y++) for (var x = x0; x <= x1; x++) { var td = D.tiles[tr[y][x]]; var im = td && ED.gfx.frame(td.sprite, 0); if (im) ctx.drawImage(im, V.ox + x * s, V.oy + y * s, s + .5, s + .5); else { ctx.fillStyle = '#f0f'; ctx.fillRect(V.ox + x * s, V.oy + y * s, s, s); } }
+      for (var ty2 = y0; ty2 <= Math.min(H() - 1, y1 + 2); ty2++) for (var tx2 = x0; tx2 <= x1; tx2++) { var tdd = D.tiles[tr[ty2][tx2]]; if (tdd && tdd.tall) { var ti2 = ED.gfx.frame(tdd.tall, 0); if (ti2) ctx.drawImage(ti2, V.ox + (tx2 * T + 8 - ti2.width / 2) * V.z, V.oy + (ty2 * T + 16 - ti2.height) * V.z, ti2.width * V.z, ti2.height * V.z); } }
       if (V.z >= 1.5) { ctx.strokeStyle = 'rgba(255,255,255,.07)'; ctx.lineWidth = 1; ctx.beginPath(); for (var gx = x0; gx <= x1 + 1; gx++) { ctx.moveTo(V.ox + gx * s, V.oy + y0 * s); ctx.lineTo(V.ox + gx * s, V.oy + (y1 + 1) * s); } for (var gy = y0; gy <= y1 + 1; gy++) { ctx.moveTo(V.ox + x0 * s, V.oy + gy * s); ctx.lineTo(V.ox + (x1 + 1) * s, V.oy + gy * s); } ctx.stroke(); }
       if (m.dark) { ctx.fillStyle = 'rgba(0,0,30,.25)'; ctx.fillRect(V.ox, V.oy, W() * s, H() * s); }
       /* objects */
@@ -303,6 +304,8 @@
         ED.field(m, 'fog', { type: 'check', label: 'Always foggy', optional: true }),
         ED.field(m, 'fogIf', { label: 'Foggy when (condition)', optional: true, hint: 'Fog also turns villagers grey.' }),
         ED.field(m, 'interior', { type: 'check', label: 'Interior (black outside)', optional: true }),
+        ED.field(m, 'ambience', { type: 'select', label: 'Floating particles', optional: true, options: [['motes', 'Sunny dust motes'], ['leaves', 'Falling leaves'], ['fireflies', 'Fireflies / wisps'], ['embers', 'Rising embers'], ['dust', 'Cave dust']] }),
+        (function () { m.grade = m.grade || ['#ffe2a0', '#3a2a6a', 0]; return h('div.grid3', null, [ED.field(m.grade, 0, { type: 'color', label: 'Light tint (top)' }), ED.field(m.grade, 1, { type: 'color', label: 'Shade tint (bottom)' }), ED.field(m.grade, 2, { type: 'number', step: .05, label: 'Tint strength 0-1' })]); })(),
         h('div.grid2', null, [ED.field(m.start, 0, { type: 'number', label: 'Default start X' }), ED.field(m.start, 1, { type: 'number', label: 'Default start Y' })]),
         h('h3', null, ['Size: ' + W() + ' × ' + H()]),
         h('div.row', null, ['Right edge:', ED.btn('+1', function () { resizeMap(1, 0, 0, 0); }, 'sm'), ED.btn('−1', function () { resizeMap(-1, 0, 0, 0); }, 'sm'), ' Bottom:', ED.btn('+1', function () { resizeMap(0, 1, 0, 0); }, 'sm'), ED.btn('−1', function () { resizeMap(0, -1, 0, 0); }, 'sm')]),

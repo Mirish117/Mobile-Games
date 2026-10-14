@@ -126,7 +126,7 @@
 
   function makeHero(id, x, y) {
     var def = P.heroDef(id);
-    var h = { kind: 'hero', id: id, def: def, x: x, y: y, dir: 'down', anim: 'idle', t: 0, atk: 0, cd: 0, kx: 0, ky: 0, kt: 0, stuck: 0, visible: true, drawH: 18 };
+    var h = { kind: 'hero', id: id, def: def, x: x, y: y, dir: 'down', anim: 'idle', t: 0, atk: 0, cd: 0, kx: 0, ky: 0, kt: 0, stuck: 0, visible: true, drawH: 26 };
     h.draw = function (c) {
       var isL = h === P.leader(), blink = isL && P.invuln > 0 && Math.floor(P.invuln * 14) % 2;
       shadow(c, h.x, h.y, 5);
@@ -134,9 +134,9 @@
       var fr = SB.charFrame(SB.gfx, h.id, h.dir, h.atk > 0 ? 'atk' : h.anim, h.t);
       SB.gfx.draw(c, fr.id, fr.f, h.x, h.y + 1, { flip: fr.flip });
       if (h.id === 'mira') { /* lantern glow */ var v = SB.dirVec[h.dir]; c.fillStyle = 'rgba(255,220,120,.9)'; c.fillRect(Math.round(h.x + (h.dir === 'left' ? -6 : 5)), Math.round(h.y - 6), 2, 2); }
-      if (h.id === 'tobin' && h.atk > 0) { var vv = SB.dirVec[h.dir]; var im = SB.gfx.frame('icon_shield', 0); if (im) c.drawImage(im, Math.round(h.x + vv[0] * 9 - 6), Math.round(h.y - 8 + vv[1] * 7 - 6)); }
-      if (isL && P.members.length > 1) { c.fillStyle = '#fff6a0'; c.beginPath(); c.moveTo(h.x - 2, h.y - 24); c.lineTo(h.x + 2, h.y - 24); c.lineTo(h.x, h.y - 21); c.fill(); }
-      if (P.hold && !isL) { c.fillStyle = 'rgba(255,255,255,.7)'; c.font = '7px monospace'; c.textAlign = 'center'; c.fillText('wait', h.x, h.y - 21); }
+      if (h.id === 'tobin' && h.atk > 0) { var vv = SB.dirVec[h.dir]; var im = SB.gfx.frame('icon_shield', 0); if (im) c.drawImage(im, Math.round(h.x + vv[0] * 9 - 7), Math.round(h.y - 10 + vv[1] * 7 - 7)); }
+      if (isL && P.members.length > 1) { c.fillStyle = '#fff6a0'; c.beginPath(); c.moveTo(h.x - 2, h.y - 31); c.lineTo(h.x + 2, h.y - 31); c.lineTo(h.x, h.y - 28); c.fill(); }
+      if (P.hold && !isL) { c.fillStyle = 'rgba(255,255,255,.7)'; c.font = '7px monospace'; c.textAlign = 'center'; c.fillText('wait', h.x, h.y - 28); }
     };
     return h;
   }
@@ -323,7 +323,7 @@
   var KINDS = {};
   /* ---------------- NPC ---------------- */
   KINDS.npc = function (e, d) {
-    var ch = SB.D.characters[d.who] || {}; e.base = ch.sprite || d.who; e.dir = d.dir || 'down'; e.anim = 'idle'; e.solid = true; e.homeX = e.x; e.homeY = e.y - 2; e.y -= 2; e.drawH = 18;
+    var ch = SB.D.characters[d.who] || {}; e.base = ch.sprite || d.who; e.dir = d.dir || 'down'; e.anim = 'idle'; e.solid = true; e.homeX = e.x; e.homeY = e.y - 2; e.y -= 2; e.drawH = 26;
     e.solidBox = function () { return { x: e.x - 6, y: e.y - 8, w: 12, h: 8 }; };
     e.interBox = function () { return { x: e.x - 7, y: e.y - 16, w: 14, h: 16 }; };
     e.silent = !d.scene;
@@ -737,8 +737,8 @@
       s.draw = function (c) {
         shadow(c, s.x, s.y, 5); var fr = SB.charFrame(SB.gfx, s.heroId, s.dir, 'walk', s.t);
         SB.gfx.draw(c, fr.id, fr.f, s.x, s.y + 1, { flip: fr.flip, variant: s.hurtT > 0 ? 'white' : 'dark' });
-        c.fillStyle = '#ff4060'; c.fillRect(Math.round(s.x - 3), Math.round(s.y - 11), 1, 1); c.fillRect(Math.round(s.x + 2), Math.round(s.y - 11), 1, 1);
-        var ic = SB.gfx.frame(h.def.icon, 0); if (ic) { c.globalAlpha = .8; c.drawImage(ic, Math.round(s.x - 6), Math.round(s.y - 32)); c.globalAlpha = 1; }
+        c.fillStyle = '#ff4060'; c.fillRect(Math.round(s.x - 3), Math.round(s.y - 15), 1, 1); c.fillRect(Math.round(s.x + 2), Math.round(s.y - 15), 1, 1);
+        var ic = SB.gfx.frame(h.def.icon, 0); if (ic) { c.globalAlpha = .8; c.drawImage(ic, Math.round(s.x - 7), Math.round(s.y - 40)); c.globalAlpha = 1; }
       };
       W.ents.push(s); FX.puff(s.x, s.y - 8, true);
     });

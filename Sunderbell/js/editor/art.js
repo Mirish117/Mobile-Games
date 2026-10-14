@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var SB = window.SB, ED = window.ED, h = ED.h;
-  var FREE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+=-~!?^:;<>{}[]()|/\\\'",`_';
+  var FREE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+=-~!?^:;<>{}[]()|/\'`_'; for (var cc = 0xC0; cc <= 0x24F; cc++) if (cc !== 0xD7 && cc !== 0xF7) FREE_CHARS += String.fromCharCode(cc);
 
   function groupOf(id) {
     var D = ED.D;
@@ -156,6 +156,17 @@
     detail.appendChild(ED.field(t, 'solid', { type: 'check', label: 'Solid (can\'t walk through)', optional: true }));
     detail.appendChild(ED.field(t, 'kind', { type: 'select', label: 'Special', optional: true, options: [['water', 'Water (arrows and flyers cross)'], ['lava', 'Lava'], ['pit', 'Pit (fall in, lose half a heart)'], ['cut', 'Cuttable (sword, shield, lantern)'], ['smash', 'Smashable (Tobin\'s shield)'], ['burn', 'Burnable (Mira\'s lantern)'], ['veil', 'Hidden wall (revealed by the lantern)']] }));
     detail.appendChild(ED.field(t, 'to', { type: 'select', label: 'Turns into (after cut / smash / burn / reveal)', optional: true, options: function () { return Object.keys(D.tiles).map(function (k) { return [k, JSON.stringify(k) + ' ' + D.tiles[k].name]; }); } }));
+    detail.appendChild(h('h3', null, ['Look']));
+    detail.appendChild(h('div.grid2', null, [
+      ED.field(t, 'tall', { type: 'select', optional: true, label: 'Tall scenery drawn on top (trees, statues)', options: ED.opts.sprites, hint: 'Characters walk behind it. The tile sprite is the ground underneath.' }),
+      ED.field(t, 'group', { optional: true, label: 'Group (tiles in a group don\'t draw edges between each other)' })]));
+    detail.appendChild(h('div.grid2', null, [
+      ED.field(t, 'blend', { type: 'number', optional: true, label: 'Blend priority (ground spills softly onto lower numbers)' }),
+      ED.field(t, 'shadow', { type: 'check', optional: true, label: 'Casts a shadow on the ground below' })]));
+    t.edges = t.edges || {};
+    detail.appendChild(h('label', null, ['Edge overlays (drawn on this tile where the neighbour is different)']));
+    detail.appendChild(h('div.grid2', null, ['up', 'down', 'left', 'right'].map(function (sd) { return ED.field(t.edges, sd, { type: 'select', optional: true, label: sd, options: ED.opts.sprites }); })));
+    if (!Object.keys(t.edges).length) delete t.edges;
     var uses = 0; Object.values(D.maps).forEach(function (m) { m.tiles.forEach(function (r) { for (var i = 0; i < r.length; i++) if (r[i] === sel) uses++; }); });
     detail.appendChild(h('p.hint', null, ['Used ' + uses + ' times across all maps.']));
     detail.appendChild(ED.btn('Delete tile', function () { if (uses) { alert('This tile is still painted on maps. Paint over it first.'); return; } delete D.tiles[sel]; ED.commit(); ED.sel.tiles = null; ED.rerender(); }, 'sm danger'));
