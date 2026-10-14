@@ -92,6 +92,7 @@
     opts = opts || {};
     var def = DB.maps[id]; if (!def) { console.error('no map', id); return Promise.resolve(); }
     return A.loadMap(def.img || id).then(function (img) {
+      if (DB.applyMapEdits) DB.applyMapEdits(def, id);
       W.map = def; W.mapId = id; W.img = img; def.w = def.w || (img ? img.width : 1536); def.h = def.h || (img ? img.height : 1024);
       var mk = DB.MASKS && DB.MASKS[id]; if (DB.MASKS_USER && DB.MASKS_USER[id]) mk = DB.MASKS_USER[id]; try { var _ed = JSON.parse(localStorage.getItem('dawnbound.maskedits') || 'null'); if (_ed && _ed[id]) mk = _ed[id]; } catch (e) { }
       W.mask = mk ? W.decodeMask(mk, Math.floor(def.w / CELL), Math.floor(def.h / CELL)) : null;
@@ -107,6 +108,7 @@
       DB.map = def;
       if (def.build) def.build(W);
       W.buildEntities(def);
+      if (DB.buildOverlays) DB.buildOverlays(def, id);
       W.cam.follow = W.player; W.cam.snap = true;
       DB.audio.music(def.music || null);
       W.mode = 'field';
@@ -170,11 +172,11 @@
       var e = DB.makeObj(o); if (e) W.ents.push(e);
     });
     if (DB.spawnEnemies) DB.spawnEnemies(def);
-    W.ents.forEach(function (e) { if ((e.type === 'npc' || e.type === 'enemy') && !e.fly && W.mapId && !W.canStand(e.x, e.y, 16)) { W.snapToWalkable(e, 16); if (e.hx != null) { e.hx = e.x; e.hy = e.y; } } else if (e.type === 'prop' && (e.kind === 'chest' || e.kind === 'pickup') && !W.walkable(e.x, e.y + 12)) { var ox = e.x, oy = e.y; e.y += 12; W.snapToWalkable(e); e.y -= 12; } });
+    W.ents.forEach(function (e) { if (e.def && e.def._ed && e.type !== 'enemy') return; if ((e.type === 'npc' || e.type === 'enemy') && !e.fly && W.mapId && !W.canStand(e.x, e.y, 16)) { W.snapToWalkable(e, 16); if (e.hx != null) { e.hx = e.x; e.hy = e.y; } } else if (e.type === 'prop' && (e.kind === 'chest' || e.kind === 'pickup') && !W.walkable(e.x, e.y + 12)) { var ox = e.x, oy = e.y; e.y += 12; W.snapToWalkable(e); e.y -= 12; } });
     /* anything stranded on an unreachable island is moved to the nearest reachable ground */
     W.ents.forEach(function (e) {
       if (e.fly || !W.mapId) return; var chk = e.type === 'npc' || e.type === 'enemy' || (e.type === 'prop' && (e.kind === 'chest' || e.kind === 'pickup'));
-      if (!chk) return; var py = e.type === 'prop' ? e.y + 12 : e.y;
+      if (!chk || (e.def && e.def._ed)) return; var py = e.type === 'prop' ? e.y + 12 : e.y;
       if (!W.isReach(e.x, py, 2)) { var n = W.nearestReach(e.x, py, 8); if (n) { e.x = n[0]; e.y = n[1] - (e.type === 'prop' ? 12 : 0); if (e.hx != null) { e.hx = e.x; e.hy = e.y; } } }
     });
   };
@@ -251,7 +253,7 @@
     if (W.img) ctx.drawImage(W.img, 0, 0, m.w, m.h);
     if (W.map.drawBack) W.map.drawBack(ctx, W);
     /* depth sorted entities */
-    var list = W.ents.slice().sort(function (a, b) { return (a.z || 0) - (b.z || 0) || a.y - b.y; });
+    var list = (W.overs && W.overs.length ? W.ents.concat(W.overs) : W.ents.slice()).sort(function (a, b) { return (a.z || 0) - (b.z || 0) || a.y - b.y; });
     ctx.imageSmoothingEnabled = false;
     for (var i = 0; i < list.length; i++) W.drawEnt(ctx, list[i]);
     ctx.imageSmoothingEnabled = true;
@@ -281,6 +283,7 @@
   };
   W.drawEnt = function (ctx, e) {
     if (e.hidden) return;
+    if (e.type === 'over') { ctx.drawImage(e.cv, e.px, e.py); return; }
     if (e.type === 'prop') { if (e.draw) e.draw(ctx, e); return; }
     if (e.draw) { e.draw(ctx, e); return; }
     var c = A.atlas.chars[e.sprite]; if (!c || !A.charSheet(e.sprite)) return;

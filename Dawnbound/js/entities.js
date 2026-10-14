@@ -44,6 +44,7 @@
     if (o.t === 'chest') { if (G.opened[W.mapId + ':' + o.id]) e.state = 1; }
     if (o.t === 'door') { e.state = (done || o.open) ? 1 : 0; if (e.state === 0 && o.block) W.setRect(o.block[0], o.block[1], o.block[2], o.block[3], 0); if (e.state === 1 && o.block) W.setRect(o.block[0], o.block[1], o.block[2], o.block[3], 1); }
     if (o.t === 'plate') e.state = 0;
+    if (o.t === 'spot') { e.kind = 'spot'; e.hidden = false; e.interact = true; e.draw = drawSpot; e.update = null; return e; }
     if (o.t === 'torch' || o.t === 'none') e.hidden = true;
     if (o.t === 'pickup') { e.kind = 'pickup'; if (G.opened[W.mapId + ':' + o.id]) e.state = 1; e.hidden = false; e.interact = true; e.draw = drawPickup; e.update = null; return e; }
     e.anim = { f: e.state ? 3 : 0 };
@@ -51,6 +52,14 @@
     e.interact = (o.t === 'chest' || o.t === 'lever' || o.t === 'valve' || o.t === 'cage' || (o.t === 'door' && o.needs) || o.scene || o.talk) ? true : false;
     return e;
   };
+  /* editor-placed interact spot: icon 'sign' | 'glow' | 'none' (invisible) */
+  function drawSpot(ctx, e) {
+    var ic = e.def.icon || 'sign'; if (ic === 'none') return; var t = W.time;
+    if (ic === 'glow') { var y = e.y - 8 + Math.sin(t * 3 + e.x) * 2; ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .4 + .2 * Math.sin(t * 5 + e.x); var g = ctx.createRadialGradient(e.x, y, 1, e.x, y, 14); g.addColorStop(0, '#bfe9ff'); g.addColorStop(1, 'rgba(120,200,255,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(e.x, y, 14, 0, 6.28); ctx.fill(); ctx.restore(); return; }
+    ctx.save(); ctx.fillStyle = 'rgba(0,0,0,.28)'; ctx.beginPath(); ctx.ellipse(e.x, e.y, 9, 3, 0, 0, 6.28); ctx.fill();
+    ctx.fillStyle = '#6b4a2a'; ctx.fillRect(e.x - 1.5, e.y - 14, 3, 14); ctx.fillStyle = '#c79a5a'; ctx.fillRect(e.x - 9, e.y - 24, 18, 11); ctx.strokeStyle = '#3d2a14'; ctx.lineWidth = 1.2; ctx.strokeRect(e.x - 9, e.y - 24, 18, 11);
+    ctx.fillStyle = '#3d2a14'; ctx.fillRect(e.x - 6, e.y - 21, 12, 1.4); ctx.fillRect(e.x - 6, e.y - 18, 9, 1.4); ctx.restore();
+  }
   function drawPickup(ctx, e) {
     if (e.state) return; var t = W.time, y = e.y - 8 + Math.sin(t * 3 + e.x) * 2;
     ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .45 + .25 * Math.sin(t * 5 + e.x); var g = ctx.createRadialGradient(e.x, y, 1, e.x, y, 16); g.addColorStop(0, '#fff6c0'); g.addColorStop(1, 'rgba(255,200,80,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(e.x, y, 16, 0, 6.28); ctx.fill();

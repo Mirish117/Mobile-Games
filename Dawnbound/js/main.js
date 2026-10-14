@@ -43,7 +43,7 @@
       /* map-painter play-test link: index.html?map=<id>&spawn=<name> jumps straight into a map */
       try {
         var q = new URLSearchParams(location.search), tm = q.get('map');
-        if (tm && DB.maps[tm]) { UI.closeScreen(); var G0 = DB.newState('caelan', 'Tester'); G0.flags.prologue_done = 1; G0.flags.mq = parseInt(q.get('mq') || '2', 10); DB.go(tm, q.get('spawn') || 'start', { noSave: true, fade: 200 }).then(function () { W.mode = 'field'; UI.hud(true); }); }
+        if (tm && DB.maps[tm]) { UI.closeScreen(); var G0 = DB.newState('caelan', 'Tester'); G0.flags.prologue_done = 1; G0.flags.mq = parseInt(q.get('mq') || '2', 10); DB.go(tm, q.get('spawn') || 'start', { noSave: true, fade: 200 }).then(function () { W.mode = 'field'; var px = parseFloat(q.get('x')), py = parseFloat(q.get('y')); if (isFinite(px) && isFinite(py) && W.party && W.party.length) { W.party.forEach(function (h, i) { h.x = px - i * 14; h.y = py + (i ? 8 : 0); }); W.cam.snap = true; W.updateCam(1); } UI.hud(true); }); }
       } catch (e) { }
       if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) navigator.serviceWorker.register('sw.js').catch(function () { });
     });
