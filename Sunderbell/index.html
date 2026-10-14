@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sunderbell: The Four Tones</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sunderbell">
+<meta name="theme-color" content="#120f1e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+  <div id="hud">
+    <div id="tl"><div id="hearts"></div><div id="wallet"></div></div>
+    <div id="quest" class="hidden"></div>
+    <div id="tr"><div id="party"></div><button id="btnMenu" data-btn="menu" aria-label="Menu">&#9776;</button></div>
+    <div id="bossbar" class="hidden"><div class="bn"></div><div class="bb"><i></i></div></div>
+  </div>
+  <div id="ctrl">
+    <div id="stickzone"></div>
+    <div id="stick"><div id="knob"></div></div>
+    <div id="btns">
+      <button id="btnTeam" data-btn="team" aria-label="Team strike"><div id="meter"><i id="meterfill"></i></div><b>&#10022;</b><small>Team</small></button>
+      <button id="btnHold" data-btn="hold" aria-label="Hold or follow"><b>&#9872;</b><small>Hold</small></button>
+      <button id="btnSwap" data-btn="swap" aria-label="Swap leader"><b>&#8644;</b><small>Swap</small></button>
+      <button id="btnA" data-btn="a" aria-label="Action"><span class="ic"></span><small>Act</small><em>Talk</em></button>
+    </div>
+  </div>
+  <div id="dlg" class="hidden"><div class="dportrait"></div><div class="dbox"><div class="dname"></div><div class="dtext"></div><div class="dnext">&#9660;</div></div></div>
+  <div id="choices" class="hidden"></div>
+  <div id="banner" class="hidden"></div>
+  <div id="toasts"></div>
+  <div id="screen" class="hidden"></div>
+  <div id="draftbadge">Editor changes</div>
+  <div id="loading"><div class="lt">SUNDERBELL</div><div class="ls">loading&hellip;</div></div>
+</div>
+<script src="data/game_data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/world.js"></script>
+<script src="js/actors.js"></script>
+<script src="js/story.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

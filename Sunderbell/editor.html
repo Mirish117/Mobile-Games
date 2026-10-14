@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#120f1e">
+<title>Sunderbell Editor</title>
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+<header id="top">
+  <a class="logo" href="index.html" title="Back to the game">&#9664; Sunderbell</a>
+  <nav id="tabs"></nav>
+  <div class="acts">
+    <button id="bUndo" title="Undo">&#8630;</button>
+    <button id="bRedo" title="Redo">&#8631;</button>
+    <button id="bPlay" class="hot">&#9654; Playtest</button>
+    <button id="bFile">Save &#9662;</button>
+  </div>
+</header>
+<main id="main"></main>
+<div id="status"></div>
+<div id="modal" class="hidden"><div class="mbox"></div></div>
+<script src="data/game_data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/editor/base.js"></script>
+<script src="js/editor/story.js"></script>
+<script src="js/editor/maps.js"></script>
+<script src="js/editor/art.js"></script>
+<script src="js/editor/tables.js"></script>
+<script src="js/editor/sound.js"></script>
+<script src="js/editor/files.js"></script>
+</body>
+</html>
