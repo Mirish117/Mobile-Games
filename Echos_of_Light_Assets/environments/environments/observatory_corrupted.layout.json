@@ -1,0 +1,218 @@
+{
+  "scene": "observatory_corrupted",
+  "region": "observatory",
+  "state": "corrupted",
+  "walk_surfaces": [
+    {
+      "name": "floating_platform",
+      "center": [
+        -5,
+        -0.35,
+        -5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        -5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        -5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "floating_platform",
+      "center": [
+        5,
+        -0.35,
+        -5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        -5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "floating_platform",
+      "center": [
+        -5,
+        -0.35,
+        5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        -5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "floating_platform",
+      "center": [
+        5,
+        -0.35,
+        5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "central_dome",
+      "center": [
+        0,
+        -0.2,
+        0
+      ],
+      "size": [
+        3,
+        0.4,
+        3
+      ],
+      "surface_y": 0.0
+    }
+  ],
+  "obstacle_colliders": [],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        -5,
+        0,
+        6
+      ]
+    },
+    {
+      "id": "boss",
+      "position": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "notes": [
+    "World-space box obstacles and walk decks for engine integration.",
+    "Stairs and bridge planks have explicit surface boxes.",
+    "Water and lava need hazard logic.",
+    "Character capsule sizing, step height and navigation require in-engine acceptance."
+  ],
+  "version": 2,
+  "coordinates": "world meters Y up",
+  "render_node_references": "Merged static render node 0. source_node_index is informational only.",
+  "tested_in_physics_engine": false
+}

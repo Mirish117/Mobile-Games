@@ -1,0 +1,206 @@
+{
+  "scene": "last_shadow_arena",
+  "walk_surfaces": [
+    {
+      "name": "room_fragment_0",
+      "center": [
+        -4.0,
+        -0.25,
+        -4.0
+      ],
+      "size": [
+        6.0,
+        0.5,
+        6.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_x_6",
+      "center": [
+        0.0,
+        -0.1,
+        -4.0
+      ],
+      "size": [
+        3.0,
+        0.2,
+        1.5
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_z_7",
+      "center": [
+        -4.0,
+        -0.1,
+        0.0
+      ],
+      "size": [
+        1.5,
+        0.2,
+        3.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "room_fragment_8",
+      "center": [
+        4.0,
+        -0.25,
+        -4.0
+      ],
+      "size": [
+        6.0,
+        0.5,
+        6.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_x_15",
+      "center": [
+        0.0,
+        -0.1,
+        -4.0
+      ],
+      "size": [
+        3.0,
+        0.2,
+        1.5
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_z_16",
+      "center": [
+        4.0,
+        -0.1,
+        0.0
+      ],
+      "size": [
+        1.5,
+        0.2,
+        3.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "room_fragment_17",
+      "center": [
+        -4.0,
+        -0.25,
+        4.0
+      ],
+      "size": [
+        6.0,
+        0.5,
+        6.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_x_24",
+      "center": [
+        0.0,
+        -0.1,
+        4.0
+      ],
+      "size": [
+        3.0,
+        0.2,
+        1.5
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_z_25",
+      "center": [
+        -4.0,
+        -0.1,
+        0.0
+      ],
+      "size": [
+        1.5,
+        0.2,
+        3.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "room_fragment_26",
+      "center": [
+        4.0,
+        -0.25,
+        4.0
+      ],
+      "size": [
+        6.0,
+        0.5,
+        6.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_x_33",
+      "center": [
+        0.0,
+        -0.1,
+        4.0
+      ],
+      "size": [
+        3.0,
+        0.2,
+        1.5
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "light_path_z_34",
+      "center": [
+        4.0,
+        -0.1,
+        0.0
+      ],
+      "size": [
+        1.5,
+        0.2,
+        3.0
+      ],
+      "surface_y": 0.0,
+      "kind": "walk_deck"
+    }
+  ],
+  "obstacle_colliders": [],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        -4,
+        0,
+        4
+      ]
+    }
+  ],
+  "version": 2,
+  "coordinates": "world meters Y up",
+  "render_node_references": "Merged static render node 0. source_node_index is informational only.",
+  "tested_in_physics_engine": false,
+  "notes": [
+    "World-space box obstacles and walk decks for engine integration.",
+    "Stairs and bridge planks have explicit surface boxes.",
+    "Water and lava need hazard logic.",
+    "Character capsule sizing, step height and navigation require in-engine acceptance."
+  ]
+}

@@ -1,0 +1,549 @@
+{
+  "scene": "lumenfall_corrupted",
+  "region": "lumenfall",
+  "state": "corrupted",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "square",
+      "center": [
+        0,
+        0.04,
+        0
+      ],
+      "size": [
+        7,
+        0.08,
+        7
+      ],
+      "surface_y": 0.08
+    },
+    {
+      "name": "plank_204",
+      "center": [
+        6.515,
+        0.13,
+        -3.297362383136715e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_205",
+      "center": [
+        6.785,
+        0.13,
+        -2.6978419498391306e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_206",
+      "center": [
+        7.055,
+        0.13,
+        -2.098321516541546e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_207",
+      "center": [
+        7.325,
+        0.13,
+        -1.4988010832439614e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_208",
+      "center": [
+        7.595,
+        0.13,
+        -8.992806499463769e-17
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_209",
+      "center": [
+        7.865,
+        0.13,
+        -2.997602166487923e-17
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_210",
+      "center": [
+        8.135,
+        0.13,
+        2.997602166487923e-17
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_211",
+      "center": [
+        8.405,
+        0.13,
+        8.992806499463769e-17
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_212",
+      "center": [
+        8.675,
+        0.13,
+        1.4988010832439614e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_213",
+      "center": [
+        8.945,
+        0.13,
+        2.098321516541546e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_214",
+      "center": [
+        9.215,
+        0.13,
+        2.6978419498391306e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    },
+    {
+      "name": "plank_215",
+      "center": [
+        9.485,
+        0.13,
+        3.297362383136715e-16
+      ],
+      "size": [
+        0.24000000000000035,
+        0.15,
+        1.65
+      ],
+      "surface_y": 0.20500000000000002,
+      "kind": "walk_deck"
+    }
+  ],
+  "obstacle_colliders": [
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.7249999999999999,
+        -6
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 2,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.7249999999999999,
+        -2
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 22,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.7249999999999999,
+        3
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 42,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.7249999999999999,
+        7
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 62,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.7249999999999999,
+        -6
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 82,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.7249999999999999,
+        -2
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 102,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.7249999999999999,
+        3
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 122,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.7249999999999999,
+        7
+      ],
+      "size": [
+        2.9899999999999998,
+        3.4499999999999997,
+        2.9899999999999998
+      ],
+      "yaw": 0,
+      "source_node_index": 142,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -9,
+        1.2000000000000002,
+        -8
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 321,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -9,
+        1.2000000000000002,
+        -4
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 353,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -9,
+        1.2000000000000002,
+        4
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 385,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -9,
+        1.2000000000000002,
+        8
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 417,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        9,
+        1.2000000000000002,
+        -8
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 449,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        9,
+        1.2000000000000002,
+        -4
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 481,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        9,
+        1.2000000000000002,
+        4
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 513,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        9,
+        1.2000000000000002,
+        8
+      ],
+      "size": [
+        1.04,
+        2.4000000000000004,
+        1.04
+      ],
+      "yaw": 0,
+      "source_node_index": 545,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        0,
+        0.36000000000000004,
+        -4
+      ],
+      "size": [
+        1.04,
+        0.7200000000000001,
+        0.8800000000000001
+      ],
+      "yaw": 0,
+      "source_node_index": 577,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        1,
+        0.36000000000000004,
+        -5
+      ],
+      "size": [
+        1.04,
+        0.7200000000000001,
+        0.8800000000000001
+      ],
+      "yaw": 0,
+      "source_node_index": 580,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -1,
+        0.36000000000000004,
+        4
+      ],
+      "size": [
+        1.04,
+        0.7200000000000001,
+        0.8800000000000001
+      ],
+      "yaw": 0,
+      "source_node_index": 583,
+      "render_node": 0
+    }
+  ],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "id": "mira",
+      "position": [
+        1,
+        0,
+        -8
+      ]
+    }
+  ],
+  "notes": [
+    "World-space box obstacles and walk decks for engine integration.",
+    "Stairs and bridge planks have explicit surface boxes.",
+    "Water and lava need hazard logic.",
+    "Character capsule sizing, step height and navigation require in-engine acceptance."
+  ],
+  "version": 2,
+  "coordinates": "world meters Y up",
+  "render_node_references": "Merged static render node 0. source_node_index is informational only.",
+  "tested_in_physics_engine": false
+}

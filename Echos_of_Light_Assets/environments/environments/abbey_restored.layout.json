@@ -1,0 +1,607 @@
+{
+  "scene": "abbey_restored",
+  "region": "abbey",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "upper_walkway",
+      "center": [
+        -7,
+        0.5,
+        0
+      ],
+      "size": [
+        3,
+        1,
+        20
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "upper_walkway",
+      "center": [
+        7,
+        0.5,
+        0
+      ],
+      "size": [
+        3,
+        1,
+        20
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "balcony",
+      "center": [
+        0,
+        0.5,
+        -8
+      ],
+      "size": [
+        14,
+        1,
+        3
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "balcony",
+      "center": [
+        0,
+        0.5,
+        7
+      ],
+      "size": [
+        14,
+        1,
+        3
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "step_155",
+      "center": [
+        -7.0,
+        0.1,
+        5.0
+      ],
+      "size": [
+        2.3,
+        0.2,
+        0.36
+      ],
+      "surface_y": 0.2,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_156",
+      "center": [
+        -7.0,
+        0.2,
+        4.65
+      ],
+      "size": [
+        2.3,
+        0.4,
+        0.36
+      ],
+      "surface_y": 0.4,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_157",
+      "center": [
+        -7.0,
+        0.30000000000000004,
+        4.3
+      ],
+      "size": [
+        2.3,
+        0.6000000000000001,
+        0.36
+      ],
+      "surface_y": 0.6000000000000001,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_158",
+      "center": [
+        -7.0,
+        0.4,
+        3.95
+      ],
+      "size": [
+        2.3,
+        0.8,
+        0.36
+      ],
+      "surface_y": 0.8,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_159",
+      "center": [
+        -7.0,
+        0.5,
+        3.6
+      ],
+      "size": [
+        2.3,
+        1.0,
+        0.36
+      ],
+      "surface_y": 1.0,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_160",
+      "center": [
+        -7.0,
+        0.6000000000000001,
+        3.25
+      ],
+      "size": [
+        2.3,
+        1.2000000000000002,
+        0.36
+      ],
+      "surface_y": 1.2000000000000002,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_168",
+      "center": [
+        7.0,
+        0.1,
+        5.0
+      ],
+      "size": [
+        2.3,
+        0.2,
+        0.36
+      ],
+      "surface_y": 0.2,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_169",
+      "center": [
+        7.0,
+        0.2,
+        4.65
+      ],
+      "size": [
+        2.3,
+        0.4,
+        0.36
+      ],
+      "surface_y": 0.4,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_170",
+      "center": [
+        7.0,
+        0.30000000000000004,
+        4.3
+      ],
+      "size": [
+        2.3,
+        0.6000000000000001,
+        0.36
+      ],
+      "surface_y": 0.6000000000000001,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_171",
+      "center": [
+        7.0,
+        0.4,
+        3.95
+      ],
+      "size": [
+        2.3,
+        0.8,
+        0.36
+      ],
+      "surface_y": 0.8,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_172",
+      "center": [
+        7.0,
+        0.5,
+        3.6
+      ],
+      "size": [
+        2.3,
+        1.0,
+        0.36
+      ],
+      "surface_y": 1.0,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_173",
+      "center": [
+        7.0,
+        0.6000000000000001,
+        3.25
+      ],
+      "size": [
+        2.3,
+        1.2000000000000002,
+        0.36
+      ],
+      "surface_y": 1.2000000000000002,
+      "kind": "stair_step"
+    }
+  ],
+  "obstacle_colliders": [
+    {
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        -8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 4,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        -4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 16,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        0
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 28,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 40,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 52,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        -8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 65,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        -4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 77,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        0
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 89,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 101,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0,
+      "source_node_index": 113,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        -8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 218,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        -4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 242,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        0
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 266,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 290,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 314,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        -8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 338,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        -4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 362,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        0
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 386,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 410,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966,
+      "source_node_index": 434,
+      "render_node": 0
+    }
+  ],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        1,
+        8
+      ]
+    },
+    {
+      "id": "nereth",
+      "position": [
+        0,
+        0,
+        -2
+      ]
+    }
+  ],
+  "notes": [
+    "World-space box obstacles and walk decks for engine integration.",
+    "Stairs and bridge planks have explicit surface boxes.",
+    "Water and lava need hazard logic.",
+    "Character capsule sizing, step height and navigation require in-engine acceptance."
+  ],
+  "version": 2,
+  "coordinates": "world meters Y up",
+  "render_node_references": "Merged static render node 0. source_node_index is informational only.",
+  "tested_in_physics_engine": false
+}

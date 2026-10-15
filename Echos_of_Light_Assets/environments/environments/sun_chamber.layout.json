@@ -1,0 +1,259 @@
+{
+  "scene": "sun_chamber",
+  "region": "chamber",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "dais",
+      "center": [
+        0,
+        0.25,
+        -3
+      ],
+      "size": [
+        7,
+        0.5,
+        7
+      ],
+      "surface_y": 0.5
+    },
+    {
+      "name": "step_99",
+      "center": [
+        0.0,
+        0.1,
+        2.0
+      ],
+      "size": [
+        2.3,
+        0.2,
+        0.36
+      ],
+      "surface_y": 0.2,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_100",
+      "center": [
+        0.0,
+        0.2,
+        1.65
+      ],
+      "size": [
+        2.3,
+        0.4,
+        0.36
+      ],
+      "surface_y": 0.4,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_101",
+      "center": [
+        0.0,
+        0.30000000000000004,
+        1.3
+      ],
+      "size": [
+        2.3,
+        0.6000000000000001,
+        0.36
+      ],
+      "surface_y": 0.6000000000000001,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_102",
+      "center": [
+        0.0,
+        0.4,
+        0.9500000000000002
+      ],
+      "size": [
+        2.3,
+        0.8,
+        0.36
+      ],
+      "surface_y": 0.8,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_103",
+      "center": [
+        0.0,
+        0.5,
+        0.6000000000000001
+      ],
+      "size": [
+        2.3,
+        1.0,
+        0.36
+      ],
+      "surface_y": 1.0,
+      "kind": "stair_step"
+    },
+    {
+      "name": "step_104",
+      "center": [
+        0.0,
+        0.6000000000000001,
+        0.25
+      ],
+      "size": [
+        2.3,
+        1.2000000000000002,
+        0.36
+      ],
+      "surface_y": 1.2000000000000002,
+      "kind": "stair_step"
+    }
+  ],
+  "obstacle_colliders": [
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.4249999999999998,
+        -6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0,
+      "source_node_index": 9,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.4249999999999998,
+        0
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0,
+      "source_node_index": 21,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        -5,
+        1.4249999999999998,
+        6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0,
+      "source_node_index": 33,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.4249999999999998,
+        -6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0,
+      "source_node_index": 45,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.4249999999999998,
+        0
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0,
+      "source_node_index": 57,
+      "render_node": 0
+    },
+    {
+      "shape": "box",
+      "center": [
+        5,
+        1.4249999999999998,
+        6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0,
+      "source_node_index": 69,
+      "render_node": 0
+    }
+  ],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "id": "veyr",
+      "position": [
+        0,
+        0.5,
+        -4
+      ]
+    },
+    {
+      "id": "mira",
+      "position": [
+        6,
+        0,
+        -4
+      ]
+    }
+  ],
+  "notes": [
+    "World-space box obstacles and walk decks for engine integration.",
+    "Stairs and bridge planks have explicit surface boxes.",
+    "Water and lava need hazard logic.",
+    "Character capsule sizing, step height and navigation require in-engine acceptance."
+  ],
+  "version": 2,
+  "coordinates": "world meters Y up",
+  "render_node_references": "Merged static render node 0. source_node_index is informational only.",
+  "tested_in_physics_engine": false
+}

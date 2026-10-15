@@ -1,0 +1,50 @@
+{
+  "scene": "elin_memory_room",
+  "region": "elin_room",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    }
+  ],
+  "obstacle_colliders": [],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "id": "veyr",
+      "position": [
+        -1,
+        0,
+        -2
+      ]
+    }
+  ],
+  "notes": [
+    "World-space box obstacles and walk decks for engine integration.",
+    "Stairs and bridge planks have explicit surface boxes.",
+    "Water and lava need hazard logic.",
+    "Character capsule sizing, step height and navigation require in-engine acceptance."
+  ],
+  "version": 2,
+  "coordinates": "world meters Y up",
+  "render_node_references": "Merged static render node 0. source_node_index is informational only.",
+  "tested_in_physics_engine": false
+}
