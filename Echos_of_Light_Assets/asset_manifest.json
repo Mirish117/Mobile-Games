@@ -1,0 +1,1439 @@
+{
+  "title": "Echos of Light",
+  "version": "0.1 first-pass 3D asset kit",
+  "models": [
+    {
+      "id": "aren_crimson",
+      "file": "models/aren_crimson.glb",
+      "nodes": 69,
+      "triangles": 4728,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 90320,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "aren_azure",
+      "file": "models/aren_azure.glb",
+      "nodes": 69,
+      "triangles": 4944,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 89536,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "aren_gold",
+      "file": "models/aren_gold.glb",
+      "nodes": 71,
+      "triangles": 4788,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 84752,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "aren_violet",
+      "file": "models/aren_violet.glb",
+      "nodes": 73,
+      "triangles": 5016,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 92344,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "mira",
+      "file": "models/mira.glb",
+      "nodes": 66,
+      "triangles": 4656,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 87248,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "aren_unsplit",
+      "file": "models/aren_unsplit.glb",
+      "nodes": 71,
+      "triangles": 4788,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 84756,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "aren_child",
+      "file": "models/aren_child.glb",
+      "nodes": 64,
+      "triangles": 4632,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 87104,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "aren_mother",
+      "file": "models/aren_mother.glb",
+      "nodes": 64,
+      "triangles": 4632,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 87092,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "elin",
+      "file": "models/elin.glb",
+      "nodes": 65,
+      "triangles": 4644,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 80444,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "traveler",
+      "file": "models/traveler.glb",
+      "nodes": 64,
+      "triangles": 4632,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 87084,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "survivor",
+      "file": "models/survivor.glb",
+      "nodes": 64,
+      "triangles": 4632,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 87092,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "baker",
+      "file": "models/baker.glb",
+      "nodes": 65,
+      "triangles": 4644,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 80440,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "veyr_keeper",
+      "file": "models/veyr_keeper.glb",
+      "nodes": 74,
+      "triangles": 4872,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 96812,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "sword",
+      "file": "props/sword.glb",
+      "nodes": 5,
+      "triangles": 96,
+      "animations": [],
+      "bytes": 7220,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "shield",
+      "file": "props/shield.glb",
+      "nodes": 5,
+      "triangles": 312,
+      "animations": [],
+      "bytes": 10192,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "staff",
+      "file": "props/staff.glb",
+      "nodes": 6,
+      "triangles": 144,
+      "animations": [],
+      "bytes": 6632,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "bow",
+      "file": "props/bow.glb",
+      "nodes": 9,
+      "triangles": 384,
+      "animations": [],
+      "bytes": 5920,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "lance",
+      "file": "props/lance.glb",
+      "nodes": 3,
+      "triangles": 72,
+      "animations": [],
+      "bytes": 4196,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "briarhorn",
+      "file": "models/briarhorn.glb",
+      "nodes": 32,
+      "triangles": 1680,
+      "animations": [
+        "idle",
+        "move",
+        "charge",
+        "attack",
+        "stagger",
+        "defeat"
+      ],
+      "bytes": 39184,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ashwing",
+      "file": "models/ashwing.glb",
+      "nodes": 39,
+      "triangles": 4152,
+      "animations": [
+        "idle",
+        "move",
+        "charge",
+        "attack",
+        "stagger",
+        "defeat"
+      ],
+      "bytes": 36716,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "thornling",
+      "file": "models/thornling.glb",
+      "nodes": 13,
+      "triangles": 696,
+      "animations": [
+        "idle",
+        "move",
+        "charge",
+        "attack",
+        "stagger",
+        "defeat"
+      ],
+      "bytes": 17428,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "drowned_wisp",
+      "file": "models/drowned_wisp.glb",
+      "nodes": 6,
+      "triangles": 216,
+      "animations": [
+        "idle",
+        "move",
+        "charge",
+        "attack",
+        "stagger",
+        "defeat"
+      ],
+      "bytes": 11300,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ash_moth",
+      "file": "models/ash_moth.glb",
+      "nodes": 11,
+      "triangles": 1008,
+      "animations": [
+        "idle",
+        "move",
+        "charge",
+        "attack",
+        "stagger",
+        "defeat"
+      ],
+      "bytes": 25132,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "nereth",
+      "file": "models/nereth.glb",
+      "nodes": 70,
+      "triangles": 4752,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter",
+        "wave"
+      ],
+      "bytes": 93380,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "glasswright",
+      "file": "models/glasswright.glb",
+      "nodes": 14,
+      "triangles": 456,
+      "animations": [
+        "sweep",
+        "idle",
+        "defeat"
+      ],
+      "bytes": 14088,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "stillborn_sentry",
+      "file": "models/stillborn_sentry.glb",
+      "nodes": 66,
+      "triangles": 4704,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 90984,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "mirror_shard",
+      "file": "models/mirror_shard.glb",
+      "nodes": 3,
+      "triangles": 48,
+      "animations": [
+        "idle"
+      ],
+      "bytes": 2732,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "veyr_last_shadow",
+      "file": "models/veyr_last_shadow.glb",
+      "nodes": 74,
+      "triangles": 4872,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "attack_1",
+        "attack_2",
+        "attack_3",
+        "signature",
+        "dodge",
+        "hit",
+        "downed",
+        "revive",
+        "interact",
+        "celebrate",
+        "look",
+        "scarf_flutter"
+      ],
+      "bytes": 80380,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "veyr_hollow_sun",
+      "file": "models/veyr_hollow_sun.glb",
+      "nodes": 13,
+      "triangles": 816,
+      "animations": [
+        "slam",
+        "idle",
+        "collapse"
+      ],
+      "bytes": 18028,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "broadleaf_tree",
+      "file": "props/broadleaf_tree.glb",
+      "nodes": 11,
+      "triangles": 1080,
+      "animations": [],
+      "bytes": 14460,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "pine_tree",
+      "file": "props/pine_tree.glb",
+      "nodes": 5,
+      "triangles": 120,
+      "animations": [],
+      "bytes": 6044,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "rock",
+      "file": "props/rock.glb",
+      "nodes": 2,
+      "triangles": 168,
+      "animations": [],
+      "bytes": 5928,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ruin_wall",
+      "file": "props/ruin_wall.glb",
+      "nodes": 16,
+      "triangles": 648,
+      "animations": [],
+      "bytes": 10088,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "stone_pillar",
+      "file": "props/stone_pillar.glb",
+      "nodes": 4,
+      "triangles": 36,
+      "animations": [],
+      "bytes": 3580,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "wood_bridge",
+      "file": "props/wood_bridge.glb",
+      "nodes": 21,
+      "triangles": 528,
+      "animations": [],
+      "bytes": 7732,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "stone_stairs",
+      "file": "props/stone_stairs.glb",
+      "nodes": 7,
+      "triangles": 72,
+      "animations": [],
+      "bytes": 2412,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "sun_gate",
+      "file": "props/sun_gate.glb",
+      "nodes": 15,
+      "triangles": 144,
+      "animations": [
+        "open"
+      ],
+      "bytes": 8600,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "flower",
+      "file": "props/flower.glb",
+      "nodes": 8,
+      "triangles": 1056,
+      "animations": [],
+      "bytes": 13996,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "bush",
+      "file": "props/bush.glb",
+      "nodes": 4,
+      "triangles": 504,
+      "animations": [],
+      "bytes": 11448,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "tangled_root",
+      "file": "props/tangled_root.glb",
+      "nodes": 5,
+      "triangles": 192,
+      "animations": [],
+      "bytes": 3248,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "barrel",
+      "file": "props/barrel.glb",
+      "nodes": 4,
+      "triangles": 144,
+      "animations": [],
+      "bytes": 4680,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "crate",
+      "file": "props/crate.glb",
+      "nodes": 4,
+      "triangles": 36,
+      "animations": [],
+      "bytes": 3600,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "training_dummy",
+      "file": "props/training_dummy.glb",
+      "nodes": 5,
+      "triangles": 240,
+      "animations": [],
+      "bytes": 10728,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "archery_target",
+      "file": "props/archery_target.glb",
+      "nodes": 6,
+      "triangles": 204,
+      "animations": [],
+      "bytes": 6560,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "resonance_beacon",
+      "file": "props/resonance_beacon.glb",
+      "nodes": 6,
+      "triangles": 144,
+      "animations": [
+        "glow_idle"
+      ],
+      "bytes": 7168,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "abbey_bell",
+      "file": "props/abbey_bell.glb",
+      "nodes": 6,
+      "triangles": 60,
+      "animations": [
+        "ring"
+      ],
+      "bytes": 4592,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "sluice_valve",
+      "file": "props/sluice_valve.glb",
+      "nodes": 4,
+      "triangles": 76,
+      "animations": [
+        "turn"
+      ],
+      "bytes": 5740,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "mirror_plinth",
+      "file": "props/mirror_plinth.glb",
+      "nodes": 4,
+      "triangles": 36,
+      "animations": [],
+      "bytes": 3576,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "telescope",
+      "file": "props/telescope.glb",
+      "nodes": 6,
+      "triangles": 360,
+      "animations": [],
+      "bytes": 8532,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "brazier",
+      "file": "props/brazier.glb",
+      "nodes": 7,
+      "triangles": 312,
+      "animations": [
+        "flicker"
+      ],
+      "bytes": 12536,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "light_anchor",
+      "file": "props/light_anchor.glb",
+      "nodes": 5,
+      "triangles": 112,
+      "animations": [],
+      "bytes": 5588,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "fountain",
+      "file": "props/fountain.glb",
+      "nodes": 13,
+      "triangles": 696,
+      "animations": [],
+      "bytes": 15792,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "house",
+      "file": "props/house.glb",
+      "nodes": 7,
+      "triangles": 72,
+      "animations": [],
+      "bytes": 6888,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "market_stall",
+      "file": "props/market_stall.glb",
+      "nodes": 5,
+      "triangles": 48,
+      "animations": [],
+      "bytes": 5232,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "memorial",
+      "file": "props/memorial.glb",
+      "nodes": 4,
+      "triangles": 36,
+      "animations": [],
+      "bytes": 5056,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "elin_bed",
+      "file": "props/elin_bed.glb",
+      "nodes": 4,
+      "triangles": 192,
+      "animations": [],
+      "bytes": 8980,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "dawnheart",
+      "file": "props/dawnheart.glb",
+      "nodes": 5,
+      "triangles": 112,
+      "animations": [],
+      "bytes": 5668,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "seedling",
+      "file": "props/seedling.glb",
+      "nodes": 3,
+      "triangles": 216,
+      "animations": [],
+      "bytes": 7984,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "paper_bird",
+      "file": "props/paper_bird.glb",
+      "nodes": 4,
+      "triangles": 48,
+      "animations": [],
+      "bytes": 3776,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "elin_toy",
+      "file": "props/elin_toy.glb",
+      "nodes": 3,
+      "triangles": 216,
+      "animations": [],
+      "bytes": 8056,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "recording_stone",
+      "file": "props/recording_stone.glb",
+      "nodes": 4,
+      "triangles": 48,
+      "animations": [],
+      "bytes": 2364,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "seal_crimson",
+      "file": "props/seal_crimson.glb",
+      "nodes": 3,
+      "triangles": 48,
+      "animations": [
+        "spin"
+      ],
+      "bytes": 2788,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "seal_azure",
+      "file": "props/seal_azure.glb",
+      "nodes": 3,
+      "triangles": 48,
+      "animations": [
+        "spin"
+      ],
+      "bytes": 2780,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "seal_gold",
+      "file": "props/seal_gold.glb",
+      "nodes": 3,
+      "triangles": 48,
+      "animations": [
+        "spin"
+      ],
+      "bytes": 2860,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "seal_violet",
+      "file": "props/seal_violet.glb",
+      "nodes": 3,
+      "triangles": 48,
+      "animations": [
+        "spin"
+      ],
+      "bytes": 2784,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ward",
+      "file": "effects/ward.glb",
+      "nodes": 2,
+      "triangles": 168,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 6456,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "resonance_ring",
+      "file": "effects/resonance_ring.glb",
+      "nodes": 2,
+      "triangles": 64,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 4204,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "tide_ring",
+      "file": "effects/tide_ring.glb",
+      "nodes": 2,
+      "triangles": 64,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 4192,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "danger_ring",
+      "file": "effects/danger_ring.glb",
+      "nodes": 2,
+      "triangles": 64,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 4124,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "prism_beam",
+      "file": "effects/prism_beam.glb",
+      "nodes": 2,
+      "triangles": 48,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 3160,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "lantern_arrow",
+      "file": "effects/lantern_arrow.glb",
+      "nodes": 2,
+      "triangles": 24,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 2720,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ember",
+      "file": "effects/ember.glb",
+      "nodes": 2,
+      "triangles": 168,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 6536,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "stillness_orb",
+      "file": "effects/stillness_orb.glb",
+      "nodes": 2,
+      "triangles": 168,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 6472,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "revive_spark",
+      "file": "effects/revive_spark.glb",
+      "nodes": 2,
+      "triangles": 168,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 6544,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "memory_shard",
+      "file": "effects/memory_shard.glb",
+      "nodes": 2,
+      "triangles": 24,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 2716,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "root_cage",
+      "file": "effects/root_cage.glb",
+      "nodes": 9,
+      "triangles": 192,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 3464,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "light_tether",
+      "file": "effects/light_tether.glb",
+      "nodes": 2,
+      "triangles": 48,
+      "animations": [
+        "pulse"
+      ],
+      "bytes": 3164,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "verdant_corrupted",
+      "file": "environments/verdant_corrupted.glb",
+      "nodes": 644,
+      "triangles": 46404,
+      "animations": [],
+      "bytes": 138680,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "verdant_restored",
+      "file": "environments/verdant_restored.glb",
+      "nodes": 653,
+      "triangles": 48996,
+      "animations": [],
+      "bytes": 141780,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "abbey_corrupted",
+      "file": "environments/abbey_corrupted.glb",
+      "nodes": 297,
+      "triangles": 7676,
+      "animations": [],
+      "bytes": 50432,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "abbey_restored",
+      "file": "environments/abbey_restored.glb",
+      "nodes": 297,
+      "triangles": 7676,
+      "animations": [],
+      "bytes": 48920,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "observatory_corrupted",
+      "file": "environments/observatory_corrupted.glb",
+      "nodes": 113,
+      "triangles": 2476,
+      "animations": [],
+      "bytes": 35140,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "observatory_restored",
+      "file": "environments/observatory_restored.glb",
+      "nodes": 113,
+      "triangles": 2476,
+      "animations": [],
+      "bytes": 35140,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ember_corrupted",
+      "file": "environments/ember_corrupted.glb",
+      "nodes": 182,
+      "triangles": 5532,
+      "animations": [],
+      "bytes": 42988,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "ember_restored",
+      "file": "environments/ember_restored.glb",
+      "nodes": 206,
+      "triangles": 6828,
+      "animations": [],
+      "bytes": 52516,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "lumenfall_corrupted",
+      "file": "environments/lumenfall_corrupted.glb",
+      "nodes": 257,
+      "triangles": 11364,
+      "animations": [],
+      "bytes": 68444,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "lumenfall_restored",
+      "file": "environments/lumenfall_restored.glb",
+      "nodes": 257,
+      "triangles": 11112,
+      "animations": [],
+      "bytes": 75140,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "hillside_refuge",
+      "file": "environments/hillside_refuge.glb",
+      "nodes": 136,
+      "triangles": 8520,
+      "animations": [],
+      "bytes": 58416,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "sun_chamber",
+      "file": "environments/sun_chamber.glb",
+      "nodes": 79,
+      "triangles": 760,
+      "animations": [],
+      "bytes": 24012,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "elin_memory_room",
+      "file": "environments/elin_memory_room.glb",
+      "nodes": 29,
+      "triangles": 576,
+      "animations": [],
+      "bytes": 28036,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "hollow_sun_arena",
+      "file": "environments/hollow_sun_arena.glb",
+      "nodes": 65,
+      "triangles": 1536,
+      "animations": [],
+      "bytes": 23532,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "bench",
+      "file": "props/bench.glb",
+      "nodes": 4,
+      "triangles": 36,
+      "animations": [],
+      "bytes": 3532,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "memory_blanket",
+      "file": "props/memory_blanket.glb",
+      "nodes": 3,
+      "triangles": 24,
+      "animations": [],
+      "bytes": 3472,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "mill_wheel",
+      "file": "props/mill_wheel.glb",
+      "nodes": 10,
+      "triangles": 448,
+      "animations": [
+        "rotate"
+      ],
+      "bytes": 7284,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "sun_controls",
+      "file": "props/sun_controls.glb",
+      "nodes": 14,
+      "triangles": 204,
+      "animations": [],
+      "bytes": 10036,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "seed_lamp",
+      "file": "props/seed_lamp.glb",
+      "nodes": 8,
+      "triangles": 264,
+      "animations": [],
+      "bytes": 10176,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "root_switch",
+      "file": "props/root_switch.glb",
+      "nodes": 5,
+      "triangles": 60,
+      "animations": [],
+      "bytes": 3956,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "lens_carriage",
+      "file": "props/lens_carriage.glb",
+      "nodes": 11,
+      "triangles": 240,
+      "animations": [],
+      "bytes": 7664,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "banner",
+      "file": "props/banner.glb",
+      "nodes": 4,
+      "triangles": 228,
+      "animations": [],
+      "bytes": 9560,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "broken_gear",
+      "file": "props/broken_gear.glb",
+      "nodes": 10,
+      "triangles": 448,
+      "animations": [
+        "rotate"
+      ],
+      "bytes": 7284,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "feather_spear",
+      "file": "props/feather_spear.glb",
+      "nodes": 2,
+      "triangles": 24,
+      "animations": [],
+      "bytes": 2080,
+      "status": "first_pass_3d"
+    },
+    {
+      "id": "last_shadow_arena",
+      "file": "environments/last_shadow_arena.glb",
+      "nodes": 35,
+      "triangles": 672,
+      "animations": [],
+      "bytes": 17936,
+      "status": "first_pass_3d"
+    }
+  ],
+  "audio": [
+    {
+      "file": "audio/sword_swing.wav",
+      "duration_seconds": 0.24,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/shield_block.wav",
+      "duration_seconds": 0.35,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/prism_shot.wav",
+      "duration_seconds": 0.35,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/lantern_arrow.wav",
+      "duration_seconds": 0.4,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/hero_hit.wav",
+      "duration_seconds": 0.2,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/revive.wav",
+      "duration_seconds": 1.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/seal_recovered.wav",
+      "duration_seconds": 1.3,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/beacon.wav",
+      "duration_seconds": 1.4,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/bell.wav",
+      "duration_seconds": 2.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/root_break.wav",
+      "duration_seconds": 0.5,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/water_wave.wav",
+      "duration_seconds": 1.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/ash_gust.wav",
+      "duration_seconds": 0.8,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/boss_stagger.wav",
+      "duration_seconds": 0.6,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/boss_defeat.wav",
+      "duration_seconds": 2.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/gate_open.wav",
+      "duration_seconds": 1.3,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/footstep.wav",
+      "duration_seconds": 0.12,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/menu_confirm.wav",
+      "duration_seconds": 0.15,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/menu_back.wav",
+      "duration_seconds": 0.18,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/stillness_pulse.wav",
+      "duration_seconds": 1.5,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/theme_courage.wav",
+      "duration_seconds": 8.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/theme_compassion.wav",
+      "duration_seconds": 8.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/theme_reason.wav",
+      "duration_seconds": 8.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/theme_hope.wav",
+      "duration_seconds": 8.0,
+      "kind": "original_synthesized_audio_sketch"
+    },
+    {
+      "file": "audio/theme_veyr.wav",
+      "duration_seconds": 8.0,
+      "kind": "original_synthesized_audio_sketch"
+    }
+  ],
+  "palette": {
+    "skin": "e7b28a",
+    "hair": "422b24",
+    "hairlight": "634232",
+    "eye": "211917",
+    "white": "f0e4c9",
+    "cream": "ddd1b3",
+    "pants": "333940",
+    "leather": "714b33",
+    "leatherlight": "a67b4b",
+    "metal": "b3b6aa",
+    "gold": "d9ac46",
+    "crimson": "ba3c41",
+    "azure": "387aa9",
+    "violet": "7854a5",
+    "leaf": "558447",
+    "leaflight": "79a84d",
+    "leafdark": "355c3f",
+    "trunk": "74523a",
+    "stone": "8c927e",
+    "stonelight": "b4baa0",
+    "moss": "607b47",
+    "dirt": "b69b6d",
+    "grass": "81934f",
+    "water": "398f9c",
+    "waterlight": "79c9bb",
+    "shadow": "262b40",
+    "dark": "37354b",
+    "ember": "c37a3b",
+    "lava": "e97336",
+    "brass": "9e8050",
+    "glass": "a3c6cf",
+    "pink": "c68ea9",
+    "bark": "695c3c",
+    "flower": "f5ebc4",
+    "night": "444d6a"
+  },
+  "not_a_finished_game": true,
+  "limitations": [
+    "Procedural simplified artwork does not match reference-level sculpting or hand-painted textures.",
+    "Articulated node animations, not skinned deforming meshes.",
+    "No voice acting or final score.",
+    "Maps are first-pass scenes with approximate collision metadata; traversal is not implemented.",
+    "No networking, combat code, or playable app included."
+  ]
+}

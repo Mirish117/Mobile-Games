@@ -1,0 +1,418 @@
+{
+  "method": "Node VM smoke test with mocked DOM and graphics context",
+  "files_loaded": 102,
+  "animation_clips_evaluated": 301,
+  "draw_calls_in_smoke_frame": 52,
+  "source_syntax": "passed",
+  "results": [
+    {
+      "id": "aren_crimson",
+      "clips": 15
+    },
+    {
+      "id": "aren_azure",
+      "clips": 15
+    },
+    {
+      "id": "aren_gold",
+      "clips": 15
+    },
+    {
+      "id": "aren_violet",
+      "clips": 15
+    },
+    {
+      "id": "mira",
+      "clips": 15
+    },
+    {
+      "id": "aren_unsplit",
+      "clips": 15
+    },
+    {
+      "id": "aren_child",
+      "clips": 15
+    },
+    {
+      "id": "aren_mother",
+      "clips": 15
+    },
+    {
+      "id": "elin",
+      "clips": 15
+    },
+    {
+      "id": "traveler",
+      "clips": 15
+    },
+    {
+      "id": "survivor",
+      "clips": 15
+    },
+    {
+      "id": "baker",
+      "clips": 15
+    },
+    {
+      "id": "veyr_keeper",
+      "clips": 15
+    },
+    {
+      "id": "sword",
+      "clips": 0
+    },
+    {
+      "id": "shield",
+      "clips": 0
+    },
+    {
+      "id": "staff",
+      "clips": 0
+    },
+    {
+      "id": "bow",
+      "clips": 0
+    },
+    {
+      "id": "lance",
+      "clips": 0
+    },
+    {
+      "id": "briarhorn",
+      "clips": 6
+    },
+    {
+      "id": "ashwing",
+      "clips": 6
+    },
+    {
+      "id": "thornling",
+      "clips": 6
+    },
+    {
+      "id": "drowned_wisp",
+      "clips": 6
+    },
+    {
+      "id": "ash_moth",
+      "clips": 6
+    },
+    {
+      "id": "nereth",
+      "clips": 16
+    },
+    {
+      "id": "glasswright",
+      "clips": 3
+    },
+    {
+      "id": "stillborn_sentry",
+      "clips": 15
+    },
+    {
+      "id": "mirror_shard",
+      "clips": 1
+    },
+    {
+      "id": "veyr_last_shadow",
+      "clips": 15
+    },
+    {
+      "id": "veyr_hollow_sun",
+      "clips": 3
+    },
+    {
+      "id": "broadleaf_tree",
+      "clips": 0
+    },
+    {
+      "id": "pine_tree",
+      "clips": 0
+    },
+    {
+      "id": "rock",
+      "clips": 0
+    },
+    {
+      "id": "ruin_wall",
+      "clips": 0
+    },
+    {
+      "id": "stone_pillar",
+      "clips": 0
+    },
+    {
+      "id": "wood_bridge",
+      "clips": 0
+    },
+    {
+      "id": "stone_stairs",
+      "clips": 0
+    },
+    {
+      "id": "sun_gate",
+      "clips": 1
+    },
+    {
+      "id": "flower",
+      "clips": 0
+    },
+    {
+      "id": "bush",
+      "clips": 0
+    },
+    {
+      "id": "tangled_root",
+      "clips": 0
+    },
+    {
+      "id": "barrel",
+      "clips": 0
+    },
+    {
+      "id": "crate",
+      "clips": 0
+    },
+    {
+      "id": "training_dummy",
+      "clips": 0
+    },
+    {
+      "id": "archery_target",
+      "clips": 0
+    },
+    {
+      "id": "resonance_beacon",
+      "clips": 1
+    },
+    {
+      "id": "abbey_bell",
+      "clips": 1
+    },
+    {
+      "id": "sluice_valve",
+      "clips": 1
+    },
+    {
+      "id": "mirror_plinth",
+      "clips": 0
+    },
+    {
+      "id": "telescope",
+      "clips": 0
+    },
+    {
+      "id": "brazier",
+      "clips": 1
+    },
+    {
+      "id": "light_anchor",
+      "clips": 0
+    },
+    {
+      "id": "fountain",
+      "clips": 0
+    },
+    {
+      "id": "house",
+      "clips": 0
+    },
+    {
+      "id": "market_stall",
+      "clips": 0
+    },
+    {
+      "id": "memorial",
+      "clips": 0
+    },
+    {
+      "id": "elin_bed",
+      "clips": 0
+    },
+    {
+      "id": "dawnheart",
+      "clips": 0
+    },
+    {
+      "id": "seedling",
+      "clips": 0
+    },
+    {
+      "id": "paper_bird",
+      "clips": 0
+    },
+    {
+      "id": "elin_toy",
+      "clips": 0
+    },
+    {
+      "id": "recording_stone",
+      "clips": 0
+    },
+    {
+      "id": "seal_crimson",
+      "clips": 1
+    },
+    {
+      "id": "seal_azure",
+      "clips": 1
+    },
+    {
+      "id": "seal_gold",
+      "clips": 1
+    },
+    {
+      "id": "seal_violet",
+      "clips": 1
+    },
+    {
+      "id": "ward",
+      "clips": 1
+    },
+    {
+      "id": "resonance_ring",
+      "clips": 1
+    },
+    {
+      "id": "tide_ring",
+      "clips": 1
+    },
+    {
+      "id": "danger_ring",
+      "clips": 1
+    },
+    {
+      "id": "prism_beam",
+      "clips": 1
+    },
+    {
+      "id": "lantern_arrow",
+      "clips": 1
+    },
+    {
+      "id": "ember",
+      "clips": 1
+    },
+    {
+      "id": "stillness_orb",
+      "clips": 1
+    },
+    {
+      "id": "revive_spark",
+      "clips": 1
+    },
+    {
+      "id": "memory_shard",
+      "clips": 1
+    },
+    {
+      "id": "root_cage",
+      "clips": 1
+    },
+    {
+      "id": "light_tether",
+      "clips": 1
+    },
+    {
+      "id": "verdant_corrupted",
+      "clips": 0
+    },
+    {
+      "id": "verdant_restored",
+      "clips": 0
+    },
+    {
+      "id": "abbey_corrupted",
+      "clips": 0
+    },
+    {
+      "id": "abbey_restored",
+      "clips": 0
+    },
+    {
+      "id": "observatory_corrupted",
+      "clips": 0
+    },
+    {
+      "id": "observatory_restored",
+      "clips": 0
+    },
+    {
+      "id": "ember_corrupted",
+      "clips": 0
+    },
+    {
+      "id": "ember_restored",
+      "clips": 0
+    },
+    {
+      "id": "lumenfall_corrupted",
+      "clips": 0
+    },
+    {
+      "id": "lumenfall_restored",
+      "clips": 0
+    },
+    {
+      "id": "hillside_refuge",
+      "clips": 0
+    },
+    {
+      "id": "sun_chamber",
+      "clips": 0
+    },
+    {
+      "id": "elin_memory_room",
+      "clips": 0
+    },
+    {
+      "id": "hollow_sun_arena",
+      "clips": 0
+    },
+    {
+      "id": "bench",
+      "clips": 0
+    },
+    {
+      "id": "memory_blanket",
+      "clips": 0
+    },
+    {
+      "id": "mill_wheel",
+      "clips": 1
+    },
+    {
+      "id": "sun_controls",
+      "clips": 0
+    },
+    {
+      "id": "seed_lamp",
+      "clips": 0
+    },
+    {
+      "id": "root_switch",
+      "clips": 0
+    },
+    {
+      "id": "lens_carriage",
+      "clips": 0
+    },
+    {
+      "id": "banner",
+      "clips": 0
+    },
+    {
+      "id": "broken_gear",
+      "clips": 1
+    },
+    {
+      "id": "feather_spear",
+      "clips": 0
+    },
+    {
+      "id": "last_shadow_arena",
+      "clips": 0
+    }
+  ],
+  "limitations": "No real shader compilation or rasterization. Actual browser, iPhone Safari and performance testing remain."
+}

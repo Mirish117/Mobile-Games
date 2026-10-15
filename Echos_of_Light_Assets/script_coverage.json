@@ -1,0 +1,84 @@
+{
+  "coverage": {
+    "main_hero": [
+      "aren_crimson",
+      "aren_azure",
+      "aren_gold",
+      "aren_violet"
+    ],
+    "minor_bosses": [
+      "briarhorn",
+      "nereth",
+      "glasswright",
+      "ashwing"
+    ],
+    "final_boss_stages": [
+      "veyr_keeper",
+      "veyr_hollow_sun",
+      "veyr_last_shadow"
+    ],
+    "ordinary_enemies": [
+      "stillborn_sentry",
+      "thornling",
+      "drowned_wisp",
+      "mirror_shard",
+      "ash_moth"
+    ],
+    "npcs": [
+      "mira",
+      "aren_child",
+      "aren_mother",
+      "elin",
+      "traveler",
+      "survivor",
+      "baker"
+    ],
+    "regions": [
+      "lumenfall",
+      "verdant",
+      "abbey",
+      "observatory",
+      "ember"
+    ],
+    "special_locations": [
+      "hillside_refuge",
+      "sun_chamber",
+      "elin_memory_room",
+      "hollow_sun_arena",
+      "last_shadow_arena"
+    ],
+    "cinematic_sequences": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "F01",
+      "F02",
+      "F03",
+      "E01"
+    ]
+  },
+  "coverage_meaning": "Named model and scene coverage, not finished cinematic or gameplay implementation.",
+  "remaining_art_work": [
+    "Reference-quality sculpted faces, hair, fabrics and foliage",
+    "Hand-painted UV texture art and atlas packing",
+    "Skinned flexible cloth, facial expressions and lip sync",
+    "Polished boss attacks and final cinematic motion",
+    "Final audio and recorded voice acting",
+    "Complete region level design, navigation and collision tuning",
+    "Mobile draw-call optimization, LODs and physical-device performance tests"
+  ]
+}

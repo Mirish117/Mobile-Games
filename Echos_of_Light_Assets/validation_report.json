@@ -1,0 +1,523 @@
+{
+  "method": "local custom structural checks; not Khronos official validator or engine import",
+  "checks": [
+    "GLB headers and lengths",
+    "buffer accessor bounds",
+    "finite geometry",
+    "triangle index ranges and nonzero area",
+    "unit normals and rotation quaternions",
+    "animation target indices and increasing timestamps"
+  ],
+  "files": [
+    {
+      "file": "effects/danger_ring.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/ember.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/lantern_arrow.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/light_tether.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/memory_shard.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/prism_beam.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/resonance_ring.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/revive_spark.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/root_cage.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/stillness_orb.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/tide_ring.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "effects/ward.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "environments/abbey_corrupted.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/abbey_restored.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/elin_memory_room.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/ember_corrupted.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/ember_restored.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/hillside_refuge.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/hollow_sun_arena.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/last_shadow_arena.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/lumenfall_corrupted.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/lumenfall_restored.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/observatory_corrupted.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/observatory_restored.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/sun_chamber.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/verdant_corrupted.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "environments/verdant_restored.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "models/aren_azure.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/aren_child.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/aren_crimson.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/aren_gold.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/aren_mother.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/aren_unsplit.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/aren_violet.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/ash_moth.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 6
+    },
+    {
+      "file": "models/ashwing.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 6
+    },
+    {
+      "file": "models/baker.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/briarhorn.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 6
+    },
+    {
+      "file": "models/drowned_wisp.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 6
+    },
+    {
+      "file": "models/elin.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/glasswright.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 3
+    },
+    {
+      "file": "models/mira.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/mirror_shard.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "models/nereth.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 16
+    },
+    {
+      "file": "models/stillborn_sentry.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/survivor.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/thornling.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 6
+    },
+    {
+      "file": "models/traveler.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/veyr_hollow_sun.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 3
+    },
+    {
+      "file": "models/veyr_keeper.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "models/veyr_last_shadow.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 15
+    },
+    {
+      "file": "props/abbey_bell.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/archery_target.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/banner.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/barrel.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/bench.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/bow.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/brazier.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/broadleaf_tree.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/broken_gear.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/bush.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/crate.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/dawnheart.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/elin_bed.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/elin_toy.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/feather_spear.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/flower.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/fountain.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/house.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/lance.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/lens_carriage.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/light_anchor.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/market_stall.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/memorial.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/memory_blanket.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/mill_wheel.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/mirror_plinth.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/paper_bird.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/pine_tree.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/recording_stone.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/resonance_beacon.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/rock.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/root_switch.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/ruin_wall.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/seal_azure.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/seal_crimson.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/seal_gold.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/seal_violet.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/seed_lamp.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/seedling.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/shield.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/sluice_valve.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/staff.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/stone_pillar.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/stone_stairs.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/sun_controls.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/sun_gate.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 1
+    },
+    {
+      "file": "props/sword.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/tangled_root.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/telescope.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/training_dummy.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    },
+    {
+      "file": "props/wood_bridge.glb",
+      "status": "passed_structural_checks",
+      "animation_count": 0
+    }
+  ]
+}
