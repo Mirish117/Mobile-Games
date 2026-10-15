@@ -1,0 +1,266 @@
+{
+  "scene": "ember_restored",
+  "region": "ember",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "terrace",
+      "center": [
+        -6,
+        0.15000000000000002,
+        6
+      ],
+      "size": [
+        7,
+        0.5,
+        6
+      ],
+      "surface_y": 0.4
+    },
+    {
+      "name": "terrace",
+      "center": [
+        -6,
+        0.95,
+        0
+      ],
+      "size": [
+        7,
+        0.5,
+        6
+      ],
+      "surface_y": 1.2
+    },
+    {
+      "name": "terrace",
+      "center": [
+        -6,
+        1.75,
+        -6
+      ],
+      "size": [
+        7,
+        0.5,
+        6
+      ],
+      "surface_y": 2.0
+    },
+    {
+      "name": "terrace",
+      "center": [
+        6,
+        0.15000000000000002,
+        6
+      ],
+      "size": [
+        7,
+        0.5,
+        6
+      ],
+      "surface_y": 0.4
+    },
+    {
+      "name": "terrace",
+      "center": [
+        6,
+        0.95,
+        0
+      ],
+      "size": [
+        7,
+        0.5,
+        6
+      ],
+      "surface_y": 1.2
+    },
+    {
+      "name": "terrace",
+      "center": [
+        6,
+        1.75,
+        -6
+      ],
+      "size": [
+        7,
+        0.5,
+        6
+      ],
+      "surface_y": 2.0
+    },
+    {
+      "name": "nest",
+      "center": [
+        0,
+        1.75,
+        -8
+      ],
+      "size": [
+        7,
+        0.5,
+        5
+      ],
+      "surface_y": 2.0
+    }
+  ],
+  "obstacle_colliders": [
+    {
+      "node": 158,
+      "shape": "box",
+      "center": [
+        -10,
+        0.765,
+        -8
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 161,
+      "shape": "box",
+      "center": [
+        -10,
+        0.765,
+        -3
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 164,
+      "shape": "box",
+      "center": [
+        -10,
+        0.765,
+        2
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 167,
+      "shape": "box",
+      "center": [
+        -10,
+        0.765,
+        7
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 170,
+      "shape": "box",
+      "center": [
+        10,
+        0.765,
+        -8
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 173,
+      "shape": "box",
+      "center": [
+        10,
+        0.765,
+        -3
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 176,
+      "shape": "box",
+      "center": [
+        10,
+        0.765,
+        2
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 179,
+      "shape": "box",
+      "center": [
+        10,
+        0.765,
+        7
+      ],
+      "size": [
+        2.21,
+        1.53,
+        1.87
+      ],
+      "yaw": 0
+    }
+  ],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        -6,
+        0.4,
+        8
+      ]
+    },
+    {
+      "id": "ashwing",
+      "position": [
+        0,
+        2,
+        -8
+      ]
+    }
+  ],
+  "notes": [
+    "Box colliders are starter approximations. Gameplay must test and refine boundaries.",
+    "GLB contains actual geometry, no flattened map image.",
+    "No characters embedded in environment; load characters at spawn points.",
+    "Y up. -Z is character forward. Units meters.",
+    "Water/lava are visual surfaces, not gameplay code. Water in abbey requires state-dependent traversal logic."
+  ]
+}

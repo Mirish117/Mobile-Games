@@ -1,0 +1,47 @@
+{
+  "scene": "elin_memory_room",
+  "region": "elin_room",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    }
+  ],
+  "obstacle_colliders": [],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "id": "veyr",
+      "position": [
+        -1,
+        0,
+        -2
+      ]
+    }
+  ],
+  "notes": [
+    "Box colliders are starter approximations. Gameplay must test and refine boundaries.",
+    "GLB contains actual geometry, no flattened map image.",
+    "No characters embedded in environment; load characters at spawn points.",
+    "Y up. -Z is character forward. Units meters.",
+    "Water/lava are visual surfaces, not gameplay code. Water in abbey requires state-dependent traversal logic."
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "scene": "sun_chamber",
+  "region": "chamber",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "dais",
+      "center": [
+        0,
+        0.25,
+        -3
+      ],
+      "size": [
+        7,
+        0.5,
+        7
+      ],
+      "surface_y": 0.5
+    }
+  ],
+  "obstacle_colliders": [
+    {
+      "node": 9,
+      "shape": "box",
+      "center": [
+        -5,
+        1.4249999999999998,
+        -6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 14,
+      "shape": "box",
+      "center": [
+        -5,
+        1.4249999999999998,
+        0
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 19,
+      "shape": "box",
+      "center": [
+        -5,
+        1.4249999999999998,
+        6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 24,
+      "shape": "box",
+      "center": [
+        5,
+        1.4249999999999998,
+        -6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 29,
+      "shape": "box",
+      "center": [
+        5,
+        1.4249999999999998,
+        0
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 34,
+      "shape": "box",
+      "center": [
+        5,
+        1.4249999999999998,
+        6
+      ],
+      "size": [
+        1.275,
+        2.8499999999999996,
+        1.275
+      ],
+      "yaw": 0
+    }
+  ],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "id": "veyr",
+      "position": [
+        0,
+        0.5,
+        -4
+      ]
+    },
+    {
+      "id": "mira",
+      "position": [
+        6,
+        0,
+        -4
+      ]
+    }
+  ],
+  "notes": [
+    "Box colliders are starter approximations. Gameplay must test and refine boundaries.",
+    "GLB contains actual geometry, no flattened map image.",
+    "No characters embedded in environment; load characters at spawn points.",
+    "Y up. -Z is character forward. Units meters.",
+    "Water/lava are visual surfaces, not gameplay code. Water in abbey requires state-dependent traversal logic."
+  ]
+}

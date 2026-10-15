@@ -1,0 +1,201 @@
+{
+  "scene": "hollow_sun_arena",
+  "region": "hollow_arena",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "floating_platform",
+      "center": [
+        -5,
+        -0.35,
+        -5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        -5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        -5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "floating_platform",
+      "center": [
+        5,
+        -0.35,
+        -5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        -5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "floating_platform",
+      "center": [
+        -5,
+        -0.35,
+        5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        -5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "floating_platform",
+      "center": [
+        5,
+        -0.35,
+        5
+      ],
+      "size": [
+        7,
+        0.7,
+        7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_x",
+      "center": [
+        0,
+        -0.15,
+        5
+      ],
+      "size": [
+        4,
+        0.3,
+        1.7
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "connector_z",
+      "center": [
+        5,
+        -0.15,
+        0
+      ],
+      "size": [
+        1.7,
+        0.3,
+        4
+      ],
+      "surface_y": 0.0
+    }
+  ],
+  "obstacle_colliders": [],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        -5,
+        0,
+        6
+      ]
+    },
+    {
+      "id": "boss",
+      "position": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "notes": [
+    "Box colliders are starter approximations. Gameplay must test and refine boundaries.",
+    "GLB contains actual geometry, no flattened map image.",
+    "No characters embedded in environment; load characters at spawn points.",
+    "Y up. -Z is character forward. Units meters.",
+    "Water/lava are visual surfaces, not gameplay code. Water in abbey requires state-dependent traversal logic."
+  ]
+}

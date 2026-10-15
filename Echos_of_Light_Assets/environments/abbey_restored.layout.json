@@ -1,0 +1,404 @@
+{
+  "scene": "abbey_restored",
+  "region": "abbey",
+  "state": "restored",
+  "walk_surfaces": [
+    {
+      "name": "ground",
+      "center": [
+        0,
+        -0.25,
+        0
+      ],
+      "size": [
+        22,
+        0.5,
+        22
+      ],
+      "surface_y": 0.0
+    },
+    {
+      "name": "upper_walkway",
+      "center": [
+        -7,
+        0.5,
+        0
+      ],
+      "size": [
+        3,
+        1,
+        20
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "upper_walkway",
+      "center": [
+        7,
+        0.5,
+        0
+      ],
+      "size": [
+        3,
+        1,
+        20
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "balcony",
+      "center": [
+        0,
+        0.5,
+        -8
+      ],
+      "size": [
+        14,
+        1,
+        3
+      ],
+      "surface_y": 1.0
+    },
+    {
+      "name": "balcony",
+      "center": [
+        0,
+        0.5,
+        7
+      ],
+      "size": [
+        14,
+        1,
+        3
+      ],
+      "surface_y": 1.0
+    }
+  ],
+  "obstacle_colliders": [
+    {
+      "node": 4,
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        -8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 9,
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        -4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 14,
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        0
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 19,
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 24,
+      "shape": "box",
+      "center": [
+        -7,
+        1.95,
+        8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 30,
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        -8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 35,
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        -4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 40,
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        0
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 45,
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        4
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 50,
+      "shape": "box",
+      "center": [
+        7,
+        1.95,
+        8
+      ],
+      "size": [
+        0.85,
+        1.9,
+        0.85
+      ],
+      "yaw": 0
+    },
+    {
+      "node": 127,
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        -8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 144,
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        -4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 161,
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        0
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 178,
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 195,
+      "shape": "box",
+      "center": [
+        -10,
+        0.8,
+        8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 212,
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        -8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 229,
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        -4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 246,
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        0
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 263,
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        4
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "node": 280,
+      "shape": "box",
+      "center": [
+        10,
+        0.8,
+        8
+      ],
+      "size": [
+        1.9,
+        1.6,
+        0.5
+      ],
+      "yaw": 1.5707963267948966
+    }
+  ],
+  "spawn_points": [
+    {
+      "id": "party_start",
+      "position": [
+        0,
+        1,
+        8
+      ]
+    },
+    {
+      "id": "nereth",
+      "position": [
+        0,
+        0,
+        -2
+      ]
+    }
+  ],
+  "notes": [
+    "Box colliders are starter approximations. Gameplay must test and refine boundaries.",
+    "GLB contains actual geometry, no flattened map image.",
+    "No characters embedded in environment; load characters at spawn points.",
+    "Y up. -Z is character forward. Units meters.",
+    "Water/lava are visual surfaces, not gameplay code. Water in abbey requires state-dependent traversal logic."
+  ]
+}
