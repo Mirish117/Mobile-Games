@@ -1,0 +1,1240 @@
+{
+  "title": "Echos of Light",
+  "format": "engine-neutral draft scene timing",
+  "voice_audio_included": false,
+  "facial_animation_included": false,
+  "scenes": [
+    {
+      "id": "P01",
+      "title": "Cutscene P01 The unanswered bell",
+      "chapter": "Prologue The Night the Sun Broke",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "TRIGGER: New game. CAMERA: Begin on the paper bird; follow it toward Aren crossing the square. AUDIO: Market chatter and the bell.",
+          "estimated_duration_seconds": 9.2,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA,",
+          "text": "You\u2019re late.",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 9.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AREN",
+          "text": "The bridge was crowded.",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 11.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "You stopped to help someone.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 13.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AREN",
+          "text": "That too.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 15.9
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The bell stops halfway through its next strike. Water hangs beneath the fountain. The paper bird freezes in the air. Veyr appears inside the Dawnheart\u2019s light.",
+          "estimated_duration_seconds": 10.8,
+          "start_seconds": 17.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "No more departures. No more empty chairs. I can keep everything.",
+          "estimated_duration_seconds": 5.0,
+          "start_seconds": 28.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "You\u2019re stopping the city\u2019s heart.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 33.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "I\u2019m keeping it from breaking.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 36.2
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "lumenfall_restored",
+      "estimated_duration_seconds": 38.7
+    },
+    {
+      "id": "P02",
+      "title": "Playable action P02 Reach the tower",
+      "chapter": "Prologue The Night the Sun Broke",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Give movement and dodge control to the unsplit Aren. Rescue two civilians from falling debris, climb the canal stairs, and fight three Stillborn sentries. The rescued civilians reappear in the ending. Mira unlocks the tower door while the player guards her. A visible circular warning teaches the same hazard language used throughout the game.",
+          "estimated_duration_seconds": 22.5,
+          "start_seconds": 0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "lumenfall_corrupted",
+      "estimated_duration_seconds": 22.5
+    },
+    {
+      "id": "P03",
+      "title": "Cutscene P03 Four answers",
+      "chapter": "Prologue The Night the Sun Broke",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "TRIGGER: Aren enters the sun chamber. Veyr removes four Dawn Seals from the central apparatus. Each seal vanishes toward a distant region.",
+          "estimated_duration_seconds": 9.2,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "Aren, the core needs a living anchor!",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 9.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AREN",
+          "text": "Then use me.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 12.5
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Aren catches the falling heart of the sun against his chest. Veyr\u2019s black lance strikes the core. Hold one frame of Aren\u2019s silhouette; split it into four colored outlines. All four land in different corners of the chamber.",
+          "estimated_duration_seconds": 15.8,
+          "start_seconds": 14.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "Where did he go?",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 30.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "We\u2019re asking the wrong question.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 32.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE,",
+          "text": "You\u2019re hurt where I\u2019m hurt.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 34.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "I remember saying yes.",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 39.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "All four of you did.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 41.6
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "sun_chamber",
+      "estimated_duration_seconds": 44.1
+    },
+    {
+      "id": "P04",
+      "title": "Playable action P04 Escape together",
+      "chapter": "Prologue The Night the Sun Broke",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Teach switching or player ownership. Crimson clears rubble; Azure shields falling sparks; Gold redirects a broken door\u2019s light; Violet reaches a release lever across a marked gap. Gates remain open once activated. Mira escapes with the party to a hillside beacon. Veyr withdraws into the eclipsed tower; he does not become a combat encounter here.",
+          "estimated_duration_seconds": 22.9,
+          "start_seconds": 0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "sun_chamber",
+      "estimated_duration_seconds": 22.9
+    },
+    {
+      "id": "C01",
+      "title": "Arrival cutscene C01",
+      "chapter": "Chapter One Root of Courage",
+      "timeline": [
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "Cut a path. Get them out.",
+          "estimated_duration_seconds": 2.9,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "The roots are holding up the bridge.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 2.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "Cut those and we bury the people below.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 6.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "Then let\u2019s find where the roots begin.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 10.0
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A wooden training dummy turns its head toward Crimson. A memory appears: young Aren charging past a fallen partner during a trial. The partner calls after him; the image breaks before Aren answers.",
+          "estimated_duration_seconds": 13.8,
+          "start_seconds": 13.3
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "verdant_corrupted",
+      "estimated_duration_seconds": 27.1
+    },
+    {
+      "id": "C02",
+      "title": "Resolution cutscene C02",
+      "chapter": "Chapter One Root of Courage",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Memory resumes. Young Aren finally turns, lifts the fallen partner, and loses the trial.",
+          "estimated_duration_seconds": 5.8,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "I remembered running. I forgot why I stopped.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 5.8
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "You came back.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 9.6
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "Next time, I\u2019ll look sooner.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 11.6
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The first seal lights the beacon. Briarhorn\u2019s small wooden spirit rises and bows. Travelers resume walking; birds return to the trees.",
+          "estimated_duration_seconds": 8.8,
+          "start_seconds": 14.1
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "verdant_restored",
+      "estimated_duration_seconds": 22.9
+    },
+    {
+      "id": "C03",
+      "title": "Arrival cutscene C03",
+      "chapter": "Chapter Two Weight of Kindness",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A survivor offers Azure a soaked blanket. All four recognize the stitched initials of Aren\u2019s mother.",
+          "estimated_duration_seconds": 6.7,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "I know this.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 6.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "SURVIVOR",
+          "text": "The abbey kept what people couldn\u2019t carry.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 8.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "SISTER NERETH,",
+          "text": "Give me your pain. I will hold it until you feel nothing.",
+          "estimated_duration_seconds": 7.5,
+          "start_seconds": 12.0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "And what happens to you?",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 19.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "NERETH",
+          "text": "That stopped mattering long ago.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 22.0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "abbey_corrupted",
+      "estimated_duration_seconds": 24.5
+    },
+    {
+      "id": "C04",
+      "title": "Resolution cutscene C04",
+      "chapter": "Chapter Two Weight of Kindness",
+      "timeline": [
+        {
+          "type": "dialogue",
+          "speaker": "NERETH",
+          "text": "If I put it down, who will carry it?",
+          "estimated_duration_seconds": 4.2,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "You can ask.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 4.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "CRIMSON kneels beside her. GOLD lifts the lantern. VIOLET opens the balcony gate.",
+          "estimated_duration_seconds": 5.4,
+          "start_seconds": 6.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A memory returns: Aren waiting beside his dying mother. He could not save her, but he stayed and held her hand.",
+          "estimated_duration_seconds": 8.8,
+          "start_seconds": 11.6
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "I thought remembering her meant remembering the moment I failed.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 20.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "We remember her laugh too.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 25.0
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The four share the memory. A brief laugh sounds beneath the first ordinary rainfall.",
+          "estimated_duration_seconds": 5.8,
+          "start_seconds": 27.5
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "abbey_restored",
+      "estimated_duration_seconds": 33.3
+    },
+    {
+      "id": "C05",
+      "title": "Cutscene C05 The fifth place at the fire",
+      "chapter": "Interlude The memories we choose",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "TRIGGER: Both first seals recovered. CAMERA: Four echoes around the fire; Mira sits beside a damaged sun diagram.",
+          "estimated_duration_seconds": 7.5,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "Two seals. Two regions remaining. Then the core can restore our original configuration.",
+          "estimated_duration_seconds": 5.8,
+          "start_seconds": 7.5
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "MIRA does not answer.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 13.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "Say it.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 15.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "The core can combine your bodies. I don\u2019t know what it will do to the people you\u2019ve become.",
+          "estimated_duration_seconds": 7.9,
+          "start_seconds": 17.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "People?",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 25.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "You remember different things now. You make different choices.",
+          "estimated_duration_seconds": 4.2,
+          "start_seconds": 27.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "But we\u2019re Aren.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 31.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "Yes. That\u2019s why I\u2019m telling all of you.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 33.4
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Wind stirs the fire. Crimson turns away; Gold folds the diagram too precisely. Violet starts to speak, then stops.",
+          "estimated_duration_seconds": 7.9,
+          "start_seconds": 37.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "We get the seals first.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 45.1
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "And decide together.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 47.6
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "hillside_refuge",
+      "estimated_duration_seconds": 49.6
+    },
+    {
+      "id": "C06",
+      "title": "Cutscene C06 Veyr remembers",
+      "chapter": "Interlude The memories we choose",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "TRIGGER: Leaving the refuge. CAMERA: The eclipsed tower. Veyr stands in a room preserved for his daughter, Elin. A spinning toy hangs still above her empty bed.",
+          "estimated_duration_seconds": 11.2,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "They told me time would soften it.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 11.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "He turns a cracked recording stone.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 14.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "ELIN,",
+          "text": "Again, Father. You skipped the best part.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 17.0
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The recording fails. Veyr reaches for the toy, but cannot bring himself to move it.",
+          "estimated_duration_seconds": 6.2,
+          "start_seconds": 20.8
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "There will be no next time. Nothing else will be taken.",
+          "estimated_duration_seconds": 5.0,
+          "start_seconds": 27.0
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A pulse of darkness crosses the land. Cut back to the four echoes seeing it from the road.",
+          "estimated_duration_seconds": 7.5,
+          "start_seconds": 32.0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "elin_memory_room",
+      "estimated_duration_seconds": 39.5
+    },
+    {
+      "id": "C07",
+      "title": "Arrival cutscene C07",
+      "chapter": "Chapter Three The Broken Measure",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "GOLD reads a plan etched into the entrance.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "The route is complete. Stay behind me.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 3.3
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "He steps onto a reflected stair. It vanishes. Azure catches him at the ledge.",
+          "estimated_duration_seconds": 5.8,
+          "start_seconds": 6.6
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GLASSWRIGHT,",
+          "text": "An answer is only useful when nothing can change.",
+          "estimated_duration_seconds": 5.4,
+          "start_seconds": 12.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "Then why did your stairs move?",
+          "estimated_duration_seconds": 2.9,
+          "start_seconds": 17.8
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A laugh cracks into the sound of breaking glass.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 20.7
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "observatory_corrupted",
+      "estimated_duration_seconds": 24.5
+    },
+    {
+      "id": "C08",
+      "title": "Resolution cutscene C08",
+      "chapter": "Chapter Three The Broken Measure",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A memory shows Aren studying a rescue route while a burning bridge gives way. He abandons the perfect plan and follows the sound of someone calling.",
+          "estimated_duration_seconds": 10.8,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "I didn\u2019t know the bridge would hold.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 10.8
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "It didn\u2019t.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 14.1
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "We crossed anyway.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 16.1
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The automaton\u2019s eye returns as a small steady light.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 18.1
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GLASSWRIGHT",
+          "text": "Tomorrow is unresolved.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 21.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "Then we should be ready to listen.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 23.9
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "observatory_restored",
+      "estimated_duration_seconds": 27.2
+    },
+    {
+      "id": "C09",
+      "title": "Arrival cutscene C09",
+      "chapter": "Chapter Four The Last Tomorrow",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "VIOLET reaches a cliff shrine and finds four outlines carved into the stone. They surround one name: Aren.",
+          "estimated_duration_seconds": 7.5,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "Maybe someone already knows how this ends.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 7.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "Or they\u2019re recording how it started.",
+          "estimated_duration_seconds": 2.9,
+          "start_seconds": 10.8
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "ASHWING lands above them, feathers trailing cold embers.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 13.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "ASHWING",
+          "text": "Every dawn becomes ash. Why climb?",
+          "estimated_duration_seconds": 2.9,
+          "start_seconds": 17.0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "Because\u2014",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 19.9
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "She cannot finish. Ashwing spreads its wings and darkens the trail.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 21.9
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "ember_corrupted",
+      "estimated_duration_seconds": 26.5
+    },
+    {
+      "id": "C10",
+      "title": "Resolution cutscene C10",
+      "chapter": "Chapter Four The Last Tomorrow",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A memory shows Aren as a child burying seeds after a fire. His mother works beside him.",
+          "estimated_duration_seconds": 7.1,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "YOUNG AREN",
+          "text": "Will they grow?",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 7.1
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MOTHER",
+          "text": "Some might. Help me give them a chance.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 9.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET,",
+          "text": "I\u2019m afraid tomorrow will hurt too.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 13.0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "ASHWING",
+          "text": "And still?",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 16.8
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "VIOLET lights the final seedling lamp.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 18.8
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "And still.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 21.3
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "ember_restored",
+      "estimated_duration_seconds": 23.3
+    },
+    {
+      "id": "C11",
+      "title": "Cutscene C11 The return flight",
+      "chapter": "Approach to the eclipsed tower",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "TRIGGER: Four seals recovered. Ashwing carries the party toward Lumenfall. Restored waterways and forests pass beneath them, but the tower\u2019s shadow continues to spread.",
+          "estimated_duration_seconds": 10.0,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "When we get inside, he\u2019ll try to divide us.",
+          "estimated_duration_seconds": 4.2,
+          "start_seconds": 10.0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "He already did.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 14.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "He broke our body. He doesn\u2019t get to choose what we do with it.",
+          "estimated_duration_seconds": 6.2,
+          "start_seconds": 16.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "Then let\u2019s go home.",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 22.4
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "lumenfall_corrupted",
+      "estimated_duration_seconds": 24.5
+    },
+    {
+      "id": "C12",
+      "title": "Cutscene C12 What reunion costs",
+      "chapter": "Approach to the eclipsed tower",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Mira meets the party beside the Dawnheart controls.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "With the seals here, I can draw you into one body.",
+          "estimated_duration_seconds": 5.0,
+          "start_seconds": 3.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "And our new memories?",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 8.3
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA",
+          "text": "I can\u2019t promise they\u2019ll survive.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 10.4
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "CRIMSON looks at the others rather than the machine.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 12.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "I used to think being whole meant needing nobody.",
+          "estimated_duration_seconds": 4.2,
+          "start_seconds": 16.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "I used to think it meant giving everything away.",
+          "estimated_duration_seconds": 4.2,
+          "start_seconds": 20.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "I wanted one answer.",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 25.1
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "I wanted one that didn\u2019t scare me.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 27.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "A pause. All four place a hand against the control ring.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 30.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AREN,",
+          "text": "We stay together. All of us.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 35.1
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Mira changes the circuit from Rejoin to Resonance. Four narrow paths of light appear around the central heart.",
+          "estimated_duration_seconds": 7.5,
+          "start_seconds": 39.7
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "sun_chamber",
+      "estimated_duration_seconds": 47.2
+    },
+    {
+      "id": "C13",
+      "title": "Final boss introduction C13",
+      "chapter": "Approach to the eclipsed tower",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Veyr descends the tower stairs. His shadow moves before his body.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "Four voices. Four chances to lose yourself.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 4.6
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "Four chances to notice when we\u2019re wrong.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 7.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "I could give you one life again.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 11.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "You could give everyone their lives back.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 14.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "And watch them suffer?",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 17.8
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "CRIMSON draws his sword. Violet raises her bow.",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 19.9
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "You don\u2019t get to decide that for them.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 23.2
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "sun_chamber",
+      "estimated_duration_seconds": 27.0
+    },
+    {
+      "id": "F01",
+      "title": "Transition F01",
+      "chapter": "Final boss Stages One and Two",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Veyr\u2019s helmet falls. He sees his reflection repeated in the four echoes.",
+          "estimated_duration_seconds": 5.0,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "I held the sun so carefully.",
+          "estimated_duration_seconds": 2.9,
+          "start_seconds": 5.0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "You held it too tightly.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 7.9
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Veyr drives his lance into the core. Black light folds the walls outward.",
+          "estimated_duration_seconds": 5.4,
+          "start_seconds": 10.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "Then let the world see what I was holding back.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 15.8
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The chamber becomes an open ring over a motionless city. Veyr\u2019s armor unfolds into a vast silhouette with an eclipsed sun in its chest.",
+          "estimated_duration_seconds": 10.0,
+          "start_seconds": 20.4
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "hollow_sun_arena",
+      "estimated_duration_seconds": 30.4
+    },
+    {
+      "id": "F02",
+      "title": "Transition F02 The room beneath the shadow",
+      "chapter": "Final boss Stage Three and ending",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The four echoes stand in Elin\u2019s preserved room, suspended inside the broken core. Veyr kneels beside the bed. The recorded voice skips again.",
+          "estimated_duration_seconds": 9.6,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "If I let morning come, she\u2019ll still be gone.",
+          "estimated_duration_seconds": 4.2,
+          "start_seconds": 9.6
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "Yes.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 13.8
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "VEYR looks up, furious at the answer.",
+          "estimated_duration_seconds": 2.9,
+          "start_seconds": 15.8
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "And we\u2019ll still remember her.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 18.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "But everyone outside this room is still living.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 21.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VEYR",
+          "text": "I can\u2019t.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 25.0
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "He closes his hand. The room tears apart around the four.",
+          "estimated_duration_seconds": 4.6,
+          "start_seconds": 27.0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "last_shadow_arena",
+      "estimated_duration_seconds": 31.6
+    },
+    {
+      "id": "F03",
+      "title": "Final action F03",
+      "chapter": "Final boss Stage Three and ending",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Crimson cuts the lance. Azure catches Veyr\u2019s falling body. Gold releases the seals from his shadow. Violet sends one lantern arrow into the Dawnheart. All four light paths join the shot.",
+          "estimated_duration_seconds": 12.9,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AREN,",
+          "text": "Let morning come.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 12.9
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "The core ignites. Veyr\u2019s shadow peels away in silent flakes. His hand opens. The broken recording plays one final clear sentence.",
+          "estimated_duration_seconds": 8.8,
+          "start_seconds": 15.4
+        },
+        {
+          "type": "dialogue",
+          "speaker": "ELIN,",
+          "text": "Again, Father. You skipped the best part.",
+          "estimated_duration_seconds": 3.8,
+          "start_seconds": 24.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Veyr smiles through tears, then dies as the shadow\u2019s remaining light leaves him. Azure lowers him gently. The heroes defeat him; his grief is not magically erased.",
+          "estimated_duration_seconds": 11.2,
+          "start_seconds": 28.0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "sun_chamber",
+      "estimated_duration_seconds": 39.2
+    },
+    {
+      "id": "E01",
+      "title": "Ending cutscene E01 Four footsteps",
+      "chapter": "Final boss Stage Three and ending",
+      "timeline": [
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "CAMERA: Follow restored light through the five regions. Water falls from the fountain. The paper bird finishes its interrupted flight. The civilians saved in the prologue catch it.",
+          "estimated_duration_seconds": 11.7,
+          "start_seconds": 0
+        },
+        {
+          "type": "dialogue",
+          "speaker": "MIRA,",
+          "text": "Aren?",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 11.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "Here.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 14.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "AZURE",
+          "text": "Here.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 16.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "Here.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 18.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "Still here.",
+          "estimated_duration_seconds": 2,
+          "start_seconds": 20.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "MIRA laughs. \u201cGood. We have work to do.\u201d",
+          "estimated_duration_seconds": 3.3,
+          "start_seconds": 22.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Later, four echoes help rebuild the square. They stop at a new memorial bearing the names of those who did not return.",
+          "estimated_duration_seconds": 9.2,
+          "start_seconds": 25.5
+        },
+        {
+          "type": "dialogue",
+          "speaker": "VIOLET",
+          "text": "What do we do tomorrow?",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 34.7
+        },
+        {
+          "type": "dialogue",
+          "speaker": "GOLD",
+          "text": "I have a few ideas.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 37.2
+        },
+        {
+          "type": "dialogue",
+          "speaker": "CRIMSON",
+          "text": "Tell us on the way.",
+          "estimated_duration_seconds": 2.5,
+          "start_seconds": 39.7
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "AZURE lifts the paper bird from the ground and releases it. The four leave together. CUT TO TITLE: ECHOS OF LIGHT.",
+          "estimated_duration_seconds": 8.8,
+          "start_seconds": 42.2
+        },
+        {
+          "type": "stage_direction",
+          "speaker": null,
+          "text": "Animation and action production script",
+          "estimated_duration_seconds": 2.1,
+          "start_seconds": 51.0
+        }
+      ],
+      "status": "dialogue and staging data; engine cutscene integration required",
+      "environment_asset": "lumenfall_restored",
+      "estimated_duration_seconds": 53.1
+    }
+  ]
+}
