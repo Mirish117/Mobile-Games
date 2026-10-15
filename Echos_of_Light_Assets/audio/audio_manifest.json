@@ -1,0 +1,122 @@
+[
+  {
+    "file": "audio/sword_swing.wav",
+    "duration_seconds": 0.24,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/shield_block.wav",
+    "duration_seconds": 0.35,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/prism_shot.wav",
+    "duration_seconds": 0.35,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/lantern_arrow.wav",
+    "duration_seconds": 0.4,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/hero_hit.wav",
+    "duration_seconds": 0.2,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/revive.wav",
+    "duration_seconds": 1.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/seal_recovered.wav",
+    "duration_seconds": 1.3,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/beacon.wav",
+    "duration_seconds": 1.4,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/bell.wav",
+    "duration_seconds": 2.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/root_break.wav",
+    "duration_seconds": 0.5,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/water_wave.wav",
+    "duration_seconds": 1.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/ash_gust.wav",
+    "duration_seconds": 0.8,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/boss_stagger.wav",
+    "duration_seconds": 0.6,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/boss_defeat.wav",
+    "duration_seconds": 2.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/gate_open.wav",
+    "duration_seconds": 1.3,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/footstep.wav",
+    "duration_seconds": 0.12,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/menu_confirm.wav",
+    "duration_seconds": 0.15,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/menu_back.wav",
+    "duration_seconds": 0.18,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/stillness_pulse.wav",
+    "duration_seconds": 1.5,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/theme_courage.wav",
+    "duration_seconds": 8.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/theme_compassion.wav",
+    "duration_seconds": 8.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/theme_reason.wav",
+    "duration_seconds": 8.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/theme_hope.wav",
+    "duration_seconds": 8.0,
+    "kind": "original_synthesized_audio_sketch"
+  },
+  {
+    "file": "audio/theme_veyr.wav",
+    "duration_seconds": 8.0,
+    "kind": "original_synthesized_audio_sketch"
+  }
+]
